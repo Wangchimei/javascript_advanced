@@ -201,48 +201,99 @@ likes[1];   //"Psyduck"
   likes.includes('imo'); // false
   ```
 
+- flat() - creates a new array with all sub-array elements concatenated into it recursively up to the specified depth
+
+  ```
+  var arr1 = [1, 2, [3, 4]];
+  arr1.flat();    // [1, 2, 3, 4]
+
+  var arr2 = [1, 2, [3, 4, [5, 6]]];
+  arr2.flat();    // [1, 2, 3, 4, [5, 6]]
+
+  var arr3 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+  arr3.flat(Infinity);    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  // Flattening and array holes
+  var arr5 = [1, 2, , 4, 5];
+  arr5.flat(); // [1, 2, 4, 5]
+
+  ```
+
 - map() - creates a new array populated with the results of calling a provided function on every element in the calling array
 
-  ```
-  let newArr = [2, 4, 6, 8];
-  newArr.map(x => x ** 2); //[4, 16, 36, 64]
-  ```
+```
+
+let newArr = [2, 4, 6, 8];
+newArr.map(x => x \*\* 2); //[4, 16, 36, 64]
+
+```
+
+- forEach() - executes a provided function once for each array element
+  **syntax:** `arr.forEach(callback(currentValue [, index [, array]])[, thisArg])`
+  callback takes 3 parameters:
+
+1. currentValue - The current element being processed in the array.
+2. index - (optional) The index currentValue in the array.
+3. array - (optional) The array forEach() was called upon.
+
+`thisArg` - (optional) Value to use as this when executing callback.
+
+Converting a for loop to forEach:
+
+```
+
+const people = ["Chopper", "Luigi", "Bimo"];
+const copy = []
+
+// for loop
+for (let i = 0; i < people.length; i++) {
+copy.push(people[i])
+}
+
+// forEach loop
+people.forEach(item => copy.push(item))
+
+```
 
 - reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
-  syntax: `arr.reduce(callback(params), initialValue)`  
-   callback takes four parameters:
+  **syntax:** `arr.reduce(callback(params), initialValue)`
+  callback takes 4 parameters:
 
-  1. Accumulator (acc) - The accumulator accumulates callback's return values.
-  2. Current Value (cur) - The current element being processed in the array.
-  3. Current Index (idx) - (optional) The index of the current element being processed in the array.
-  4. Source Array (src) - (optional) The array reduce() was called upon.
+1. Accumulator (acc) - The accumulator accumulates callback's return values.
+2. Current Value (cur) - The current element being processed in the array.
+3. Current Index (idx) - (optional) The index of the current element being processed in the array.
+4. Source Array (src) - (optional) The array reduce() was called upon.
 
-  `initialValue` - (optional) A value to use as the first argument to the first call of the callback.
+`initialValue` - (optional) A value to use as the first argument to the first call of the callback.
 
-  ```
-  let number = [1, 2, 3, 4];
-  number.reduce((acc, cur) => acc + cur); // 10
-  number.reduce((acc, cur) => acc + cur, 5); // 15
+```
 
-  let flattened = [[0, 1], [2, 3], [4, 5]];
-  flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
-  ```
+let number = [1, 2, 3, 4];
+number.reduce((acc, cur) => acc + cur); // 10
+number.reduce((acc, cur) => acc + cur, 5); // 15
 
-  ##### Counting instances of values in an object
+let flattened = [[0, 1], [2, 3], [4, 5]];
+flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
 
-  ```
-  let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
-  let nameCount = list.reduce(function(nameArr, name) {
-  if (name in nameArr) {
-    nameArr[name]++;
-  } else {
-    nameArr[name] = 1;
-  }
-  return nameArr;
-  }, {});
+```
 
-  console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
-  ```
+##### Counting instances of values in an object
+
+```
+
+let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
+let nameCount = list.reduce(function(nameArr, name) {
+if (name in nameArr) {
+nameArr[name]++;
+} else {
+nameArr[name] = 1;
+}
+return nameArr;
+}, {});
+
+console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
+
+```
 
 ## Null vs Undefined
 
@@ -284,7 +335,7 @@ console.log(name > 'Mario'); // false (M comes after L)
 
 ##### Difference between `===` and `==`
 
-`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.  
+`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.
 `==` / `!=` are also known as **loose comparison**, which means different types can still be euqal.
 
 ```
@@ -319,12 +370,14 @@ Boolean(''); // false
 
 ### For Loop
 
-#### Syntax
+##### Syntax
 
 ```
+
 for ([initialization]; [condition]; [final-expression]) {
-  statement
+statement
 }
+
 ```
 
 `initialization` - An expression (including assignment expressions) or variable declaration evaluated once before the loop begins.
@@ -334,54 +387,63 @@ for ([initialization]; [condition]; [final-expression]) {
 `final-expression` - A statement that is executed in the end of each loop as long as the condition evaluates to true.
 
 **NOTE**
-Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.  
+Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.
 Variables declared with `let` are local to the statement.
 
 ```
 
 const name = ['Bimo', 'Luigi', 'Chopper', 'Butter'];
 for (let i = 0; i < name.length; i++) {
-  console.log(name[i]);
+console.log(name[i]);
 }
+
 ```
 
 ### While Loop
 
-#### Syntax
+##### Syntax
 
 ```
+
 while (condition) {
-  statement
+statement
 }
+
 ```
 
 ```
+
 const name = ['Bimo', 'Luigi', 'Chopper', 'Butter'];
 let i = 0;
 while (i < name.length) {
-  console.log(name[i]);
-  i++;
+console.log(name[i]);
+i++;
 }
+
 ```
 
 ### Do While Loop
 
 The condition is evaluated after executing the statement, resulting in the specified statement executing **at least once**.
 
-#### Syntax
+##### Syntax
 
 ```
+
 do
-  statement
+statement
 while (condition);
+
 ```
 
 ```
+
 let i = 5;
 do {
-  console.log(i);
-  i++;
+console.log(i);
+i++;
 } while (i < 5);
+
 ```
 
 output: 5 (run at least once)
@@ -390,34 +452,38 @@ output: 5 (run at least once)
 
 ### Logical Operator
 
-`&&` - AND  
-`||` - OR  
+`&&` - AND
+`||` - OR
 `!` - NOT (turn value into Boolean)
 
 ```
+
 let list = ['Milk'];
 if (!!list) {
-  console.log('out of milk');
+console.log('out of milk');
 }
+
 ```
 
-`!list` - turn array into Boolean (ture)  
+`!list` - turn array into Boolean (ture)
 `!!list` - the opposite of true (false)
 
 ### if / else if / else statement
 
 The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed.
 
-#### Syntax
+##### Syntax
 
 ```
+
 if (condition) {
-  statement1
+statement1
 } else if {
-  statement2
+statement2
 } else {
-  statement3
+statement3
 }
+
 ```
 
 ### switch statement
@@ -425,48 +491,50 @@ if (condition) {
 Best practice is be use in evaluating multi possible value of a single variable.
 Note: switch statement is using **strict equality** to check values.
 
-#### Syntax
+##### Syntax
 
 ```
+
 switch (expression) {
-  case value1:
-    //Statements executed when the result of expression matches value1
-    [break;]
-  case value2:
-    //Statements executed when the result of expression matches value2
-    [break;]
-  [default:
-    //Statements executed when none of the values match the value of the expression
-    [break;]]
+case value1:
+//Statements executed when the result of expression matches value1
+[break;]
+case value2:
+//Statements executed when the result of expression matches value2
+[break;]default:
+//Statements executed when none of the values match the value of the expression
+[break;]]
 }
+
 ```
 
 If break is not added, when expression matches value1, it will run all the cases that comes after.
 
-`expression` - An expression whose result is matched against each case clause.  
+`expression` - An expression whose result is matched against each case clause.
 `default` - (optional) A default clause (executed none of value matches the expression)
 
 ```
+
 const grade = 'D';
 
 switch(grade){
-  case 'A':
-    console.log('you got an A!');
-    break;
-  case 'B':
-    console.log('you got a B!');
-    break;
-  case 'C':
-    console.log('you got a C!');
-    break;
-  case 'D':
-    console.log('you got a D!');
-    break;
-  case 'E':
-    console.log('you got an E!');
-    break;
-  default:
-    console.log('not a valid grade');
+case 'A':
+console.log('you got an A!');
+break;
+case 'B':
+console.log('you got a B!');
+break;
+case 'C':
+console.log('you got a C!');
+break;
+case 'D':
+console.log('you got a D!');
+break;
+case 'E':
+console.log('you got an E!');
+break;
+default:
+console.log('not a valid grade');
 }
 
 ```
@@ -477,34 +545,38 @@ switch(grade){
 `continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
 
 ```
+
 const scores = [50, 25, 0, 30, 100, 20, 10];
 
 for(let i = 0; i < scores.length; i++){
 
-  if(scores[i] === 0){
-    continue;
-    // skip the following statements and continue the next iteration
-  }
+if(scores[i] === 0){
+continue;
+// skip the following statements and continue the next iteration
+}
 
-  console.log('your score:', scores[i]);
+console.log('your score:', scores[i]);
 
-  if(scores[i] === 100){
-    console.log('congrats, you got the top score!');
-    break;
-     // terminate the whole loop
-  }
+if(scores[i] === 100){
+console.log('congrats, you got the top score!');
+break;
+// terminate the whole loop
+}
 
 }
+
 ```
 
 output:
 
 ```
+
 your score: 50
 your score: 25
 your score: 30
 your score: 100
 congrats, you got the top score!
+
 ```
 
 ## Block Scope
@@ -515,18 +587,19 @@ However, variables defined with `var` are at global level even if it is defined 
 #### Example
 
 ```
+
 let age = 30;
 
 if (true) {
-  let age = 40;
-  let name = 'Mario';
-  console.log('inside 1st code block:', age, name);
+let age = 40;
+let name = 'Mario';
+console.log('inside 1st code block:', age, name);
 
-  if (true) {
-    age = 50;
-    var mood = 'happy!';
-    console.log('inside 2nd code block:', age, name, mood);
-  }
+if (true) {
+age = 50;
+var mood = 'happy!';
+console.log('inside 2nd code block:', age, name, mood);
+}
 }
 
 console.log('outside code block:', age, name, mood);
@@ -536,7 +609,173 @@ console.log('outside code block:', age, name, mood);
 output:
 
 ```
+
 inside 1st code block: 40 Mario
 inside 2nd code block: 50 Mario happy!
-outside code block: 30  happy!
+outside code block: 30 happy!
+
+```
+
+## Functions
+
+### Terminology
+
+```
+
+const _variable_ = function (_parameters_) {
+...
+}
+
+cnosole.log(_variable_())
+
+```
+
+### Regular functions
+
+#### Function declarations
+
+Because of JavaScript's default behavior, _Hoisting_, it moves all declarations to the top of the current scope, which means you can call a function first and declare the function after.
+
+```
+
+function greet() {
+console.log('Hello!");
+}
+
+greet();
+
+```
+
+```
+
+greet();
+
+function greet() {
+console.log('Hello!");
+}
+
+```
+
+#### Function expressions (store in variables)
+
+Variables and constants declared with `let` or `const` are not hoisted!
+
+```
+
+const greeting = function() {
+console.log('Good day!");
+}
+
+greeting();
+
+```
+
+##### Default value in functions
+
+```
+
+const speak = function(name = 'Luigi', time = 'night'){
+console.log(`good ${time}, ${name}!`);
+};
+
+speak('Mario', 'morning'); // good morning Mario
+speak(); // good night Luigi
+speak('Bowser'); good night Bowser
+
+```
+
+### Arrow functions
+
+##### Syntax
+
+```
+
+(param1, param2, …, paramN) => { statements }
+(param1, param2, …, paramN) => expression
+// equivalent to: => { return expression; }
+
+// The parameter list for a function with no parameters should be written with a pair of parentheses.
+() => { statements }
+
+// Parentheses are optional when there's only one parameter name
+(singleParam) => { statements }
+singleParam => { statements }
+
+```
+
+##### Example
+
+```
+
+const calcArea = function(radius){
+return 3.14 \* radius\*\*2;
+}
+
+```
+
+**since there is only one parameters, `function`, `()`, `return`, `{}` can all be omitted.**
+
+```
+
+const calcArea = radius => 3.14 \* radius\*\*2;
+
+```
+
+### Functions vs Methods
+
+Methods are functions but they are functions that are associated with Objects.
+Even though, they are both functions but the way to invoke a function and a method is different.
+To invoke functions: using by calling function name and parentheses, such as `greet()`
+To invoke methods: using `.` notation on value itself, such as `name.toUpperCase()`
+
+### Callback functions
+
+#### General premise:
+
+```
+
+const myFunction = (callbackFunction) => {
+// do something
+let value = 50;
+callbackFunction(value);
+}
+
+myFunction(value => {
+//do something
+console.log(value); //50
+})
+
+```
+
+##### Example
+
+```
+
+let people = ['Luigi', 'Butter', 'Bimo', 'Chopper', 'Winnie'];
+
+// v1 - regular function
+people.forEach(function(person, index) {
+console.log(`${index + 1} - ${person}`);
+});
+
+// v2 - arrow function
+people.forEach((person, index) => {
+console.log(`${index + 1} - ${person}`);
+});
+
+// v3 - using callback function
+const logPeople = (person, index) => {
+console.log(`${index + 1} - ${person}`);
+};
+
+people.forEach(logPeople);
+
+```
+
+```
+
+```
+
+```
+
 ```
