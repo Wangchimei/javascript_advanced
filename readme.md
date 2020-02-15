@@ -246,7 +246,7 @@ likes[1];   //"Psyduck"
 
 ## Null vs Undefined
 
-- Undefined - For variables that have not yet been defined (Automatically assigned)
+- Undefined - For variables that have not yet been defined (automatically assigned)
 
 ```
 
@@ -284,7 +284,7 @@ console.log(name > 'Mario'); // false (M comes after L)
 
 ##### Difference between `===` and `==`
 
-`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.
+`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.  
 `==` / `!=` are also known as **loose comparison**, which means different types can still be euqal.
 
 ```
@@ -301,7 +301,7 @@ let age = 25;
 
 ## Type Conversion
 
-Using `typeof` operator to check the type of something (variables). e.g. `typeof name`
+Using `typeof` operator to check the type of something (variables), e.g. `typeof name`
 
 ```
 
@@ -328,13 +328,14 @@ for ([initialization]; [condition]; [final-expression]) {
 ```
 
 `initialization` - An expression (including assignment expressions) or variable declaration evaluated once before the loop begins.
-New variables can be declared with `var` or `let` keywords.
-Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.
-Variables declared with `let` are local to the statement.
 
 `condition` - An expression to be evaluated before each loop iteration.
 
 `final-expression` - A statement that is executed in the end of each loop as long as the condition evaluates to true.
+
+**NOTE**
+Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.  
+Variables declared with `let` are local to the statement.
 
 ```
 
@@ -387,6 +388,22 @@ output: 5 (run at least once)
 
 ## Conditionals
 
+### Logical Operator
+
+`&&` - AND  
+`||` - OR  
+`!` - NOT (turn value into Boolean)
+
+```
+let list = ['Milk'];
+if (!!list) {
+  console.log('out of milk');
+}
+```
+
+`!list` - turn array into Boolean (ture)  
+`!!list` - the opposite of true (false)
+
 ### if / else if / else statement
 
 The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed.
@@ -403,20 +420,123 @@ if (condition) {
 }
 ```
 
-### Logical Operator
+### switch statement
 
-`&&` - AND
-`||` - OR
-`!` - NOT (turn value into Boolean)
+Best practice is be use in evaluating multi possible value of a single variable.
+Note: switch statement is using **strict equality** to check values.
+
+#### Syntax
 
 ```
-let list = ['Milk'];
-if (!!list) {
-  console.log('out of milk');
+switch (expression) {
+  case value1:
+    //Statements executed when the result of expression matches value1
+    [break;]
+  case value2:
+    //Statements executed when the result of expression matches value2
+    [break;]
+  [default:
+    //Statements executed when none of the values match the value of the expression
+    [break;]]
 }
 ```
 
-`!list` - turn array into Boolean (ture)
-`!!list` - the opposite of true (false)
+If break is not added, when expression matches value1, it will run all the cases that comes after.
+
+`expression` - An expression whose result is matched against each case clause.  
+`default` - (optional) A default clause (executed none of value matches the expression)
+
+```
+const grade = 'D';
+
+switch(grade){
+  case 'A':
+    console.log('you got an A!');
+    break;
+  case 'B':
+    console.log('you got a B!');
+    break;
+  case 'C':
+    console.log('you got a C!');
+    break;
+  case 'D':
+    console.log('you got a D!');
+    break;
+  case 'E':
+    console.log('you got an E!');
+    break;
+  default:
+    console.log('not a valid grade');
+}
+
+```
 
 ### break and continue
+
+`break` - terminates execution of the current loop
+`continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
+
+```
+const scores = [50, 25, 0, 30, 100, 20, 10];
+
+for(let i = 0; i < scores.length; i++){
+
+  if(scores[i] === 0){
+    continue;
+    // skip the following statements and continue the next iteration
+  }
+
+  console.log('your score:', scores[i]);
+
+  if(scores[i] === 100){
+    console.log('congrats, you got the top score!');
+    break;
+     // terminate the whole loop
+  }
+
+}
+```
+
+output:
+
+```
+your score: 50
+your score: 25
+your score: 30
+your score: 100
+congrats, you got the top score!
+```
+
+## Block Scope
+
+Variables defined with `let` are in a block scope.
+However, variables defined with `var` are at global level even if it is defined in a block level.
+
+#### Example
+
+```
+let age = 30;
+
+if (true) {
+  let age = 40;
+  let name = 'Mario';
+  console.log('inside 1st code block:', age, name);
+
+  if (true) {
+    age = 50;
+    var mood = 'happy!';
+    console.log('inside 2nd code block:', age, name, mood);
+  }
+}
+
+console.log('outside code block:', age, name, mood);
+
+```
+
+output:
+
+```
+inside 1st code block: 40 Mario
+inside 2nd code block: 50 Mario happy!
+outside code block: 30  happy!
+```
