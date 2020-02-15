@@ -6,31 +6,33 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
 
 ### Methods
 
-- indexOf() - returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns `-1` if the value is not found.
+- indexOf() - returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex
+  Returns `-1` if the value is not found.
   ```
   email.indexOf('e');  // 4
   ```
-- lastIndexOf() - returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex. Returns `-1` if the value is not found.
+- lastIndexOf() - returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex
+  Returns `-1` if the value is not found.
 
-```
-email.indexOf('c');  // 13
-```
+  ```
+  email.indexOf('c');  // 13
+  ```
 
-- split() - turns a String into an array of strings, by separating the string at each instance of a specified separator string.
-- ```
+- split() - turns a String into an array of strings, by separating the string at each instance of a specified separator string
+  ```
   email.split("@")[0];  // "mei"
   ```
-- slice() - extracts a section of a string and returns it as a new string, without modifying the original string.
+- slice() - extracts a section of a string and returns it as a new string, without modifying the original string
   ```
   email.slice(3, 6);  // "chimei"
   ```
-- substring() - returns the part of the string between the start and end indexes, or to the end of the string.
+- substring() - returns the part of the string between the start and end indexes, or to the end of the string
 
   ```
   email.substring(3, 6);  // "mei"
   ```
 
-  ###### Differences between substring() and slice()
+  ##### Differences between substring() and slice()
 
   The `substring()` and `slice()` are almost identical, but there are a couple of subtle differences between the two, especially **in the way negative arguments are dealt with**.
 
@@ -51,11 +53,11 @@ email.indexOf('c');  // 13
     text.slice(-5, -2) // " Ka" (from index -5 until index -2-1)
   ```
 
-- substr() - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward.
+- substr() - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward
   ```
   email.substr(3, 6);  // "mei@ex"
   ```
-- replace() - returns a new string with some or all matches of a pattern replaced by a replacement.
+- replace() - returns a new string with some or all matches of a pattern replaced by a replacement
   ```
   email.replace('i', 'o');  // "chomei@example.com"
   ```
@@ -66,7 +68,7 @@ email.indexOf('c');  // 13
 
 ## Number
 
-order of operation:  
+Order of operation:  
 B - Brackets `()`  
 I - Indices `**`  
 D - Division `/`  
@@ -79,7 +81,7 @@ S - Subtraction `-`
 Template literals are string literals allowing embedded expressions.
 You can use multi-line strings and string interpolation features with them.
 
-###### Define variables
+##### Define variables
 
 ```
 const title = 'Harry Potter and the Philosopher's Stone';
@@ -87,14 +89,14 @@ const author = 'J.K. Rowling';
 let likes = 300;
 ```
 
-###### concatenation way
+##### concatenation way
 
 ```
 let result = 'The book called ' + title + ' by ' + author + ' has ' + likes + ' likes';
 
 ```
 
-###### template strings way
+##### template strings way
 
 ```
 let result = `The book called ${title} by ${author} has ${likes} likes`;
@@ -122,57 +124,57 @@ likes[1]   //"Psyduck"
 
 ### Methods
 
-- join() - creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.
+- join() - creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string
   ```
   likes.join(', ')  // "Bimo, Chopper, Winnie"
   ```
-- indexOf() - returns the first index at which a given element can be found in the array, or `-1` if it is not present.
+- indexOf() - returns the first index at which a given element can be found in the array, or `-1` if it is not present
   ```
   likes.indexOf('Bimo')  // 0
   ```
-- concat() - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+- concat() - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array
 
   ```
   likes.concat(['Luigi', 'Butter'])
      // ["Bimo", "Chopper", "Winnie", "Luigi", "Butter"]
   ```
 
-- slice() - returns a shallow copy of a portion of an array into a new array object selected from begin index to end index (end not included).
+- slice() - returns a shallow copy of a portion of an array into a new array object selected from begin index to end index (end not included)
 
   ```
   likes = ["Bimo", "Chopper", "Winnie", "Luigi", "Butter"]
   likes.slice(2, 4) // ["Winnie", "Luigi"]
   ```
 
-- unshift() - adds one or more elements to the **beginning** of an array and returns the new length of the array. **(destructive method)**
+- unshift() - adds one or more elements to the **beginning** of an array and returns the new length of the array **(destructive method)**
 
   ```
   likes.unshift('Luigi', "Butter") // 5
   console.log(likes) // ["Luigi","Butter", "Bimo", "Chopper", "Winnie"]
   ```
 
-- push() - adds one or more elements to the **end** of an array and returns the new length of the array. **(destructive method)**
+- push() - adds one or more elements to the **end** of an array and returns the new length of the array **(destructive method)**
 
   ```
   likes.push('Luigi') // 4
   console.log(likes) // ["Bimo", "Chopper", "Winnie", "Luigi"]
   ```
 
-- shift() - removes the **first** element from an array and returns that removed element. **(destructive method)**
+- shift() - removes the **first** element from an array and returns that removed element **(destructive method)**
 
   ```
   likes.unshift('Luigi', "Butter") // 5
   console.log(likes) // ["Luigi","Butter", "Bimo", "Chopper", "Winnie"]
   ```
 
-- pop() - removes the **last** element from an array and returns that element. **(destructive method)**
+- pop() - removes the **last** element from an array and returns that element **(destructive method)**
 
   ```
   likes.pop() // "Winnie" (return what's been taken out)
   console.log(likes) // ["Bimo", "Chopper"]
   ```
 
-- splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+- splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
 
   ```
   likes.splice(1, 0, "Luigi")  // [] (nothing's taken out)
@@ -186,7 +188,7 @@ likes[1]   //"Psyduck"
   `likes.splice(3, 1, "Butter")` = remove 1 element from index 3 and insert "Butter"  
   `likes.splice(2, 3)` = remove 3 elements from index 2
 
-- sort() - sorts the elements of an array in place and returns the sorted array. The default sort order is ascending.
+- sort() - sorts the elements of an array in place and returns the sorted array. The default sort order is ascending
 
   ```
   newArr = ["Chopper", "Luigi", "Bimo"]
@@ -199,14 +201,14 @@ likes[1]   //"Psyduck"
   likes.includes('imo') // false
   ```
 
-- map() - creates a new array populated with the results of calling a provided function on every element in the calling array.
+- map() - creates a new array populated with the results of calling a provided function on every element in the calling array
 
   ```
   let newArr = [2, 4, 6, 8]
   newArr.map(x => x ** 2) //[4, 16, 36, 64]
   ```
 
-- reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+- reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
   syntax: `arr.reduce(callback(params), initialValue)`  
   callback takes four parameters:
 
@@ -214,7 +216,8 @@ likes[1]   //"Psyduck"
   2. Current Value (cur) - The current element being processed in the array.
   3. Current Index (idx) - (optional) The index of the current element being processed in the array.
   4. Source Array (src) - (optional) The array reduce() was called upon.
-     `initialValue` - (optional) A value to use as the first argument to the first call of the callback.
+
+  `initialValue` - (optional) A value to use as the first argument to the first call of the callback.
 
   ```
   let number = [1, 2, 3, 4]
@@ -225,7 +228,7 @@ likes[1]   //"Psyduck"
   flattened.reduce( (acc, cur) => acc.concat(cur)) // [0, 1, 2, 3, 4, 5]
   ```
 
-  #### Counting instances of values in an object
+  ##### Counting instances of values in an object
 
   ```
   let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice']
