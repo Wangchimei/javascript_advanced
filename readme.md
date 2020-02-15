@@ -1,54 +1,77 @@
 # JavaScript
 
-a sequence of characters
-
 ## String
 
-A sequence of characters. e.g. `let email = "chimei@example.com"`
+A sequence of characters, e.g. `let email = "chimei@example.com"`
 
 ### Methods
 
-- indexOf() -
+- indexOf() - returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns `-1` if the value is not found.
   ```
   email.indexOf('e');  // 4
   ```
-- lastIndexOf() -
-  ```
-  email.indexOf('c');  // 13
-  ```
-- split() -
-  ```
+- lastIndexOf() - returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex. Returns `-1` if the value is not found.
+
+```
+email.indexOf('c');  // 13
+```
+
+- split() - turns a String into an array of strings, by separating the string at each instance of a specified separator string.
+- ```
   email.split("@")[0];  // "mei"
   ```
-- slice() -
+- slice() - extracts a section of a string and returns it as a new string, without modifying the original string.
   ```
   email.slice(3, 6);  // "chimei"
   ```
-- substring() -
+- substring() - returns the part of the string between the start and end indexes, or to the end of the string.
+
   ```
   email.substring(3, 6);  // "mei"
   ```
-- substr() -
+
+  ###### Differences between substring() and slice()
+
+  The `substring()` and `slice()` are almost identical, but there are a couple of subtle differences between the two, especially **in the way negative arguments are dealt with**.
+
+  The `substring()` method swaps its two arguments if `indexStart` is **greater than** `indexEnd` ( a string is still returned).  
+   The `slice()` method returns an empty string if this is the case.
+
+  ```
+    let text = 'Mario Kart'
+    text.substring(5, 2) // "rio" (from index 2 to index 5-1)
+    text.slice(5, 2) // ""
+
+    //-- treat negative as 0 --
+    text.substring(-5, 2) // "Ma" (from index 0 until index 2-1)
+    text.substring(-5, -2) // ""
+
+    //-- arguments cannot mix positive and negative--
+    text.slice(-5, 2) // ""
+    text.slice(-5, -2) // " Ka" (from index -5 until index -2-1)
+  ```
+
+- substr() - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward.
   ```
   email.substr(3, 6);  // "mei@ex"
   ```
-- replace() -
+- replace() - returns a new string with some or all matches of a pattern replaced by a replacement.
   ```
   email.replace('i', 'o');  // "chomei@example.com"
   ```
-- includes() -
+- includes() - determines whether one string may be found within another string, returning `true` or `false`
   ```
   email.includes('i')  // true
   ```
 
 ## Number
 
-order of operation
-B - Brackets `()`
-I - Indices `**`
-D - Division `/`
-M - Multiplication `*`
-A - Addition `+`
+order of operation:  
+B - Brackets `()`  
+I - Indices `**`  
+D - Division `/`  
+M - Multiplication `*`  
+A - Addition `+`  
 S - Subtraction `-`
 
 ## Template strings (Template literals)
