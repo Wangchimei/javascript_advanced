@@ -1,20 +1,42 @@
 # JavaScript
 
-data that is not an object and has no methods.
+### Data type
 
-| Types                                                                | Brief definition                                                                                                                                                                       |
-| :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [String](https://github.com/Wangchimei/javascript_advanced#string)   | 'hello', [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)                                                                      |
-| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | 1, 2, 100, 3.14                                                                                                                                                                        |
-| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value                                                                                                                                                |
-| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined                                                                                                                                           |
-| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                                                                                                                                                           |
-| Object                                                               | Complex data structures - [Array](https://github.com/Wangchimei/javascript_advanced#array), Dates, [Literals](https://github.com/Wangchimei/javascript_advanced#object-literals), etc. |
-| Symbol                                                               | Used with objects                                                                                                                                                                      |
+| Types                                                                | Brief definition                                      | Sections                                                                                                              |
+| :------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string)   | a constructor for strings or a sequence of characters | [Mathods](), [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals) |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | numerical values (1, 2, 100, 3.14)                    |                                                                                                                       |
+| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value               |                                                                                                                       |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined          |                                                                                                                       |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                          |                                                                                                                       |
+| Object                                                               | Complex data structures                               | Array, Dates, Literals, etc.                                                                                          |
+| Symbol                                                               | Used with objects                                     |                                                                                                                       |
+
+- Object
+
+  - [Array](https://github.com/Wangchimei/javascript_advanced#array)
+    - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
+  - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
+    - [this keyword]()
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#object-literals)
+
+  - [For loop](https://github.com/Wangchimei/javascript_advanced#for-loop)
+  - [While Loop](https://github.com/Wangchimei/javascript_advanced#while-loop)
+  - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loop)
+
 - [Conditionals](https://github.com/Wangchimei/javascript_advanced#object-literals)
+
+  - [If / Else if / Else Statement](https://github.com/Wangchimei/javascript_advanced#if--else-if--else-statement)
+  - [Switch Statement](https://github.com/Wangchimei/javascript_advanced#switch-statement)
+  - [Break and Continue](https://github.com/Wangchimei/javascript_advanced#break-and-continue)
+
 - [Functions](https://github.com/Wangchimei/javascript_advanced#functions)
+  - [Block Scope](https://github.com/Wangchimei/javascript_advanced#block-scope)
+  - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#break-and-continue)
+  - [Arrow Functions](https://github.com/Wangchimei/javascript_advanced#arrow-functions)
+  - [Callback Functions](https://github.com/Wangchimei/javascript_advanced#callback-functions)
+  - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods)
 
 ## String
 
@@ -82,16 +104,6 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
   email.includes('i');  // true
   ```
 
-## Number
-
-Order of operation:  
-B - Brackets `()`  
-I - Indices `**`  
-D - Division `/`  
-M - Multiplication `*`  
-A - Addition `+`  
-S - Subtraction `-`
-
 ## Template strings (Template literals)
 
 Template literals are string literals allowing embedded expressions.
@@ -127,6 +139,16 @@ let html = `
   <span>This book has ${likes} likes</span>
 `;
 ```
+
+## Number
+
+Order of operation:  
+B - Brackets `()`  
+I - Indices `**`  
+D - Division `/`  
+M - Multiplication `*`  
+A - Addition `+`  
+S - Subtraction `-`
 
 ## Null vs Undefined
 
@@ -173,6 +195,20 @@ let age = 25;
 
 // console.log(age === 25); //true
 // console.log(age === '25'); //false
+```
+
+## Type Conversion
+
+Using `typeof` operator to check the type of something (variables), e.g. `typeof name`
+
+```
+Number('hello'); // NaN
+String(50); // "50"
+
+Boolean(0); // false
+Boolean(-100); // ture
+Boolean('0'); // ture
+Boolean(''); // false
 ```
 
 ## Array
@@ -351,24 +387,18 @@ likes[1];   //"Psyduck"
 
 ## Object literals
 
-##### create an object literal with `key: value` pairs.
+##### Create an object literal with `key: value` pairs.
 
 ```
 let user = {
-  name = 'luigi',
-  age = 30,
-  email = 'luigi@nintendo.jp'
-  blogs = ['The Haunted Mansion', 'Friendship with Boos']
+  name: 'luigi',
+  age: 30,
+  email: 'luigi@nintendo.jp',
+  blogs: ['The Haunted Mansion', 'Friendship with Boos']
 }
 ```
 
-##### access properties from the object literal with `.` (dot notation)
-
-```
-console.log(user.name)
-```
-
-##### access and update the properties - dot notation or square bracket notation
+##### Access and update the properties - dot notation or square bracket notation
 
 1. dot notation `.` (used this most of the time)
 
@@ -387,18 +417,69 @@ const works = 'blogs'
 console.log(user[works]);
 ```
 
-## Type Conversion
-
-Using `typeof` operator to check the type of something (variables), e.g. `typeof name`
+##### Add methods
 
 ```
-Number('hello'); // NaN
-String(50); // "50"
+let user = {
+  name: 'luigi',
+  age: 30,
+  email: 'luigi@nintendo.jp',
+  blogs: ['The Haunted Mansion', 'Friendship with Boos'],
+  phrase() {
+    console.log('ma..ma..ma..mario..');
+  },
+  logBlogs: function() {
+    //console.log(this.blogs);
+    this.blogs.forEach(blog => console.log(blog));
+  },
+};
 
-Boolean(0); // false
-Boolean(-100); // ture
-Boolean('0'); // ture
-Boolean(''); // false
+user.phrase();
+user.logBlogs();
+```
+
+### `this` keyword
+
+`this` keyword is an context object, and it represents the context in which the current code is executing.  
+Depending on where and how `this` is used, the value is going to be different.  
+When calling a method, JavaScript will set the value of `this` keyword to be the object that the method is used on.
+
+**Caution:**  
+When creating a method using arrow functions, `this` will **NOT** be the object that the method is used on.  
+The value of `this` will be the point in the code the arrow function is invoked.
+
+```
+let user = {
+  name: 'luigi',
+  age: 30,
+  email: 'luigi@nintendo.jp',
+
+  //regular functions
+  logName: function() {
+    console.log(this);
+  },
+
+  // shorthand - work as a regular function
+  logAge() {
+    console.log(this);
+  },
+
+  // when using arrow functions
+  logEmail() {
+    console.log(this);
+  },
+};
+
+console.log(this);   // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
+
+// regular functions - this keyword value will be the user object
+user.logName();      // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
+
+// shorthand regular functions - this keyword value will be the user object
+user.logAge();       // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
+
+// arrow function - when the method is invoked, this keyword is at global window object
+user.logEmail();     // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
 ```
 
 ## Loops
@@ -491,7 +572,7 @@ if (!!list) {
 `!list` - turn array into Boolean (ture)  
 `!!list` - the opposite of true (false)
 
-### if / else if / else statement
+### If / Else if / Else Statement
 
 The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed.
 
@@ -507,7 +588,7 @@ if (condition) {
 }
 ```
 
-### switch statement
+### Switch Statement
 
 Best practice is to be used in evaluating multi-possible values of a single variable.
 Note: switch statement is using **strict equality** to check values.
@@ -557,7 +638,7 @@ switch(grade){
 }
 ```
 
-### break and continue
+### Break and Continue
 
 `break` - terminates execution of the current loop
 `continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
@@ -593,7 +674,19 @@ your score: 100
 congrats, you got the top score!
 ```
 
-## Block Scope
+## Functions
+
+### Terminology
+
+```
+const _variable_ = function (_parameters_) {
+  ...
+}
+
+cnosole.log(_variable_())
+```
+
+### Block Scope
 
 Variables defined with `let` are in a block scope.
 However, variables defined with `var` are at global level even if it is defined in a block level.
@@ -626,19 +719,7 @@ inside 2nd code block: 50 Mario happy!
 outside code block: 30 happy!
 ```
 
-## Functions
-
-### Terminology
-
-```
-const _variable_ = function (_parameters_) {
-  ...
-}
-
-cnosole.log(_variable_())
-```
-
-### Regular functions
+### Regular Functions
 
 #### Function declarations
 
@@ -684,7 +765,7 @@ speak(); // good night Luigi
 speak('Bowser'); good night Bowser
 ```
 
-### Arrow functions
+### Arrow Functions
 
 ##### Syntax
 
@@ -715,14 +796,7 @@ const calcArea = function(radius){
 const calcArea = radius => 3.14 \* radius\*\*2;
 ```
 
-### Functions vs Methods
-
-Methods are functions but they are functions that are associated with Objects.
-Even though they are both functions, but the way to invoke a function and a method is different.  
-To invoke functions: using by calling function name and parentheses, such as `greet()`  
-To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
-
-### Callback functions
+### Callback Functions
 
 #### General premise:
 
@@ -765,3 +839,10 @@ const logPeople = (person, index) => {
 people.forEach(logPeople);
 
 ```
+
+### Functions vs Methods
+
+Methods are functions but they are functions that are defined on **an object** and associated with **the object**.  
+Even though they are both functions, but the way to invoke a function and a method is different.  
+To invoke functions: using by calling function name and parentheses, such as `greet()`  
+To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
