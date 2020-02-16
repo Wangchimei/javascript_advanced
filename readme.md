@@ -1242,14 +1242,56 @@ btn.addEventListener('click', () => {
 - `ParentNode.prepend()` - inserts at the top of its parent
 
 ```
-const btn = document.querySelector('button');
 let ul = document.querySelector('ul');
-btn.addEventListener('click', () => {
-  const li = document.createElement('li');
-  li.textContent = 'something new';
-  // ul.append(li);
-  ul.prepend(li);
+const items = document.querySelectorAll('li');
+items.forEach(item => {
+  item.addEventListener('click', e => {
+    e.target.remove();
+  });
+});
+ul.addEventListener('click', e => {
+      e.target.remove();
+  });
 });
 ```
 
 ### Event Bubbling
+
+Event Bubbling is the event starts from the target element to its parents, then all its ancestors which are on the way to bottom to top.  
+Event will first be triggered at the target element level, if its parents has the same event, it will be triggered as well.
+
+```
+let ul = document.querySelector('ul');
+btn.addEventListener('click', () => {        //when being clicked, it bubbled up to its parent
+  const li = document.createElement('li');
+    e.target.remove();
+});
+ul.addEventListener('click', e => {
+  alert('event bubbling');                   // event is triggered automatically
+});
+```
+
+**Use `event.stopPropagation()` to stop event bubbling.**
+
+```
+const items = document.querySelectorAll('li');
+items.forEach(item => {
+  item.addEventListener('click', e => {
+    e.stopPropagation()
+    e.target.remove();
+  });
+});
+```
+
+### Event Delegation
+
+Because of Event Bubbling, one of most powerful event handling patterns called Event Delegation can be implemented.  
+The idea is that if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
+
+```
+ul.addEventListener('click', e => {
+  if (e.target.tagName === 'LI') {
+    e.target.remove();
+  }
+});
+```
