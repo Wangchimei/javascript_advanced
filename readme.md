@@ -1,5 +1,17 @@
 # JavaScript
 
+data that is not an object and has no methods.
+
+| Types                                                                | Brief                                                                                                                 |
+| :------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string)   | 'hello', [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)     |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | 1, 2, 100, 3.14                                                                                                       |
+| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value                                                                               |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined                                                                          |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                                                                                          |
+| Object                                                               | Complex data structures - [Array](https://github.com/Wangchimei/javascript_advanced#array), Dates, [Literals](), etc. |
+| Symbol                                                               | Used with objects                                                                                                     |
+
 ## String
 
 A sequence of characters, e.g. `let email = "chimei@example.com"`
@@ -112,6 +124,53 @@ let html = `
 `;
 ```
 
+## Null vs Undefined
+
+- Undefined - For variables that have not yet been defined (automatically assigned)
+
+```
+let age;
+
+console.log(age, age + 3, `the age is ${age}`);
+// undefined NaN "the age is undefined"
+```
+
+- Null - Explicitly set a variable with no value
+
+```
+let age = null;
+
+console.log(age, age + 3, `the age is ${age}`);
+// null 3 "the age is null"
+```
+
+## Boolean
+
+Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will returm Boolean.
+
+```
+let name = 'Luigi';
+
+console.log(name == 'luigi'); // false
+console.log(name > 'luigi'); // false (lowercase is greater than uppercase)
+console.log(name > 'Mario'); // false (M comes after L)
+```
+
+##### Difference between `===` and `==`
+
+`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.
+`==` / `!=` are also known as **loose comparison**, which means different types can still be euqal.
+
+```
+let age = 25;
+
+// console.log(age == 25); // true
+// console.log(age == '25'); // true
+
+// console.log(age === 25); //true
+// console.log(age === '25'); //false
+```
+
 ## Array
 
 ```
@@ -220,117 +279,108 @@ likes[1];   //"Psyduck"
 
 - map() - creates a new array populated with the results of calling a provided function on every element in the calling array
 
-```
-let newArr = [2, 4, 6, 8];
-newArr.map(x => x \*\* 2); //[4, 16, 36, 64]
-```
+  ```
+  let newArr = [2, 4, 6, 8];
+  newArr.map(x => x \*\* 2); //[4, 16, 36, 64]
+  ```
 
 - forEach() - executes a provided function once for each array element
   **syntax:** `arr.forEach(callback(currentValue [, index [, array]])[, thisArg])`
   callback takes 3 parameters:
 
-1. currentValue - The current element being processed in the array.
-2. index - (optional) The index currentValue in the array.
-3. array - (optional) The array forEach() was called upon.
+  1. currentValue - The current element being processed in the array.
+  2. index - (optional) The index currentValue in the array.
+  3. array - (optional) The array forEach() was called upon.
 
-`thisArg` - (optional) Value to use as this when executing callback.
+  `thisArg` - (optional) Value to use as this when executing callback.
 
-Converting a for loop to forEach:
+  ##### Converting a for loop to forEach:
 
-```
-const people = ["Chopper", "Luigi", "Bimo"];
-const copy = []
+  ```
+  const people = ["Chopper", "Luigi", "Bimo"];
+  const copy = []
 
-// for loop
-for (let i = 0; i < people.length; i++) {
-  copy.push(people[i])
-}
+  // for loop
+  for (let i = 0; i < people.length; i++) {
+    copy.push(people[i])
+  }
 
-// forEach loop
-people.forEach(item => copy.push(item))
-```
+  // forEach loop
+  people.forEach(item => copy.push(item))
+  ```
 
 - reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
   **syntax:** `arr.reduce(callback(params), initialValue)`
   callback takes 4 parameters:
 
-1. Accumulator (acc) - The accumulator accumulates callback's return values.
-2. Current Value (cur) - The current element being processed in the array.
-3. Current Index (idx) - (optional) The index of the current element being processed in the array.
-4. Source Array (src) - (optional) The array reduce() was called upon.
+  1. Accumulator (acc) - The accumulator accumulates callback's return values.
+  2. Current Value (cur) - The current element being processed in the array.
+  3. Current Index (idx) - (optional) The index of the current element being processed in the array.
+  4. Source Array (src) - (optional) The array reduce() was called upon.
 
-`initialValue` - (optional) A value to use as the first argument to the first call of the callback.
+  `initialValue` - (optional) A value to use as the first argument to the first call of the callback.
 
-```
-let number = [1, 2, 3, 4];
-number.reduce((acc, cur) => acc + cur); // 10
-number.reduce((acc, cur) => acc + cur, 5); // 15
+  ```
+  let number = [1, 2, 3, 4];
+  number.reduce((acc, cur) => acc + cur); // 10
+  number.reduce((acc, cur) => acc + cur, 5); // 15
 
-let flattened = [[0, 1], [2, 3], [4, 5]];
-flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
-```
+  let flattened = [[0, 1], [2, 3], [4, 5]];
+  flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
+  ```
 
-##### Counting instances of values in an object
+  ##### Counting instances of values in an object
 
-```
-let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
-let nameCount = list.reduce(function(nameArr, name) {
-  if (name in nameArr) {
-  nameArr[name]++;
-  } else {
-  nameArr[name] = 1;
-  }
-  return nameArr;
-}, {});
+  ```
+  let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
+  let nameCount = list.reduce(function(nameArr, name) {
+    if (name in nameArr) {
+    nameArr[name]++;
+    } else {
+    nameArr[name] = 1;
+    }
+    return nameArr;
+  }, {});
 
-console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
-```
+  console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
+  ```
 
-## Null vs Undefined
+## Object literals
 
-- Undefined - For variables that have not yet been defined (automatically assigned)
-
-```
-let age;
-
-console.log(age, age + 3, `the age is ${age}`);
-// undefined NaN "the age is undefined"
-```
-
-- Null - Explicitly set a variable with no value
+##### create an object literal with `key: value` pairs.
 
 ```
-let age = null;
-
-console.log(age, age + 3, `the age is ${age}`);
-// null 3 "the age is null"
+let user = {
+  name = 'luigi',
+  age = 30,
+  email = 'luigi@nintendo.jp'
+  blogs = ['The Haunted Mansion', 'Friendship with Boos']
+}
 ```
 
-## Boolean
-
-Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will returm Boolean.
+##### access properties from the object literal with `.` (dot notation)
 
 ```
-let name = 'Luigi';
-
-console.log(name == 'luigi'); // false
-console.log(name > 'luigi'); // false (lowercase is greater than uppercase)
-console.log(name > 'Mario'); // false (M comes after L)
+console.log(user.name)
 ```
 
-##### Difference between `===` and `==`
+##### access and update the properties - dot notation or square bracket notation
 
-`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.
-`==` / `!=` are also known as **loose comparison**, which means different types can still be euqal.
+1. dot notation `.` (used this most of the time)
 
 ```
-let age = 25;
+console.log(user.name):
+user.age = 35;
+```
 
-// console.log(age == 25); // true
-// console.log(age == '25'); // true
+2. square bracket notation `['']` (useful when the property is a variable)
 
-// console.log(age === 25); //true
-// console.log(age === '25'); //false
+```
+console.log(user['name']);
+user['age'] = 35;
+
+const works = 'blogs'
+console.log(user[works]);
 ```
 
 ## Type Conversion
@@ -434,7 +484,7 @@ if (!!list) {
 }
 ```
 
-`!list` - turn array into Boolean (ture)
+`!list` - turn array into Boolean (ture)  
 `!!list` - the opposite of true (false)
 
 ### if / else if / else statement
@@ -474,7 +524,7 @@ switch (expression) {
 }
 ```
 
-If break is not added, when expression matches value1, it will run all the cases that comes after.
+If `break` is not added, when expression matches value1, it will run all the cases that come after.
 
 `expression` - An expression whose result is matched against each case clause.
 `default` - (optional) A default clause (executed none of value matches the expression)
@@ -666,7 +716,7 @@ const calcArea = radius => 3.14 \* radius\*\*2;
 Methods are functions but they are functions that are associated with Objects.
 Even though, they are both functions but the way to invoke a function and a method is different.  
 To invoke functions: using by calling function name and parentheses, such as `greet()`  
-To invoke methods: using `.` notation on value itself, such as `name.toUpperCase()`
+To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
 
 ### Callback functions
 

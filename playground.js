@@ -45,3 +45,12 @@ const logPeople = (person, index) => {
 };
 
 people.forEach(logPeople);
+
+//! forEach - outputing on html
+const ul = document.querySelector('.people');
+let people = ['Luigi', 'Butter', 'Bimo', 'Chopper', 'Winnie'];
+let html = ``;
+people.forEach(person => {
+  html += `<li style="color:skyblue">${person}</li>`;
+  ul.innerHTML = html;
+});
