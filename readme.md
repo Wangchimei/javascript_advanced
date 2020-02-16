@@ -1,7 +1,5 @@
 # JavaScript
 
-#### Data type
-
 [See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types)
 
 | Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                       |
@@ -63,9 +61,9 @@ Differences are how they are stored and used in memory.
 When storing a primitive type in a variable, it adds the value to the **stack**, and locks the variable name to it as an accessor.  
 When storing a reference type in a variable, it adds the object to the **heap**, and adds a **pointer** to the object in the stack. Therefore, when accessing the variable, the pointer will point to the object.
 
-##### Example
+#### Example
 
-###### Primitive Types
+##### Primitive Types
 
 When creating a copy of primitive types, the value will be copied and stored separately on the stack.
 
@@ -80,7 +78,7 @@ const scoreOne = 50;
 console.log(scoreOne, scoreTwo);  // 50 100
 ```
 
-###### Reference Types
+##### Reference Types
 
 When creating a copy of reference types, it does not create a new object on the heap.  
 Instead, it copies the pointer which points to the same object on the heap.
@@ -240,7 +238,7 @@ console.log(name > 'luigi'); // false (lowercase is greater than uppercase)
 console.log(name > 'Mario'); // false (M comes after L)
 ```
 
-##### Difference between `===` and `==`
+#### Difference between `===` and `==`
 
 `===` / `!==` are also known as **strict comparison**,the value's types are considered in the comparison.
 `==` / `!=` are also known as **loose comparison**, which means different types can still be equal.
@@ -445,7 +443,7 @@ likes[1];   //"Psyduck"
 
 ## Object literals
 
-##### Create an object literal with `key: value` pairs.
+#### Create an object literal with `key: value` pairs.
 
 ```
 let user = {
@@ -456,7 +454,7 @@ let user = {
 }
 ```
 
-##### Access and update the properties - dot notation or square bracket notation
+#### Access and update the properties - dot notation or square bracket notation
 
 1. dot notation `.` (used this most of the time)
 
@@ -475,7 +473,7 @@ const works = 'blogs'
 console.log(user[works]);
 ```
 
-##### Add methods
+#### Add methods
 
 ```
 let user = {
@@ -496,7 +494,7 @@ user.phrase();
 user.logBlogs();
 ```
 
-##### Objects in Arrays
+#### Objects in Arrays
 
 ```
 let user = {
@@ -972,6 +970,159 @@ people.forEach(logPeople);
 ### Functions vs Methods
 
 Methods are functions but they are functions that are defined on **an object** and associated with **the object**.  
-Even though they are both functions, but the way to invoke a function and a method is different.  
+Even though they are both functions, the way to invoke a function and a method is different.  
 To invoke functions: using by calling function name and parentheses, such as `greet()`  
 To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
+
+## Document Object Model (DOM)
+
+### Query the DOM
+
+[Single]
+
+1. `document.querySelector('#name')`
+2. `document.getElementById('name')`
+
+[Multiple]
+
+1. `document.querySelectorAll('.error')` -> NodeList(3) [div.error, div.error, div.error]
+2. `document.getElementsByClassName('error')` -> HTMLCollection(3) [div.error, div.error, div.error]
+3. `document.getElementsByTagName('h2')` -> HTMLCollection(3) [h2.text-normal, h2.text-normal, h2.mb-2]
+
+**Note**:  
+`querySelectorAll('.error')` returns a `NodeList`  
+`getElementsByClassName('error')` & `getElementsByTagName('h2')` returns a `HTMLCollection`
+To literate `HTMLCollection`, you need to convert to array type.
+
+| NoteList Methods | HTMLCollection Methods |
+| :--------------- | :--------------------- |
+| .item()          | .item()                |
+| .entries()       | .namedItem()           |
+| .forEach()       |                        |
+| .keys()          |                        |
+| .value()         |                        |
+
+### DOM Manipulation - HTML
+
+#### Adding and Changing Page Content
+
+HTML :
+
+```
+<div>
+  <h1>Hello</h1>
+  <p class="error">Error!</p>
+  <a href="https://www.google.com">Google</a>
+
+ </div>
+
+ <div class="content">
+   <p>Users:</p>
+</div>
+```
+
+- `document.querySelector(element).innerText = string;`
+  The innerText property sets or returns the text content of the specified node, and all its descendants.
+
+  ```
+  greeting = document.querySelector('h1');
+
+  // replace text -> <h1>Good day!</h1>
+  greeting.innerText = 'Good day!';
+
+  // append text -> <h1>Hello Good day!</h1>
+  greeting.innerText += 'Good day!';
+  ```
+
+  ##### Difference between `.textContent`
+
+  HTML:
+
+  ```
+  <p>lorem <span style="display:none;">error</span> ipsum</p>
+  ```
+
+  Using `.innerText` will get all the **visible** text inside the element.  
+  Using `.textContent` will get all the text regardless it's hidden or not.
+
+- `document.querySelector(element).innerHTML = new HTML`
+  The innerHTML property sets or returns the HTML content (inner HTML) of an element.
+
+  ```
+  greeting = document.querySelector('h1');
+
+  // replace -> <h1>Good day!</h1>
+  greeting.innerHTML = 'Good day!';
+
+  // replace - <h1> <h3>Good day!<h3> </h1> (created under h1)
+  greeting.innerHTML = '<h3>Good day!<h3>';
+
+  // append - <h1> Hello <p>Good day!</p> </h1> (created under h1)
+  greeting.innerHTML += '<p>Good day!</p>';
+  ```
+
+  **Loop through data and outputting to HTML**
+
+  ```
+  const people = ["Chopper", "Luigi", "Bimo"];
+
+  people.forEach(person => {
+    content.innerHTML += `<p>${person}</p>`;
+  });
+  ```
+
+#### Getting and Setting Attributes
+
+- `element.setAttribute(attribute, value);`
+  The setAttribute() method adds the specified attribute to an element, and gives it the specified value.  
+  If the specified attribute already exists, only the value is set/changed.
+
+  ```
+  const message = document.querySelector('p');
+  // console.log(message.getAttribute('class'));
+  message.setAttribute('class', 'success');  //existing attribute
+  message.setAttribute('style', 'color: green');  //non-existing attribute
+  ```
+
+- `element.removeAttribute(attribute_name)`
+  The removeAttribute() method removes the specified attribute from an element.
+
+  ```
+  const link = document.querySelector('a');
+  link.removeAttribute('href');
+  ```
+
+#### Changing CSS Styles
+
+- `element.style.property = "value"`
+  **Note**: Using `message.setAttribute('style', 'color: green')` will overwrite all of other styles.
+
+  ```
+  const title = document.querySelector('h1');
+  title.style.margin = '15px';
+  title.style.color = '#bef';     // add an extra style
+  title.style.fontSize = '1rem';  //cannot use hyphen, only use camel case
+  title.style.margin = '';        // remove margin
+  title.setAttribute('style', 'background: #fafafa');   //overwrite other styles
+  ```
+
+#### Adding and Removing Classes
+
+- `element.classList.add(class_name)`
+
+  ```
+  const message = document.querySelector('p');
+  message.classList.add('error');
+  ```
+
+- `element.classList.remove(class_name)`
+
+  ```
+  message.classList.remove('error');
+  ```
+
+- `element.classList.toggle(class_name)`
+
+  ```
+  message.classList.toggle('show');
+  ```
