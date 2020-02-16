@@ -992,7 +992,7 @@ To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpp
 **Note**:  
 `querySelectorAll('.error')` returns a `NodeList`  
 `getElementsByClassName('error')` & `getElementsByTagName('h2')` returns a `HTMLCollection`  
-To literate `HTMLCollection`, you need to convert to array type.
+To literate `HTMLCollection`, you need to convert to array type using `Array.from()`.
 
 | NoteList Methods | HTMLCollection Methods |
 | :--------------- | :--------------------- |
@@ -1130,3 +1130,126 @@ HTML :
   ```
   message.classList.toggle('show');
   ```
+
+#### Parents, Children, Siblings
+
+HTML:
+
+```
+<body>
+  <h1>The DOM</h1>
+  <article>
+    <span>Lorem ipsum dolor</span>
+    <h2>article title</h2>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet consectetur.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div>written by the net ninja</div>
+  </article>
+</body>
+```
+
+```
+const article = document.querySelector('article');
+
+// HTMLCollection cannot use forEach(), so use Array.from() to convert into an array
+Array.from(article.children).forEach(child => {
+  child.classList.add('article-children');
+});
+
+
+const title = document.querySelector('h2');
+
+// parent of h2 -> article
+console.log(title.parentElement);
+
+// parent's parent of h2 -> body
+console.log(title.parentElement.parentElement);
+
+// h2's next sibling -> p
+console.log(title.nextElementSibling);
+
+// h2's previous sibling -> span
+console.log(title.previousElementSibling);
+
+// chaining possibility
+console.log(title.nextElementSibling.parentElement.children);
+```
+
+## Events
+
+`EventTarget.addEventListener()` sets up a function that will be called whenever the specified event is delivered to the target.
+
+### Syntax
+
+```
+target.addEventListener(event_type, callback_function);
+```
+
+#### Example
+
+```
+// single element
+const btn = document.querySelector('button');
+btn.addEventListener('click', e => {
+  // console.log(e.target);
+  e.target.style.backgroundColor = '#bef';
+});
+
+// multiple elements
+const items = document.querySelectorAll('li');
+items.forEach(item => {
+  item.addEventListener('click', e => {
+    // console.log(e.target);
+    // console.log(item);
+    e.target.style.textDecoration = 'line-through';
+  });
+});
+```
+
+### Use eventListener to create or remove elements
+
+#### Remove
+
+Using `target.remove()` to remove from the DOM
+
+```
+const items = document.querySelectorAll('li');
+items.forEach(item => {
+  item.addEventListener('click', e => {
+    e.target.remove();
+  });
+});
+```
+
+#### Create
+
+##### Using `textContent` to append
+
+```
+const btn = document.querySelector('button');
+let ul = document.querySelector('ul');
+btn.addEventListener('click', () => {
+  ul.textContent += '<li>something new</li>';
+});
+
+```
+
+##### Using `append()` & `prepend()`
+
+- `ParentNode.append()` - inserts at the bottom of its parent
+
+- `ParentNode.prepend()` - inserts at the top of its parent
+
+```
+const btn = document.querySelector('button');
+let ul = document.querySelector('ul');
+btn.addEventListener('click', () => {
+  const li = document.createElement('li');
+  li.textContent = 'something new';
+  // ul.append(li);
+  ul.prepend(li);
+});
+```
+
+### Event Bubbling
