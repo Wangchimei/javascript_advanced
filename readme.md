@@ -2,6 +2,8 @@
 
 #### Data type
 
+[See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types)
+
 | Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                       |
 | :------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [String](https://github.com/Wangchimei/javascript_advanced#string)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals) |
@@ -12,14 +14,12 @@
 | Object                                                                           | Complex data structures                               | Array, Dates, Literals, Math, etc.                                                                                                                                             |
 | Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                |
 
-[See Primitive Types vs Reference Types]()
-
 - [Object](https://github.com/Wangchimei/javascript_advanced#array)
 
   - [Array](https://github.com/Wangchimei/javascript_advanced#array)
     - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
   - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
-    - [this keyword]()
+    - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
   - [Math](https://github.com/Wangchimei/javascript_advanced#math)
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
@@ -36,10 +36,65 @@
 
 - [Functions](https://github.com/Wangchimei/javascript_advanced#functions)
   - [Block Scope](https://github.com/Wangchimei/javascript_advanced#block-scope)
-  - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#break-and-continue)
+  - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#regular-functions)
   - [Arrow Functions](https://github.com/Wangchimei/javascript_advanced#arrow-functions)
   - [Callback Functions](https://github.com/Wangchimei/javascript_advanced#callback-functions)
   - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods)
+
+## Primitive Types vs Reference Types
+
+| Primitive Types | Reference Type       |
+| :-------------- | :------------------- |
+| strings         | All types of objects |
+| numbers         | arrays               |
+| null            | object literals      |
+| undefined       | functions            |
+| booleans        | dates                |
+| symbols         | all other objects    |
+
+Differences are how they are stored and used in memory.
+
+|              | Primitive Types | Reference Type      |
+| :----------- | :-------------- | :------------------ |
+| Store        | Stack           | Heap                |
+| Access Speed | Very fast       | Slower (relatively) |
+| Memory Size  | Limited         | No limit            |
+
+When storing a primitive type in a variable, it adds the value to the **stack**, and locks the variable name to it as an accessor.  
+When storing a reference type in a variable, it adds the object to the **heap**, and adds a **pointer** to the object in the stack. Therefore, when accessing the variable, the pointer will point to the object.
+
+##### Example
+
+###### Primitive Types
+
+When creating a copy of primitive types, the value will be copied and stored separately on the stack.
+
+```
+const scoreOne = 100;
+const scoreTwo = scoreOne;
+// create a copy of the number and store the number separately on the stack
+console.log(scoreOne, scoreTwo);  // 100 100
+
+const scoreOne = 50;
+// only changed scoreOne, scoreTwo stays the same
+console.log(scoreOne, scoreTwo);  // 50 100
+```
+
+###### Reference Types
+
+When creating a copy of reference types, it does not create a new object on the heap.  
+Instead, it copies the pointer which points to the same object on the heap.
+
+```
+const userOne = {name: 'John', score: 100};
+const userTwo = userOne;
+// create a copy of the pointer which is associated with the same object
+console.log(userOne.score, userTwo.score);  // 100 100
+
+userOne.score = 50;
+// the change reflects to the object
+console.log(userOne.score, userTwo.score);  // 50 50
+```
 
 ## String
 
@@ -506,7 +561,7 @@ user.logEmail();     // Window {parent: Window, opener: null, top: Window, leng
 Math is a built-in object that has properties and methods for mathematical constants and functions.  
 Math works with the Number type. It does **NOT** work with BigInt.
 
-### Mathods
+### Methods
 
 - round() - returns the value of a number rounded to the nearest integer
 
@@ -555,61 +610,6 @@ Math works with the Number type. It does **NOT** work with BigInt.
 
   console.log(difference(3, 5));   // 2
   ```
-
-#### Primitive Types vs Reference Types
-
-| Primitive Types | Reference Type       |
-| :-------------- | :------------------- |
-| strings         | All types of objects |
-| numbers         | arrays               |
-| null            | object literals      |
-| undefined       | functions            |
-| booleans        | dates                |
-| symbols         | all other objects    |
-
-Differences are how they are stored and used in memory.
-
-|              | Primitive Types | Reference Type      |
-| :----------- | :-------------- | :------------------ |
-| Store        | Stack           | Heap                |
-| Access Speed | Very fast       | Slower (relatively) |
-| Memory Size  | Limited         | No limit            |
-
-When storing a primitive type in a variable, it adds the value to the **stack**, and locks the variable name to it as an accessor.  
-When storing a reference type in a variable, it adds the object to the **heap**, and adds a **pointer** to the object in the stack. Therefore, when accessing the variable, the pointer will point to the object.
-
-##### Example
-
-###### Primitive Types
-
-When creating a copy of primitive types, the value will be copied and stored separately on the stack.
-
-```
-const scoreOne = 100;
-const scoreTwo = scoreOne;
-// create a copy of the number and store the number separately on the stack
-console.log(scoreOne, scoreTwo);  // 100 100
-
-const scoreOne = 50;
-// only changed scoreOne, scoreTwo stays the same
-console.log(scoreOne, scoreTwo);  // 50 100
-```
-
-###### Reference Types
-
-When creating a copy of reference types, it does not create a new object on the heap.  
-Instead, it copies the pointer which points to the same object on the heap.
-
-```
-const userOne = {name: 'John', score: 100};
-const userTwo = userOne;
-// create a copy of the pointer which is associated with the same object
-console.log(userOne.score, userTwo.score);  // 100 100
-
-userOne.score = 50;
-// the change reflects to the object
-console.log(userOne.score, userTwo.score);  // 50 50
-```
 
 ## Loops
 
