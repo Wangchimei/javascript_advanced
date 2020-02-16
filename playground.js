@@ -56,19 +56,31 @@
 // });
 
 //! object literals
+// let user = {
+//   name: 'luigi',
+//   age: 30,
+//   email: 'luigi@nintendo.jp',
+//   blogs: ['The Haunted Mansion', 'Friendship with Boos'],
+//   phrase: function() {
+//     console.log('ma..ma..ma..mario..');
+//   },
+//   logBlogs: function() {
+//     //console.log(this.blogs);
+//     this.blogs.forEach(blog => console.log(blog));
+//   },
+// };
+
+// user.phrase();
+// user.logBlogs();
+
 let user = {
-  name: 'luigi',
-  age: 30,
-  email: 'luigi@nintendo.jp',
-  blogs: ['The Haunted Mansion', 'Friendship with Boos'],
-  phrase: function() {
-    console.log('ma..ma..ma..mario..');
-  },
-  logBlogs: function() {
-    //console.log(this.blogs);
-    this.blogs.forEach(blog => console.log(blog));
+  blogs: [
+    { title: 'The Haunted Mansion', likes: 30 },
+    { title: 'Friendship with Boos', likes: 30 },
+  ],
+  logBlog() {
+    this.blogs.forEach(blog => console.log(blog.title, blog.likes));
   },
 };
 
-user.phrase();
 user.logBlogs();

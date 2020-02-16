@@ -1,31 +1,34 @@
 # JavaScript
 
-### Data type
+#### Data type
 
-| Types                                                                | Brief definition                                      | Sections                                                                                                              |
-| :------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| [String](https://github.com/Wangchimei/javascript_advanced#string)   | a constructor for strings or a sequence of characters | [Mathods](), [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals) |
-| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | numerical values (1, 2, 100, 3.14)                    |                                                                                                                       |
-| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value               |                                                                                                                       |
-| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined          |                                                                                                                       |
-| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                          |                                                                                                                       |
-| Object                                                               | Complex data structures                               | Array, Dates, Literals, etc.                                                                                          |
-| Symbol                                                               | Used with objects                                     |                                                                                                                       |
+| Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                       |
+| :------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals) |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number)               | Numerical values (1, 2, 100, 3.14)                    |                                                                                                                                                                                |
+| [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)      | Explicitly set a variable with no value               |                                                                                                                                                                                |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined) | For variables that have not yet been defined          |                                                                                                                                                                                |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)             | true / false                                          |                                                                                                                                                                                |
+| Object                                                                           | Complex data structures                               | Array, Dates, Literals, Math, etc.                                                                                                                                             |
+| Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                |
 
-- Object
+[See Primitive Types vs Reference Types]()
+
+- [Object](https://github.com/Wangchimei/javascript_advanced#array)
 
   - [Array](https://github.com/Wangchimei/javascript_advanced#array)
     - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
   - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
     - [this keyword]()
+  - [Math](https://github.com/Wangchimei/javascript_advanced#math)
 
-- [Loops](https://github.com/Wangchimei/javascript_advanced#object-literals)
+- [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
 
   - [For loop](https://github.com/Wangchimei/javascript_advanced#for-loop)
   - [While Loop](https://github.com/Wangchimei/javascript_advanced#while-loop)
   - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loop)
 
-- [Conditionals](https://github.com/Wangchimei/javascript_advanced#object-literals)
+- [Conditionals](https://github.com/Wangchimei/javascript_advanced#conditionals)
 
   - [If / Else if / Else Statement](https://github.com/Wangchimei/javascript_advanced#if--else-if--else-statement)
   - [Switch Statement](https://github.com/Wangchimei/javascript_advanced#switch-statement)
@@ -223,6 +226,31 @@ likes[1];   //"Psyduck"
 
 ### Methods
 
+- forEach() - executes a provided function once for each array element
+  **syntax:** `arr.forEach(callback(currentValue [, index [, array]])[, thisArg])`
+  callback takes 3 parameters:
+
+  1. currentValue - The current element being processed in the array.
+  2. index - (optional) The index currentValue in the array.
+  3. array - (optional) The array forEach() was called upon.
+
+  `thisArg` - (optional) Value to use as this when executing callback.
+
+  ##### Converting a for loop to forEach:
+
+  ```
+  const people = ["Chopper", "Luigi", "Bimo"];
+  const copy = []
+
+  // for loop
+  for (let i = 0; i < people.length; i++) {
+    copy.push(people[i])
+  }
+
+  // forEach loop
+  people.forEach(item => copy.push(item))
+  ```
+
 - join() - creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string
   ```
   likes.join(', ');  // "Bimo, Chopper, Winnie"
@@ -324,31 +352,6 @@ likes[1];   //"Psyduck"
   newArr.map(x => x \*\* 2); //[4, 16, 36, 64]
   ```
 
-- forEach() - executes a provided function once for each array element
-  **syntax:** `arr.forEach(callback(currentValue [, index [, array]])[, thisArg])`
-  callback takes 3 parameters:
-
-  1. currentValue - The current element being processed in the array.
-  2. index - (optional) The index currentValue in the array.
-  3. array - (optional) The array forEach() was called upon.
-
-  `thisArg` - (optional) Value to use as this when executing callback.
-
-  ##### Converting a for loop to forEach:
-
-  ```
-  const people = ["Chopper", "Luigi", "Bimo"];
-  const copy = []
-
-  // for loop
-  for (let i = 0; i < people.length; i++) {
-    copy.push(people[i])
-  }
-
-  // forEach loop
-  people.forEach(item => copy.push(item))
-  ```
-
 - reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
   **syntax:** `arr.reduce(callback(params), initialValue)`
   callback takes 4 parameters:
@@ -438,6 +441,22 @@ user.phrase();
 user.logBlogs();
 ```
 
+##### Objects in Arrays
+
+```
+let user = {
+  blogs: [
+    { title: 'The Haunted Mansion', likes: 30 },
+    { title: 'Friendship with Boos', likes: 30 },
+  ],
+  logBlog() {
+    this.blogs.forEach(blog => console.log(blog.title, blog.likes));
+  },
+};
+
+user.logBlogs();
+```
+
 ### `this` keyword
 
 `this` keyword is an context object, and it represents the context in which the current code is executing.  
@@ -480,6 +499,116 @@ user.logAge();       // {name: "luigi", age: 30, email: "luigi@nintendo.jp", log
 
 // arrow function - when the method is invoked, this keyword is at global window object
 user.logEmail();     // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
+```
+
+## Math
+
+Math is a built-in object that has properties and methods for mathematical constants and functions.  
+Math works with the Number type. It does **NOT** work with BigInt.
+
+### Mathods
+
+- round() - returns the value of a number rounded to the nearest integer
+
+  ```
+  console.log(Math.round(7.7));  // 8
+  console.log(Math.round(7.4));  // 7
+  ```
+
+- floor() - returns the largest integer less than or equal to a given number
+
+  ```
+  const area = 7.7;
+  console.log(Math.round(area));  // 7
+  ```
+
+- ceil() - always rounds a number up to the next largest whole number or integer
+
+  ```
+  const area = 7.1;
+  console.log(Math.round(area));  // 8
+  ```
+
+- trunc() - returns the integer part of a number by removing any fractional digits
+
+  ```
+  console.log(Math.round(7.7));  // 7
+  console.log(Math.round(7.4));  // 7
+  ```
+
+- random() - returns a float random number in the range 0 to less than 1 (inclusive of 0, but not 1)
+
+  ```
+  const random = Math.random();
+
+  console.log(random);  // 0 <= n < 1
+  console.log(Math.round(random ));  // 0 or 1
+  console.log(Math.round(random * 100));  // 0 ~ 100
+  ```
+
+- abs() - returns the absolute value of a number
+
+  ```
+  function difference(a, b) {
+    return Math.abs(a - b);
+  }
+
+  console.log(difference(3, 5));   // 2
+  ```
+
+#### Primitive Types vs Reference Types
+
+| Primitive Types | Reference Type       |
+| :-------------- | :------------------- |
+| strings         | All types of objects |
+| numbers         | arrays               |
+| null            | object literals      |
+| undefined       | functions            |
+| booleans        | dates                |
+| symbols         | all other objects    |
+
+Differences are how they are stored and used in memory.
+
+|              | Primitive Types | Reference Type      |
+| :----------- | :-------------- | :------------------ |
+| Store        | Stack           | Heap                |
+| Access Speed | Very fast       | Slower (relatively) |
+| Memory Size  | Limited         | No limit            |
+
+When storing a primitive type in a variable, it adds the value to the **stack**, and locks the variable name to it as an accessor.  
+When storing a reference type in a variable, it adds the object to the **heap**, and adds a **pointer** to the object in the stack. Therefore, when accessing the variable, the pointer will point to the object.
+
+##### Example
+
+###### Primitive Types
+
+When creating a copy of primitive types, the value will be copied and stored separately on the stack.
+
+```
+const scoreOne = 100;
+const scoreTwo = scoreOne;
+// create a copy of the number and store the number separately on the stack
+console.log(scoreOne, scoreTwo);  // 100 100
+
+const scoreOne = 50;
+// only changed scoreOne, scoreTwo stays the same
+console.log(scoreOne, scoreTwo);  // 50 100
+```
+
+###### Reference Types
+
+When creating a copy of reference types, it does not create a new object on the heap.  
+Instead, it copies the pointer which points to the same object on the heap.
+
+```
+const userOne = {name: 'John', score: 100};
+const userTwo = userOne;
+// create a copy of the pointer which is associated with the same object
+console.log(userOne.score, userTwo.score);  // 100 100
+
+userOne.score = 50;
+// the change reflects to the object
+console.log(userOne.score, userTwo.score);  // 50 50
 ```
 
 ## Loops
