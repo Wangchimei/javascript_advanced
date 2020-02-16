@@ -2,15 +2,19 @@
 
 data that is not an object and has no methods.
 
-| Types                                                                | Brief                                                                                                                 |
-| :------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| [String](https://github.com/Wangchimei/javascript_advanced#string)   | 'hello', [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)     |
-| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | 1, 2, 100, 3.14                                                                                                       |
-| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value                                                                               |
-| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined                                                                          |
-| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                                                                                          |
-| Object                                                               | Complex data structures - [Array](https://github.com/Wangchimei/javascript_advanced#array), Dates, [Literals](), etc. |
-| Symbol                                                               | Used with objects                                                                                                     |
+| Types                                                                | Brief definition                                                                                                                                                                       |
+| :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string)   | 'hello', [template strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)                                                                      |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number)   | 1, 2, 100, 3.14                                                                                                                                                                        |
+| [Null](https://github.com/Wangchimei/javascript_advanced#array)      | Explicitly set a variable with no value                                                                                                                                                |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#array) | For variables that have not yet been defined                                                                                                                                           |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean) | true / false                                                                                                                                                                           |
+| Object                                                               | Complex data structures - [Array](https://github.com/Wangchimei/javascript_advanced#array), Dates, [Literals](https://github.com/Wangchimei/javascript_advanced#object-literals), etc. |
+| Symbol                                                               | Used with objects                                                                                                                                                                      |
+
+- [Loops](https://github.com/Wangchimei/javascript_advanced#object-literals)
+- [Conditionals](https://github.com/Wangchimei/javascript_advanced#object-literals)
+- [Functions](https://github.com/Wangchimei/javascript_advanced#functions)
 
 ## String
 
@@ -114,7 +118,7 @@ let result = 'The book called ' + title + ' by ' + author + ' has ' + likes + ' 
 let result = `The book called ${title} by ${author} has ${likes} likes`;
 ```
 
-Template strings is often used for outputing contents into html.
+Template strings are often used for outputting contents into html.
 
 ```
 let html = `
@@ -146,7 +150,7 @@ console.log(age, age + 3, `the age is ${age}`);
 
 ## Boolean
 
-Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will returm Boolean.
+Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will return Boolean.
 
 ```
 let name = 'Luigi';
@@ -158,8 +162,8 @@ console.log(name > 'Mario'); // false (M comes after L)
 
 ##### Difference between `===` and `==`
 
-`===` / `!==` are also known as **strict comparison**,the value's types is considered in the comparison.
-`==` / `!=` are also known as **loose comparison**, which means different types can still be euqal.
+`===` / `!==` are also known as **strict comparison**,the value's types are considered in the comparison.
+`==` / `!=` are also known as **loose comparison**, which means different types can still be equal.
 
 ```
 let age = 25;
@@ -413,7 +417,7 @@ for ([initialization]; [condition]; [final-expression]) {
 
 `condition` - An expression to be evaluated before each loop iteration.
 
-`final-expression` - A statement that is executed in the end of each loop as long as the condition evaluates to true.
+`final-expression` - A statement that is executed at the end of each loop as long as the condition evaluates to true.
 
 **NOTE**
 Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.
@@ -505,7 +509,7 @@ if (condition) {
 
 ### switch statement
 
-Best practice is be use in evaluating multi possible value of a single variable.
+Best practice is to be used in evaluating multi-possible values of a single variable.
 Note: switch statement is using **strict equality** to check values.
 
 ##### Syntax
@@ -573,7 +577,7 @@ for(let i = 0; i < scores.length; i++){
   if(scores[i] === 100){
     console.log('congrats, you got the top score!');
     break;
-    // terminate the whole loop
+    // terminate the loop
   }
 
 }
@@ -714,7 +718,7 @@ const calcArea = radius => 3.14 \* radius\*\*2;
 ### Functions vs Methods
 
 Methods are functions but they are functions that are associated with Objects.
-Even though, they are both functions but the way to invoke a function and a method is different.  
+Even though they are both functions, but the way to invoke a function and a method is different.  
 To invoke functions: using by calling function name and parentheses, such as `greet()`  
 To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
 
