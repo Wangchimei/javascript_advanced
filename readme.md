@@ -978,12 +978,12 @@ To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpp
 
 ### Query the DOM
 
-[Single]
+[Single Element]
 
 1. `document.querySelector('#name')`
 2. `document.getElementById('name')`
 
-[Multiple]
+[Multiple Elements]
 
 1. `document.querySelectorAll('.error')` -> NodeList(3) [div.error, div.error, div.error]
 2. `document.getElementsByClassName('error')` -> HTMLCollection(3) [div.error, div.error, div.error]
@@ -991,7 +991,7 @@ To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpp
 
 **Note**:  
 `querySelectorAll('.error')` returns a `NodeList`  
-`getElementsByClassName('error')` & `getElementsByTagName('h2')` returns a `HTMLCollection`
+`getElementsByClassName('error')` & `getElementsByTagName('h2')` returns a `HTMLCollection`  
 To literate `HTMLCollection`, you need to convert to array type.
 
 | NoteList Methods | HTMLCollection Methods |
@@ -1002,7 +1002,7 @@ To literate `HTMLCollection`, you need to convert to array type.
 | .keys()          |                        |
 | .value()         |                        |
 
-### DOM Manipulation - HTML
+### DOM Manipulation
 
 #### Adding and Changing Page Content
 
@@ -1022,6 +1022,7 @@ HTML :
 ```
 
 - `document.querySelector(element).innerText = string;`
+
   The innerText property sets or returns the text content of the specified node, and all its descendants.
 
   ```
@@ -1046,6 +1047,7 @@ HTML :
   Using `.textContent` will get all the text regardless it's hidden or not.
 
 - `document.querySelector(element).innerHTML = new HTML`
+
   The innerHTML property sets or returns the HTML content (inner HTML) of an element.
 
   ```
@@ -1074,6 +1076,7 @@ HTML :
 #### Getting and Setting Attributes
 
 - `element.setAttribute(attribute, value);`
+
   The setAttribute() method adds the specified attribute to an element, and gives it the specified value.  
   If the specified attribute already exists, only the value is set/changed.
 
@@ -1085,6 +1088,7 @@ HTML :
   ```
 
 - `element.removeAttribute(attribute_name)`
+
   The removeAttribute() method removes the specified attribute from an element.
 
   ```
