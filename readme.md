@@ -1349,7 +1349,7 @@ ul.addEventListener('click', e => {
 
   ##### Difference between `input` and `change`
 
-  `input` - Output text changes as soon as the input value changes.
+  `input` - Output text changes as soon as the input value changes.  
   `change` - The change event doesn't fire until the control loses focus.
 
   HTML
@@ -1376,7 +1376,7 @@ ul.addEventListener('click', e => {
 
 #### View events
 
-- resize
+- `resize`
   The resize event fires when the document view (window) has been resized.
 
   ```
@@ -1386,7 +1386,7 @@ ul.addEventListener('click', e => {
   });
   ```
 
-- scroll
+- `scroll`
   The scroll event fires when the document view or an element has been scrolled.
 
   ##### Change nav background to white when scrolling down
