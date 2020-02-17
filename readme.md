@@ -685,8 +685,8 @@ output: 5 (run at least once)
 
 ### Logical Operator
 
-`&&` - AND
-`||` - OR
+`&&` - AND  
+`||` - OR  
 `!` - NOT (turn value into Boolean)
 
 ```
@@ -1295,3 +1295,113 @@ ul.addEventListener('click', e => {
   }
 });
 ```
+
+### Event reference
+
+#### Form events
+
+- `submit`
+  The submit event fires when a `<form>` is submitted. (enter pressing enter works)  
+  **NOTE**: The submit event fires on the `<form>` element itself, and not on any `<button>` or `<input type="submit">` inside it.
+
+- `reset`
+  The reset event fires when a `<form>` is reset.
+
+  ##### Example: logging timestamp when submit or reset
+
+  HTML
+
+  ```
+  <form id="form">
+    <label>Test field: <input type="text"></label>
+    <button type="submit">Submit form</button>
+    <button type="reset">Reset form</button>
+  </form>
+  <p id="log"></p>
+  ```
+
+  JS
+
+  ```
+  const form = document.getElementById('form');
+  const log = document.getElementById('log');
+
+  form.addEventListener('submit', e => {
+    log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+    event.preventDefault();    //preventing refreshing page
+  });
+
+  form.addEventListener('reset', e => {
+    log.textContent = `Form reset! Time stamp: ${event.timeStamp}`;
+  });
+  ```
+
+- `input`
+  The input event fires when the value of an <input>, <select>, or <textarea> element has been changed.
+
+- `change`
+  The change event is fired for `<input>`, `<select>`, and `<textarea>` elements when an alteration to the element's value is committed by the user.  
+  Unlike the input event, the change event fires at a different moment:
+
+  - When the element is `:checked` for `<input type="radio">` and `<input type="checkbox">`;
+  - When the user commits the change explicitly (e.g., by selecting a value from a `<select>`'s dropdown with a mouse click, by selecting a date from a date picker for `<input type="date">`, by selecting a file in the file picker for `<input type="file">`, etc.);
+  - When the element loses focus after its value was changed, but not commited (e.g., after editing the value of `<textarea>` or `<input type="text">`).
+
+  ##### Difference between `input` and `change`
+
+  `input` - Output text changes as soon as the input value changes.
+  `change` - The change event doesn't fire until the control loses focus.
+
+  HTML
+
+  ```
+  <input placeholder="Enter some text" name="name"/>
+  <p id="log"></p>
+  ```
+
+  JS
+
+  ```
+  const input = document.querySelector('input');
+  const log = document.querySelector('#log');
+
+  input.addEventListener('input', e => {
+    log.textContent = e.target.value;
+  });
+
+  input.addEventListener('change', e => {
+    log.textContent = e.target.value;
+  });
+  ```
+
+#### View events
+
+- resize
+  The resize event fires when the document view (window) has been resized.
+
+  ```
+  window.addEventListener('resize', () => {
+    console.log(this.innerHeight);
+    console.log(this.innerWidth);
+  });
+  ```
+
+- scroll
+  The scroll event fires when the document view or an element has been scrolled.
+
+  ##### Change nav background to white when scrolling down
+
+  ```
+  const navbar = document.querySelector('#nav')
+
+  window.addEventListener('scroll', function(e) {
+    const lastPosition = window.scrollY
+    if (lastPosition > 50 ) {
+      navbar.classList.add('white-bg')
+    } else if (navbar.classList.contains('white-bg')) {
+      navbar.classList.remove('white-bg')
+    } else {
+      navbar.classList.remove('white-bg')
+    }
+  })
+  ```

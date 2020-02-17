@@ -38,3 +38,25 @@ ul.addEventListener('click', e => {
     e.target.remove();
   }
 });
+
+//? DIFFERENT HTML
+// copy event
+const copy = document.querySelector('.copy-me');
+
+copy.addEventListener('copy', () => {
+  console.log('OI! my content is copyrighted!!');
+});
+
+//mousemove
+const box = document.querySelector('.box');
+
+box.addEventListener('mousemove', e => {
+  // console.log(e);
+  // console.log(e.offsetX, e.offsetY);
+  box.textContent = `x pos - ${e.offsetX}  y pos - ${e.offsetY}`;
+});
+
+// scroll down
+document.addEventListener('wheel', e => {
+  console.log(e.pageX, e.pageY);
+});
