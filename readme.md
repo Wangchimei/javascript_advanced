@@ -1337,7 +1337,7 @@ ul.addEventListener('click', e => {
   ```
 
 - `input`
-  The input event fires when the value of an <input>, <select>, or <textarea> element has been changed.
+  The input event fires when the value of an `<input>`, `<select>`, or `<textarea>` element has been changed.
 
 - `change`
   The change event is fired for `<input>`, `<select>`, and `<textarea>` elements when an alteration to the element's value is committed by the user.  
@@ -1405,5 +1405,3 @@ ul.addEventListener('click', e => {
     }
   })
   ```
-
-  .
