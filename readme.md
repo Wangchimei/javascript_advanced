@@ -1300,11 +1300,11 @@ ul.addEventListener('click', e => {
 
 #### Form events
 
-- `submit`
+- `submit`  
   The submit event fires when a `<form>` is submitted. (enter pressing enter works)  
   **NOTE**: The submit event fires on the `<form>` element itself, and not on any `<button>` or `<input type="submit">` inside it.
 
-- `reset`
+- `reset`  
   The reset event fires when a `<form>` is reset.
 
   ##### Example: logging timestamp when submit or reset
@@ -1336,10 +1336,10 @@ ul.addEventListener('click', e => {
   });
   ```
 
-- `input`
+- `input`  
   The input event fires when the value of an `<input>`, `<select>`, or `<textarea>` element has been changed.
 
-- `change`
+- `change`  
   The change event is fired for `<input>`, `<select>`, and `<textarea>` elements when an alteration to the element's value is committed by the user.  
   Unlike the input event, the change event fires at a different moment:
 
@@ -1376,7 +1376,7 @@ ul.addEventListener('click', e => {
 
 #### View events
 
-- `resize`
+- `resize`  
   The resize event fires when the document view (window) has been resized.
 
   ```
@@ -1386,7 +1386,7 @@ ul.addEventListener('click', e => {
   });
   ```
 
-- `scroll`
+- `scroll`  
   The scroll event fires when the document view or an element has been scrolled.
 
   ##### Change nav background to white when scrolling down
