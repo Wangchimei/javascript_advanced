@@ -33,11 +33,24 @@
   - [Break and Continue](https://github.com/Wangchimei/javascript_advanced#break-and-continue)
 
 - [Functions](https://github.com/Wangchimei/javascript_advanced#functions)
+
   - [Block Scope](https://github.com/Wangchimei/javascript_advanced#block-scope)
   - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#regular-functions)
   - [Arrow Functions](https://github.com/Wangchimei/javascript_advanced#arrow-functions)
   - [Callback Functions](https://github.com/Wangchimei/javascript_advanced#callback-functions)
   - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods)
+
+- [DOM](https://github.com/Wangchimei/javascript_advanced#document-object-model-dom)
+- [Events](https://github.com/Wangchimei/javascript_advanced#events)
+  - [Event Bubbling](https://github.com/Wangchimei/javascript_advanced#event-bubbling)
+  - [Event Delegation](https://github.com/Wangchimei/javascript_advanced#event-delegation)
+  - [Event Reference](https://github.com/Wangchimei/javascript_advanced#event-reference)
+    - [Form Event](https://github.com/Wangchimei/javascript_advanced#form-events)
+    - [View Events](https://github.com/Wangchimei/javascript_advanced#view-events)
+    - [Keyboard Events](https://github.com/Wangchimei/javascript_advanced#keyboard-events)
+    - [Clipboard Events](https://github.com/Wangchimei/javascript_advanced#clipboard-events)
+    - [Mouse Events](https://github.com/Wangchimei/javascript_advanced#mouse-events)
+    - [Drag & Drop events](https://github.com/Wangchimei/javascript_advanced#drag--drop-events)
 
 ## Primitive Types vs Reference Types
 
@@ -1296,7 +1309,7 @@ ul.addEventListener('click', e => {
 });
 ```
 
-### Event reference
+### Event Reference
 
 #### Form events
 
@@ -1467,12 +1480,14 @@ ul.addEventListener('click', e => {
   The mousemove event is fired when a mouse is moved while the cursor is inside the element.
 
 - `mouseenter` & `mouseleave`  
-  **No event bubbling**
+  _No event bubbling_
+
   The mouseenter event is fired when a mouse is **moved onto** the element.  
   The mouseleave event is fired when a mouse is **moved off** the element.
 
 - `mouseover` & `mouseout`  
-  **Event Bubbling**  
+  _Event Bubbling_
+
   The mouseover event is fired when a mouse is used to move the cursor onto the element or one of its child elements.  
   The mouseout event is fired when a mouse is used to move the cursor so that it is no longer in the element or one of its children.
 
