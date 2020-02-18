@@ -1519,4 +1519,4 @@ ul.addEventListener('click', e => {
 - `drop`  
   The drop event is fired when an element or text selection is dropped on a valid drop target.
 
-**Simple drag and drop [DEMO](https://codepen.io/wangchimei/pen/JjdKyLZ)**
+  **Simple drag and drop [DEMO](https://codepen.io/wangchimei/pen/JjdKyLZ)**
