@@ -1405,3 +1405,117 @@ ul.addEventListener('click', e => {
     }
   })
   ```
+
+#### Keyboard events
+
+[Key Code](https://keycode.info/)
+
+- `keydown`  
+  The event is fired when **ANY** key is pressed.
+
+- `keyup`  
+  The event is fired when **ANY** key is released.
+
+  ```
+  document.addEventListener('keydown', e => {
+    console.log(e.code);
+  });
+  ```
+
+#### Clipboard events
+
+- `copy`  
+  The copy event fires when the user initiates a copy action through the browser's user interface.  
+  The clipboard contents can be modified by calling `event.clipboardData.setData(format, data)`, and cancelling the event's default action using `event.preventDefault()`.
+
+  ```
+  const source = document.querySelector('div.source');
+
+  source.addEventListener('copy', (event) => {
+    const selection = document.getSelection();
+    event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
+    event.preventDefault();
+  });
+  ```
+
+  Other clipboard events: `cut`, `paste`
+
+#### Mouse events
+
+- `click`  
+  The element get clicked (both pressed and released) with a mouse's primary mouse button.
+  `dblclick` event fires when double-click the element.
+
+- `contextmenu`  
+  This event fires when the user attempts to open a context menu (by right-click or context menu key)
+
+  ##### Cannot right-click on p tag
+
+  ```
+  context = document.getElementById('p');
+
+  context.addEventListener('contextmenu', e => {
+    e.preventDefault();
+  });
+  ```
+
+- `mousedown` & `mouseup`  
+  The mouseup event is fired when a button on a mouse or trackpad is **released** on the element.  
+  The mousedown event is fired when a button on a mouse or trackpad is **pressed** on the element.
+
+- `mousemove`
+  The mousemove event is fired when a mouse is moved while the cursor is inside the element.
+
+- `mouseenter` & `mouseleave`
+  **No event bubbling**
+  The mouseenter event is fired when a mouse is **moved onto** the element.
+  The mouseleave event is fired when a mouse is **moved off** the element.
+
+- `mouseover` & `mouseout`  
+  **Event Bubbling**  
+  The mouseover event is fired when a mouse is used to move the cursor onto the element or one of its child elements.
+  The mouseout event is fired when a mouse is used to move the cursor so that it is no longer in the element or one of its children.
+
+- `wheel`  
+   This event fires when the user rotates a wheel button on a mouse in any direction.
+
+  ##### Scaling an element while wheeling
+
+  HTML
+
+  ```
+  <div style="width: 100px; height: 100px; background: blue;"></div>
+  ```
+
+  JS
+
+  ```
+  let scale = 1;
+  const box = document.querySelector('div');
+  box.addEventListener('wheel', e => {
+    e.preventDefault();
+    scale += event.deltaY * -0.01;
+    scale = Math.min(Math.max(0.125, scale), 4);   // Restrict scale
+    box.style.transform = `scale(${scale})`;
+  });
+  ```
+
+#### Drag & Drop events
+
+drag An element or text selection is being dragged (Fired continuously every 350ms).
+dragend A drag operation is being ended (by releasing a mouse button or hitting the escape key).
+dragenter A dragged element or text selection enters a valid drop target.
+dragstart The user starts dragging an element or text selection.
+dragleave A dragged element or text selection leaves a valid drop target.
+dragover An element or text selection is being dragged over a valid drop target. (Fired continuously every 350ms.)
+drop An element is dropped on a valid drop target.
+
+#### Progress events
+
+abort Progression has been terminated (not due to an error).
+error Progression has failed.
+load Progression has been successful.
+loadend Progress has stopped (after "error", "abort" or "load" have been dispatched).
+loadstart Progress has begun.
+progress In progress.
+timeout Progression is terminated due to preset time expiring.
