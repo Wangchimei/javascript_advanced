@@ -1443,7 +1443,7 @@ ul.addEventListener('click', e => {
 #### Mouse events
 
 - `click`  
-  The element get clicked (both pressed and released) with a mouse's primary mouse button.
+  The element get clicked (both pressed and released) with a mouse's primary mouse button.  
   `dblclick` event fires when double-click the element.
 
 - `contextmenu`  
@@ -1463,17 +1463,17 @@ ul.addEventListener('click', e => {
   The mouseup event is fired when a button on a mouse or trackpad is **released** on the element.  
   The mousedown event is fired when a button on a mouse or trackpad is **pressed** on the element.
 
-- `mousemove`
+- `mousemove`  
   The mousemove event is fired when a mouse is moved while the cursor is inside the element.
 
-- `mouseenter` & `mouseleave`
+- `mouseenter` & `mouseleave`  
   **No event bubbling**
-  The mouseenter event is fired when a mouse is **moved onto** the element.
+  The mouseenter event is fired when a mouse is **moved onto** the element.  
   The mouseleave event is fired when a mouse is **moved off** the element.
 
 - `mouseover` & `mouseout`  
   **Event Bubbling**  
-  The mouseover event is fired when a mouse is used to move the cursor onto the element or one of its child elements.
+  The mouseover event is fired when a mouse is used to move the cursor onto the element or one of its child elements.  
   The mouseout event is fired when a mouse is used to move the cursor so that it is no longer in the element or one of its children.
 
 - `wheel`  
@@ -1502,20 +1502,21 @@ ul.addEventListener('click', e => {
 
 #### Drag & Drop events
 
-drag An element or text selection is being dragged (Fired continuously every 350ms).
-dragend A drag operation is being ended (by releasing a mouse button or hitting the escape key).
-dragenter A dragged element or text selection enters a valid drop target.
-dragstart The user starts dragging an element or text selection.
-dragleave A dragged element or text selection leaves a valid drop target.
-dragover An element or text selection is being dragged over a valid drop target. (Fired continuously every 350ms.)
-drop An element is dropped on a valid drop target.
+- `drag`  
+  The drag event is fired every few hundred milliseconds as an element or text selection is being dragged.
 
-#### Progress events
+- `dragstart` & `dragend`  
+  The dragstart event is fired when the user starts dragging an element or text selection.  
+  The dragend event is fired when a drag operation is being ended.
 
-abort Progression has been terminated (not due to an error).
-error Progression has failed.
-load Progression has been successful.
-loadend Progress has stopped (after "error", "abort" or "load" have been dispatched).
-loadstart Progress has begun.
-progress In progress.
-timeout Progression is terminated due to preset time expiring.
+- `dragenter` & `dragleave`  
+  The dragenter event is fired when a dragged element or text selection enters a valid drop target.
+  The dragleave event is fired when a dragged element or text selection leaves a valid drop target.
+
+- `dragover`  
+  The dragover event is fired when an element or text selection is being dragged over a valid drop target (Fired continuously).
+
+- `drop`  
+  The drop event is fired when an element or text selection is dropped on a valid drop target.
+
+**Simple drag and drop [DEMO](https://codepen.io/wangchimei/pen/JjdKyLZ)**
