@@ -1535,3 +1535,131 @@ ul.addEventListener('click', e => {
   The drop event is fired when an element or text selection is dropped on a valid drop target.
 
   **Simple drag and drop [DEMO](https://codepen.io/wangchimei/pen/JjdKyLZ)**
+
+## Regular expression (RegEx)
+
+#### Define a regular expression
+
+Two ways of defining a regular expression in JavaScript
+
+- `const pattern = / regex goes here /` **(common way)**
+- `const pattern = new RegExp(' regex goes here ')`
+
+#### Characters Sets
+
+The following sequences can be used to match a specific set of characters.
+
+- `\w` Matches any word character (equal to `[a-zA-Z0-9_]`)
+- `\W` — Matches any non-word character (equal to `[^a-zA-Z0-9_]`, opposite to `\w`)
+- `\d` — Matches a digit (equal to `[0-9]`)
+- `\D` — Matches any character that\'s not a digit (equal to `[^0-9]` opposite to `\d`)
+- `\s` — Matches whitespace characters. This includes spaces, tabs, and line breaks. (equal to `[\r\n\t\f\v ]`)
+- `\S` — Matches all other characters except whitespace.(equal to `[^\r\n\t\f\v ]`)
+- `.` — Matches any character except line breaks
+- `[A-Z]` — Matches characters in a range. For example, [A-E] will match A, B, C, D, and E.
+- `[ABC]` — Matches a character in the given set. For example, [AMT] will only match A, M, and T.
+- `[^abc]` — Matches all the characters not present in the given set. For example, [^a-e] will match all other characters except A, B, C, D, and E.
+
+#### Quantifiers
+
+All the expressions above will match a single character at a time.  
+Quantifiers can be used to specify how many characters should be included in the match at once.
+
+- `?` — Matches **zero or one** occurrences of the preceding character. For example, this can be useful when matching two variations of spelling for the same work.
+- `*` — Matches **zero or more** occurrences of the preceding token. For example, `b\w*` matches zero or more word characters after 'b'.
+- `+` — Matches **one or more** occurrences of the preceding token.
+- `{m}` will match **exactly** m occurrences of the preceding token.
+- `{m, n}` — Matches **at least m** and **at most n** occurrences of the previous token.
+- `{m,}` - Match **at least m** occurrences with no upper limit to the match.
+- `|` — Matches the expression either before or after the pipe character. For example, `/se(a|e)/` matches both see and sea.
+
+#### Group Parenthesis
+
+- `(ABC)` — This will group multiple tokens together and remember the substring matched by them for later use. This is called a capturing group.  
+  For example, using `(?:city)` to test "kaohsiung city" will capture "city".
+
+- `(?:ABC)`  
+  This will also group multiple tokens together but won't remember the match. It is a non-capturing group.  
+  For example, using `(?:city)` to test "kaohsiung city" will capture "city".
+
+- `\d+(?=FN)`  
+  This will match the token(s) preceding the (?=FN) part only if it is followed by FN.  
+  The part FN will not be included in the match.  
+  For example, using `\w+(?=\scity)` to test "kaohsiung city" will capture "kaohsiung".
+
+- `\d+(?!FN)`  
+  This will match the token(s) preceding the (?!FN) part only if it is not followed by FN.  
+  The part FN will be included in the match.  
+  For example, using `\w+(?!city)` to test "kaohsiung city" will capture "kaohsiung", "city".
+
+#### Other
+
+- `^` — Look for the regular expression at the **beginning** of the string (or the beginning of a line if the multiline flag is enabled).
+- `$` — Look for the regular expression at the **end** of the string (or the end of a line if the multiline flag is enabled).
+
+#### Flags
+
+Flags can be used to control how a regular expression should be interpreted.  
+To specify, flags can be added to the end of a regular expression literal `/cat/i` or to the RegExp constructor `RegExp("cat", 'i')`.
+
+- `g` — Global flag. Search the string for **all matches** of given expression. (instead of returning just the first one)
+- `i` — Insensitive. Make the search case-insensitive.
+- `m` — Multiline. This flag will make sure that the ^ and \$ tokens look for a match at the beginning or end of each line instead of the whole string.
+- `u` — Unicode. This flag will enable you to use Unicode code point escapes in your regular expression.
+
+#### Test a regular expression
+
+- `test()`  
+  It returns `true` on successful match and `false` otherwise.
+
+  ```
+  regexOne.test(textA)   // Output example: true or false
+  ```
+
+- `search()`  
+  It returns the _index_ of the match on success and `-1` otherwise.
+
+  ```
+  textA.search(regexOne)   // Output example: index or -1
+  ```
+
+- `match()`  
+  If the g flag is enabled, multiple matches will be returned as an array.
+
+  ```
+  var textA = 'All I see here are apples, APPles and apPleS';
+  var regexOne = /apples/gi;
+
+  console.log(textA.match(regexOne));   // Output example : [ "apples", "APPles", "apPleS" ]
+  ```
+
+- `exec()`  
+  The returned array will contain information about the match and capturing groups.
+
+  ```
+  var textA = 'Do you like apples?';
+  var regexOne = /apples/;
+
+  console.log(regexOne.exec(textA)[0]);      // Output : apples
+  console.log(regexOne.exec(textA).input);   // Output : Do you like apples?
+  ```
+
+- `replace()`  
+  Search for a substring matching the given pattern and replace it with the provided replacement string.
+
+  ```
+  var textA = 'Do you like aPPles?';
+  var regexOne = /apples/i
+
+  console.log(textA.replace(regexOne, 'mangoes'));   // Output : Do you like mangoes?
+  ```
+
+- `split()`  
+  This method will allow you to split the main string into substrings based on the separator specified as a regular expression.
+
+  ```
+  var textA = 'Do you like 3 apples or 3apple3?';
+  var regexOne = /\d+/g
+
+  console.log(textA.split(regexOne))   // Output : ["Do you like ", " apples or ", "apple", "?"]
+  ```

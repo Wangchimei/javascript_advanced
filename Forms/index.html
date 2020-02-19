@@ -18,6 +18,13 @@
         display: block;
         margin: 10px auto;
         padding: 4px;
+        outline: none;
+      }
+      .invalid {
+        border: 2px solid crimson;
+      }
+      .valid {
+        border: 2px solid lightseagreen;
       }
     </style>
   </head>
@@ -25,12 +32,13 @@
     <form class="signup-form">
       <input type="text" id="username" placeholder="username" />
       <input type="submit" value="submit" />
+      <div class="feedback"></div>
     </form>
-    <p>
+    <!-- <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae deleniti
       incidunt rerum ut magni veniam? Ut sequi tempora placeat recusandae!
-    </p>
-    <div style="width: 100px; height: 100px; background: blue;"></div>
+    </p> -->
+    <!-- <div style="width: 100px; height: 100px; background: blue;"></div> -->
     <script src="main.js"></script>
   </body>
 </html>
