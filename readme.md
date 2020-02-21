@@ -51,6 +51,13 @@
     - [Clipboard Events](https://github.com/Wangchimei/javascript_advanced#clipboard-events)
     - [Mouse Events](https://github.com/Wangchimei/javascript_advanced#mouse-events)
     - [Drag & Drop events](https://github.com/Wangchimei/javascript_advanced#drag--drop-events)
+- [Regular Expression](https://github.com/Wangchimei/javascript_advanced#regular-expression-regex)
+  - [Characters Sets](https://github.com/Wangchimei/javascript_advanced#characters-sets)
+  - [Quantifiers](https://github.com/Wangchimei/javascript_advanced#quantifiers)
+  - [Group Parenthesis](https://github.com/Wangchimei/javascript_advanced#group-parenthesis)
+  - [Other](https://github.com/Wangchimei/javascript_advanced#other)
+  - [Flags](https://github.com/Wangchimei/javascript_advanced#flags)
+  - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression)
 
 ## Primitive Types vs Reference Types
 
