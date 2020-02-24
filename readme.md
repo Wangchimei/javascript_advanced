@@ -1469,16 +1469,16 @@ btn.addEventListener('click', () => {
 - `ParentNode.prepend()` - inserts at the top of its parent
 
 ```
+const btn = document.querySelector('button');
 let ul = document.querySelector('ul');
-const items = document.querySelectorAll('li');
-items.forEach(item => {
-  item.addEventListener('click', e => {
-    e.target.remove();
-  });
-});
-ul.addEventListener('click', e => {
-      e.target.remove();
-  });
+
+btn.addEventListener('click', () => {
+  // ul.innerHTML += '<li>something new</li>';
+  const li = document.createElement('li');
+  li.textContent = 'something new';
+
+  // ul.append(li);
+  ul.prepend(li);
 });
 ```
 
