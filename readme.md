@@ -16,7 +16,7 @@
 
   - [Array](https://github.com/Wangchimei/javascript_advanced#array)
     - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
-    - [Callback Function]()
+    - [Methods with Callback Function](https://github.com/Wangchimei/javascript_advanced#methods-with-callback-function)
   - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
     - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
   - [Math](https://github.com/Wangchimei/javascript_advanced#math)
@@ -337,7 +337,7 @@ likes[1];   //"Psyduck"
   console.log(likes); // ["Luigi","Butter", "Bmo", "Chopper", "Winnie"]
   ```
 
-- push() - Destructive method. It adds one or more elements to the **end** of an array and returns the new length of the array.
+- `push()` - Destructive method. It adds one or more elements to the **end** of an array and returns the new length of the array.
 
   ```
   let likes = ['Bmo', 'Chopper', 'Winnie'];
@@ -402,8 +402,13 @@ likes[1];   //"Psyduck"
 
 ### Methods with Callback Function
 
-- `forEach()` - executes a provided function once for each array element  
-  **syntax:** `array.forEach(function(currentValue, index, array), thisValue)`
+- `forEach()` - executes a provided function once for each array element
+
+  **syntax:**
+
+  ```
+  array.forEach(function(currentValue, index, array), thisValue)
+  ```
 
   The callback function takes 3 parameters:
 
@@ -429,7 +434,11 @@ likes[1];   //"Psyduck"
   ```
 
 - `filter()` - creates a new array with elements that pass the conditions in the function  
-  **syntax:** `array.filter(function(currentValue, index, array), thisValue)`
+  **syntax:**
+
+  ```
+  array.filter(function(currentValue, index, array), thisValue)
+  ```
 
   The callback function takes 3 parameters:
 
@@ -453,7 +462,11 @@ likes[1];   //"Psyduck"
   ```
 
 - `map()` - creates a new array with the results of calling a function for every array element  
-  **syntax:** `array.map(function(currentValue, index, array), thisValue)`
+  **syntax:**
+
+  ```
+  array.map(function(currentValue, index, array), thisValue)
+  ```
 
   The callback function takes 3 parameters:
 
@@ -499,7 +512,11 @@ likes[1];   //"Psyduck"
   ```
 
 - `reduce()` - executes a callback function on each element of the array, resulting in a single value  
-  **syntax:** `array.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)`
+  **syntax:**
+
+  ```
+  array.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)
+  ```
 
   The callback function takes 4 parameters:
 
@@ -577,7 +594,11 @@ likes[1];   //"Psyduck"
   ```
 
 - `find()` - returns the value of the first element in an array that pass the condition  
-  **syntax:** `array.find(function(currentValue, index, array),thisValue)`
+  **syntax:**
+
+  ```
+  array.find(function(currentValue, index, array),thisValue)
+  ```
 
   The callback function takes 3 parameters:
 
@@ -594,8 +615,12 @@ likes[1];   //"Psyduck"
   console.log(firstHighScore);
   ```
 
-- sort() - changes the original array. This sorts the items of an array in alphabetical and ascending order by default. However, it will produce an incorrect result when sorting numbers.
-  **syntax:** `array.sort(compareFunction)`
+- `sort()` - changes the original array. This sorts the items of an array in alphabetical and ascending order by default. However, it will produce an incorrect result when sorting numbers.  
+  **syntax:**
+
+  ```
+  array.sort(compareFunction)
+  ```
 
   `compareFunction` - (optional) A function that defines an alternative sort order. The function should return a negative, zero, or positive value, depending on the arguments.
 
