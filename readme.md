@@ -16,6 +16,7 @@
 
   - [Array](https://github.com/Wangchimei/javascript_advanced#array)
     - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
+    - [Callback Function]()
   - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
     - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
   - [Math](https://github.com/Wangchimei/javascript_advanced#math)
@@ -290,7 +291,7 @@ Boolean(''); // false
 ## Array
 
 ```
-let likes = ['Bimo', 'Chopper', 'Winnie'];
+let likes = ['Bmo', 'Chopper', 'Winnie'];
 likes[1];   //"Chopper"
 
 likes[1] = "Psyduck";
@@ -299,109 +300,90 @@ likes[1];   //"Psyduck"
 
 ### Methods
 
-- forEach() - executes a provided function once for each array element
-  **syntax:** `arr.forEach(callback(currentValue [, index [, array]])[, thisArg])`
-  callback takes 3 parameters:
-
-  1. currentValue - The current element being processed in the array.
-  2. index - (optional) The index currentValue in the array.
-  3. array - (optional) The array forEach() was called upon.
-
-  `thisArg` - (optional) Value to use as this when executing callback.
-
-  ##### Converting a for loop to forEach:
+- `includes()` - determines whether an array contains a specified element, returning `true` or `false`
 
   ```
-  const people = ["Chopper", "Luigi", "Bimo"];
-  const copy = []
-
-  // for loop
-  for (let i = 0; i < people.length; i++) {
-    copy.push(people[i])
-  }
-
-  // forEach loop
-  people.forEach(item => copy.push(item))
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.includes('bmo'); // false
   ```
 
-- join() - creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string
-  ```
-  likes.join(', ');  // "Bimo, Chopper, Winnie"
-  ```
-- indexOf() - returns the first index at which a given element can be found in the array, or `-1` if it is not present
-  ```
-  likes.indexOf('Bimo');  // 0
-  ```
-- concat() - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array
+- `join()` - creates and returns the array as a string, separated by commas or a specified separator string
 
   ```
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.join(', ');  // "Bmo, Chopper, Winnie"
+  ```
+
+- `indexOf()` - returns the first index at which a given element can be found in the array, or `-1` if it is not present
+
+  ```
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.indexOf('Bmo');  // 0
+  ```
+
+- `concat()` - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array
+
+  ```
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.concat(['Luigi', 'Butter']);
-     // ["Bimo", "Chopper", "Winnie", "Luigi", "Butter"]
+     // ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"]
   ```
 
-- slice() - returns a shallow copy of a portion of an array into a new array object selected from begin index to end index (end not included)
+- `unshift()` - Destructive method. It adds one or more elements to the **beginning** of an array and returns the new length of the array.
 
   ```
-  likes = ["Bimo", "Chopper", "Winnie", "Luigi", "Butter"];
-  likes.slice(2, 4); // ["Winnie", "Luigi"]
-  ```
-
-- unshift() - adds one or more elements to the **beginning** of an array and returns the new length of the array **(destructive method)**
-
-  ```
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.unshift('Luigi', "Butter"); // 5
-  console.log(likes); // ["Luigi","Butter", "Bimo", "Chopper", "Winnie"]
+  console.log(likes); // ["Luigi","Butter", "Bmo", "Chopper", "Winnie"]
   ```
 
-- push() - adds one or more elements to the **end** of an array and returns the new length of the array **(destructive method)**
+- push() - Destructive method. It adds one or more elements to the **end** of an array and returns the new length of the array.
 
   ```
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.push('Luigi'); // 4
-  console.log(likes); // ["Bimo", "Chopper", "Winnie", "Luigi"]
+  console.log(likes); // ["Bmo", "Chopper", "Winnie", "Luigi"]
   ```
 
-- shift() - removes the **first** element from an array and returns that removed element **(destructive method)**
+- `shift()` - Destructive method. It removes the **first** element from an array and returns that removed element.
 
   ```
-  likes.unshift('Luigi', "Butter"); // 5
-  console.log(likes); // ["Luigi","Butter", "Bimo", "Chopper", "Winnie"]
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.shift(); // "Bmo"
+  console.log(likes); // ["Chopper", "Winnie"]
   ```
 
-- pop() - removes the **last** element from an array and returns that element **(destructive method)**
+- `pop()` - Destructive method. It removes the **last** element from an array and returns that removed element.
 
   ```
-  likes.pop(); // "Winnie" (return what's been taken out)
-  console.log(likes); // ["Bimo", "Chopper"]
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.pop(); // "Winnie"
+  console.log(likes); // ["Bmo", "Chopper"]
   ```
 
-- splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
+- `slice()` - returns the selected elements in an array, as a new array object. Elements are selected from start index to end index (end index is not included).
 
   ```
-  likes.splice(1, 0, 'Luigi'); // [] (nothing's taken out)
-  console.log(likes); // ["Bimo", "Luigi", "Chopper", "Winnie"]
+  let likes = ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"];
+  likes.slice(2, 4); // ["Winnie", "Luigi"]   // select elements on index 2 and index 3
+  ```
 
-  likes.splice(3, 1, 'Butter'); // "Winnie"
-  console.log(likes); // ["Bimo", "Luigi", "Chopper", "Butter"]
+- `splice()` - changes the original array. It adds/removes items to/from an array, and returns the removed item(s).
+
+  ```
+  let likes = ["Bmo", "Chopper", "Winnie"];
+  likes.splice(1, 0, 'Luigi') // [] (nothing's taken out)
+  console.log(likes); // ["Bmo", "Luigi", "Chopper", "Winnie"]
+
+  let likes = ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"];
+  likes.splice(3, 2, 'Toad'); // ["Luigi", "Butter"]
+  console.log(likes); //  ["Bmo", "Chopper", "Winnie", "Toad"]
   ```
 
   `likes.splice(1, 0, "Luigi")` = remove 0 element from index 1 and insert "Luigi"  
-  `likes.splice(3, 1, "Butter")` = remove 1 element from index 3 and insert "Butter"  
-  `likes.splice(2, 3)` = remove 3 elements from index 2
+  `likes.splice(3, 1, "Butter")` = remove 2 element from index 3 and insert "Toad"
 
-- sort() - sorts the elements of an array in place and returns the sorted array. The default sort order is ascending
-
-  ```
-  newArr = ["Chopper", "Luigi", "Bimo"];
-  newArr.sort(); //  ["Bimo", "Chopper", "Luigi"]
-  ```
-
-- includes() - determines whether an array includes a certain value among its entries, returning `true` or `false`
-
-  ```
-  likes.includes('imo'); // false
-  ```
-
-- flat() - creates a new array with all sub-array elements concatenated into it recursively up to the specified depth
+- `flat()` - creates a new array with all sub-array elements concatenated into it recursively up to the specified depth
 
   ```
   var arr1 = [1, 2, [3, 4]];
@@ -414,33 +396,166 @@ likes[1];   //"Psyduck"
   arr3.flat(Infinity);    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   // Flattening and array holes
-  var arr5 = [1, 2, , 4, 5];
-  arr5.flat(); // [1, 2, 4, 5]
+  var arr4 = [1, 2, , 4, 5];
+  arr4.flat(); // [1, 2, 4, 5]
   ```
 
-- map() - creates a new array populated with the results of calling a provided function on every element in the calling array
+### Methods with Callback Function
+
+- `forEach()` - executes a provided function once for each array element  
+  **syntax:** `array.forEach(function(currentValue, index, array), thisValue)`
+
+  The callback function takes 3 parameters:
+
+  1. currentValue - The value of the current element.
+  2. index - (optional) The array index of the current element.
+  3. array - (optional) The array object the current element belongs to.
+
+  `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
+
+  ##### Converting a for loop to forEach:
 
   ```
-  let newArr = [2, 4, 6, 8];
-  newArr.map(x => x \*\* 2); //[4, 16, 36, 64]
+  const people = ["Chopper", "Luigi", "Bmo"];
+  const copy = []
+
+  // for loop
+  for (let i = 0; i < people.length; i++) {
+    copy.push(people[i])
+  }
+
+  // forEach loop
+  people.forEach(item => copy.push(item))
   ```
 
-- reduce() - executes a reducer function (that you provide) on each element of the array, resulting in a single output value
-  **syntax:** `arr.reduce(callback(params), initialValue)`
-  callback takes 4 parameters:
+- `filter()` - creates a new array with elements that pass the conditions in the function  
+  **syntax:** `array.filter(function(currentValue, index, array), thisValue)`
 
-  1. Accumulator (acc) - The accumulator accumulates callback's return values.
-  2. Current Value (cur) - The current element being processed in the array.
-  3. Current Index (idx) - (optional) The index of the current element being processed in the array.
-  4. Source Array (src) - (optional) The array reduce() was called upon.
+  The callback function takes 3 parameters:
 
-  `initialValue` - (optional) A value to use as the first argument to the first call of the callback.
+  1. currentValue - The current element being processed in the array.
+  2. index - (optional) The index currentValue in the array.
+  3. array - (optional) The array object the current element belongs to.
+
+  `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
+
+  ##### Filtering out non-premium users:
+
+  ```
+  const users = [
+    {name: 'Bmo', premium: true},
+    {name: 'Chopper', premium: false},
+    {name: 'Winnie', premium: false},
+    {name: 'Luigi', premium: true}
+  ];
+  const premiumUsers = users.filter(user => user.premium);   //only "true" will be kept
+  console.log(premiumUsers);
+  ```
+
+- `map()` - creates a new array with the results of calling a function for every array element  
+  **syntax:** `array.map(function(currentValue, index, array), thisValue)`
+
+  The callback function takes 3 parameters:
+
+  1. currentValue - The current element being processed in the array.
+  2. index - (optional) The index currentValue in the array.
+  3. array - (optional) The array object the current element belongs to.
+
+  `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
+
+  ##### Special prices only on those are over 30
+
+  ```
+  const products = [
+    {name: 'product A', price: 20},
+    {name: 'product B', price: 40},
+    {name: 'product C', price: 30},
+    {name: 'product D', price: 10},
+    {name: 'product E', price: 50}
+  ];
+
+  const saleProducts = products.map(product => {
+    if(product.price > 30){
+      return {name: product.name, price: product.price / 2};    //returning a new object
+    } else {
+      return product;
+    }
+  });
+
+  console.log(products, saleProducts);
+  ```
+
+  **Note**: the following will result in destructing the original array, because `product` that is iterating is an element from the original array.
+
+  ```
+  const saleProducts = products.map(product => {
+    if(product.price > 30){
+      product.price = product.price /2;
+      return product;
+    } else {
+      return product;
+    }
+  });
+  ```
+
+- `reduce()` - executes a callback function on each element of the array, resulting in a single value  
+  **syntax:** `array.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)`
+
+  The callback function takes 4 parameters:
+
+  1. accumulator - The initialValue, or the previously returned value of the function.
+  2. currentValue - The value of the current element.
+  3. currentIndex - (optional) The array index of the current element.
+  4. array - (optional) The array object the current element belongs to.
+
+  `initialValue` - (optional) A value to be passed to the function as the initial value.
+
+  ##### Returning the sum of an array
 
   ```
   let number = [1, 2, 3, 4];
   number.reduce((acc, cur) => acc + cur); // 10
   number.reduce((acc, cur) => acc + cur, 5); // 15
+  ```
 
+  ##### Returning how many score are over 60
+
+  ```
+  const scores = [10, 20, 60, 40, 70, 90, 30, 80];
+  const result = scores.reduce((acc, cur) => {
+    if(cur > 50){
+      acc++;
+    }
+    return acc;
+  }, 0);
+
+  console.log(result);    // 4
+  ```
+
+  ##### Returning the sum of Bmo's score
+
+  ```
+  const students = [
+    {name: 'Bmo', score: 50},
+    {name: 'Chopper', score: 30},
+    {name: 'Bmo', score: 70},
+    {name: 'Winnie', score: 60},
+    {name: 'Luigi', score: 60}
+  ];
+
+  const bmoTotal = students.reduce((acc, cur) => {
+    if(cur.name === 'Bmo'){
+      acc += cur.score;
+    }
+    return acc;
+  }, 0);
+
+  console.log(bmoTotal);   // 120
+  ```
+
+  ##### Returning an array
+
+  ```
   let flattened = [[0, 1], [2, 3], [4, 5]];
   flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
   ```
@@ -449,16 +564,78 @@ likes[1];   //"Psyduck"
 
   ```
   let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
-  let nameCount = list.reduce(function(nameArr, name) {
+  let nameCount = list.reduce((nameArr, name) => {
     if (name in nameArr) {
-    nameArr[name]++;
+      nameArr[name]++;
     } else {
-    nameArr[name] = 1;
+      nameArr[name] = 1;
     }
     return nameArr;
   }, {});
 
-  console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
+  console.log(nameCount);  // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
+  ```
+
+- `find()` - returns the value of the first element in an array that pass the condition  
+  **syntax:** `array.find(function(currentValue, index, array),thisValue)`
+
+  The callback function takes 3 parameters:
+
+  1. currentValue - The current element being processed in the array.
+  2. index - (optional) The index currentValue in the array.
+  3. array - (optional) The array object the current element belongs to.
+
+  `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
+
+  ```
+  const scores = [10, 5, 0, 40, 60, 10, 20, 70];
+
+  const firstHighScore = scores.find(score => score > 50);
+  console.log(firstHighScore);
+  ```
+
+- sort() - changes the original array. This sorts the items of an array in alphabetical and ascending order by default. However, it will produce an incorrect result when sorting numbers.
+  **syntax:** `array.sort(compareFunction)`
+
+  `compareFunction` - (optional) A function that defines an alternative sort order. The function should return a negative, zero, or positive value, depending on the arguments.
+
+  ```
+  const name = ["Chopper", "Luigi", "Bmo"];
+  name.sort(); //  ["Bmo", "Chopper", "Luigi"]
+  ```
+
+  ##### Sorting numbers
+
+  ```
+  const scores = [10, 50, 20, 5, 35, 70, 45];
+
+  scores.sort((a, b) => a - b)   // [5, 10, 20, 35, 45, 50, 70]
+  scores.sort((a, b) => b - a)   // [70, 50, 45, 35, 20, 10, 5]
+  ```
+
+  ##### Sorting objects
+
+  ```
+  const students = [
+    {name: 'Bmo', score: 20},
+    {name: 'Chopper', score: 10},
+    {name: 'Bmo', score: 50},
+    {name: 'Winnie', score: 30},
+    {name: 'Luigi', score: 70}
+  ];
+
+  // players.sort((a,b) => {
+  //   if(a.score > b.score){
+  //     return -1;  // a(bigger) should come first -> return negative
+  //   } else if (b.score > a.score){
+  //     return 1;   // b(bigger) should come first -> return positive
+  //   } else {
+  //     return 0;   // the same, no order is needed -> return zero
+  //   }
+  // });
+
+  students.sort((a,b) => b.score - a.score);  // shorter version(descending order)
+  console.log(players);
   ```
 
 ## Object literals
@@ -652,7 +829,7 @@ Variables declared with `var` are **not** local to the loop, i.e. they are in th
 Variables declared with `let` are local to the statement.
 
 ```
-const name = ['Bimo', 'Luigi', 'Chopper', 'Butter'];
+const name = ['Bmo', 'Luigi', 'Chopper', 'Butter'];
 for (let i = 0; i < name.length; i++) {
   console.log(name[i]);
 }
@@ -671,7 +848,7 @@ while (condition) {
 ```
 
 ```
-const name = ['Bimo', 'Luigi', 'Chopper', 'Butter'];
+const name = ['Bmo', 'Luigi', 'Chopper', 'Butter'];
 let i = 0;
 while (i < name.length) {
   console.log(name[i]);
@@ -966,7 +1143,7 @@ myFunction(value => {
 
 ```
 
-let people = ['Luigi', 'Butter', 'Bimo', 'Chopper', 'Winnie'];
+let people = ['Luigi', 'Butter', 'Bmo', 'Chopper', 'Winnie'];
 
 // v1 - regular function
 people.forEach(function(person, index) {
@@ -1086,7 +1263,7 @@ HTML :
   **Loop through data and outputting to HTML**
 
   ```
-  const people = ["Chopper", "Luigi", "Bimo"];
+  const people = ["Chopper", "Luigi", "Bmo"];
 
   people.forEach(person => {
     content.innerHTML += `<p>${person}</p>`;

@@ -73,14 +73,30 @@
 // user.phrase();
 // user.logBlogs();
 
-let user = {
-  blogs: [
-    { title: 'The Haunted Mansion', likes: 30 },
-    { title: 'Friendship with Boos', likes: 30 },
-  ],
-  logBlog() {
-    this.blogs.forEach(blog => console.log(blog.title, blog.likes));
-  },
-};
+// let user = {
+//   blogs: [
+//     { title: 'The Haunted Mansion', likes: 30 },
+//     { title: 'Friendship with Boos', likes: 30 },
+//   ],
+//   logBlog() {
+//     this.blogs.forEach(blog => console.log(blog.title, blog.likes));
+//   },
+// };
 
-user.logBlogs();
+// user.logBlogs();
+
+const scores = [10, 50, 20, 5];
+
+scores.sort((a, b) => {
+  console.log(a, b);
+  console.log(a > b);
+
+  if (a > b) {
+    return -1;
+  } else if (a < b) {
+    return 1;
+  } else {
+    return 0;
+  }
+});
+console.log(scores);
