@@ -433,7 +433,8 @@ likes[1];   //"Psyduck"
   people.forEach(item => copy.push(item))
   ```
 
-- `filter()` - creates a new array with elements that pass the conditions in the function  
+- `filter()` - creates a new array with elements that pass the conditions in the function
+
   **syntax:**
 
   ```
@@ -461,7 +462,8 @@ likes[1];   //"Psyduck"
   console.log(premiumUsers);
   ```
 
-- `map()` - creates a new array with the results of calling a function for every array element  
+- `map()` - creates a new array with the results of calling a function for every array element
+
   **syntax:**
 
   ```
@@ -511,7 +513,8 @@ likes[1];   //"Psyduck"
   });
   ```
 
-- `reduce()` - executes a callback function on each element of the array, resulting in a single value  
+- `reduce()` - executes a callback function on each element of the array, resulting in a single value
+
   **syntax:**
 
   ```
@@ -593,7 +596,8 @@ likes[1];   //"Psyduck"
   console.log(nameCount);  // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
   ```
 
-- `find()` - returns the value of the first element in an array that pass the condition  
+- `find()` - returns the value of the first element in an array that pass the condition
+
   **syntax:**
 
   ```
@@ -615,7 +619,8 @@ likes[1];   //"Psyduck"
   console.log(firstHighScore);
   ```
 
-- `sort()` - changes the original array. This sorts the items of an array in alphabetical and ascending order by default. However, it will produce an incorrect result when sorting numbers.  
+- `sort()` - changes the original array. This sorts the items of an array in alphabetical and ascending order by default. However, it will produce an incorrect result when sorting numbers.
+
   **syntax:**
 
   ```
