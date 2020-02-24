@@ -879,7 +879,7 @@ console.log(now.toTimeString());    // 22:02:33 GMT+0900 (Japan Standard Time)
 console.log(now.toLocaleString());  // 2/24/2020, 10:02:33 PM
 ```
 
-#### Timestamps
+### Timestamps
 
 A number representing the milliseconds from 1 January 1970 00:00:00 UTC to the given date.
 
@@ -904,6 +904,28 @@ const days = Math.round(hours / 24);
 ```
 const timestamp = 1675938474990;
 console.log(new Date(timestamp));
+```
+
+### Date Format
+
+[Date-fns](https://date-fns.org/)
+
+```
+const now = new Date();
+
+console.log(dateFns.isToday(now));
+
+// formatting options
+console.log(dateFns.format(now, 'YYYY'));
+console.log(dateFns.format(now, 'MMMM'));
+console.log(dateFns.format(now, 'dddd'));
+console.log(dateFns.format(now, 'Do'));
+console.log(dateFns.format(now, 'dddd, Do MMMM, YYYY'));
+
+// comparing dates
+const before = new Date('February 1 2019 12:00:00');
+
+console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
 ```
 
 ## Loops
