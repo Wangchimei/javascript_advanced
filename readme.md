@@ -20,6 +20,7 @@
   - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
     - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
   - [Math](https://github.com/Wangchimei/javascript_advanced#math)
+  - [Date](https://github.com/Wangchimei/javascript_advanced#date)
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
 
@@ -788,35 +789,35 @@ Math works with the Number type. It does **NOT** work with BigInt.
 
 ### Methods
 
-- round() - returns the value of a number rounded to the nearest integer
+- `round()` - returns the value of a number rounded to the nearest integer
 
   ```
   console.log(Math.round(7.7));  // 8
   console.log(Math.round(7.4));  // 7
   ```
 
-- floor() - returns the largest integer less than or equal to a given number
+- `floor()` - returns the largest integer less than or equal to a given number
 
   ```
   const area = 7.7;
   console.log(Math.round(area));  // 7
   ```
 
-- ceil() - always rounds a number up to the next largest whole number or integer
+- `ceil()` - always rounds a number up to the next largest whole number or integer
 
   ```
   const area = 7.1;
   console.log(Math.round(area));  // 8
   ```
 
-- trunc() - returns the integer part of a number by removing any fractional digits
+- `trunc()` - returns the integer part of a number by removing any fractional digits
 
   ```
   console.log(Math.round(7.7));  // 7
   console.log(Math.round(7.4));  // 7
   ```
 
-- random() - returns a float random number in the range 0 to less than 1 (inclusive of 0, but not 1)
+- `random()` - returns a float random number in the range 0 to less than 1 (inclusive of 0, but not 1)
 
   ```
   const random = Math.random();
@@ -826,7 +827,7 @@ Math works with the Number type. It does **NOT** work with BigInt.
   console.log(Math.round(random * 100));  // 0 ~ 100
   ```
 
-- abs() - returns the absolute value of a number
+- `abs()` - returns the absolute value of a number
 
   ```
   function difference(a, b) {
@@ -835,6 +836,75 @@ Math works with the Number type. It does **NOT** work with BigInt.
 
   console.log(difference(3, 5));   // 2
   ```
+
+## Date
+
+```
+const now = new Date();
+
+console.log(now);  //
+console.log(typeof now);  //object
+```
+
+### Common methods
+
+#### years, months, days, times
+
+```
+const now = new Date();
+
+console.log('now.getFullYear());
+
+// (0-based) January - December : 0 - 11
+console.log('now.getMonth());
+
+console.log('now.getDate());
+
+//(0-based) Sunday - Saturday : 0 - 6
+console.log('now.getDay());
+
+console.log(now.getHours());
+
+console.log(now.getMinutes());
+
+console.log(now.getSeconds());
+
+```
+
+#### Date strings
+
+```
+console.log(now.toDateString());    // Mon Feb 24 2020
+console.log(now.toTimeString());    // 22:02:33 GMT+0900 (Japan Standard Time)
+console.log(now.toLocaleString());  // 2/24/2020, 10:02:33 PM
+```
+
+#### Timestamps
+
+A number representing the milliseconds from 1 January 1970 00:00:00 UTC to the given date.
+
+```
+console.log(now.getTime());   // 1582550446028
+```
+
+##### Using for comparison
+
+```
+const before = new Date('02/01/2019 7:30:59');
+const now = new Date();
+const diff = now.getTime() - before.getTime();
+
+const mins = Math.round(diff / 1000 / 60);
+const hours = Math.round(mins / 60);
+const days = Math.round(hours / 24);
+```
+
+##### Converting timestamps to date object
+
+```
+const timestamp = 1675938474990;
+console.log(new Date(timestamp));
+```
 
 ## Loops
 
