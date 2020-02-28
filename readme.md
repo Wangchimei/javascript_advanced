@@ -63,6 +63,8 @@
 - [Asynchronous JavaScript]()
   - [XMLHttpRequest]()
   - [Promise]()
+  - [Fetch API]()
+  - [Async Function & Await]()
 
 ## Primitive Types vs Reference Types
 
@@ -2036,38 +2038,10 @@ request.send();
 request.readyState === 4 && request.status === 200
 ```
 
-#### Putting request into an variable with a callback function
+#### Parsing JSON & Refactoring
 
-**creating a constance with callback function takes in two parameters**
-
-```
-const getTodos = callback => {
-  const request = new XMLHttpRequest();
-
-  request.addEventListener('readystatechange', () => {
-    if (request.readyState === 4 && request.status === 200) {
-      callback(undefined, request.responseText);
-    } else if (request.readyState === 4) {
-      callback(request.status, undefined);
-    }
-  });
-
-  request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
-  request.send();
-};
-
-getTodos((error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(data);
-  }
-});
-```
-
-#### Converting JSON Strings to JavaScript Objects
-
-**using `JSON.parse()`**
+- Creating a constance with callback function takes in two parameters
+- Using `JSON.parse()` to convert JSON strings to JavaScript objects
 
 ```
 const getTodos = callback => {
@@ -2129,7 +2103,7 @@ This can be used to avoid nesting callbacks (so-called callback hell).
 
   As the `then()` and `catch()` methods return promises, they can be chained — an operation called composition.
 
-**Example**
+**Example using XHR and Promise**
 
 ```
 const getBooks = resource => {
@@ -2202,4 +2176,75 @@ getBooks('bmo.json')
 `return getBooks('winnie.json')` will return a promise which allows to use `then` for resolved promise.  
 `.catch()` will catch every error in all http requests.
 
-### Native Fetch API
+### Fetch API
+
+The Fetch API provides an interface for fetching resources (including across the network).  
+It will seem familiar to anyone who has used XMLHttpRequest, but the new API provides a more powerful and flexible feature set.
+
+```
+const fetchResponsePromise = fetch(resource [, init])
+```
+
+`resource` - This defines the resource that you wish to fetch.
+`init` - (optional) e.g. `method` (GET, POST...etc)
+
+The `fetch()` method takes one mandatory argument, the path to the resource you want to fetch.  
+It returns a _promise_ which is fulfilled once the response is available. The promise resolves to the Response object representing the response to your request.
+
+```
+fetch('wrong.json')
+  .then(response => {
+    console.log(response);   // resolved, but it is error 404
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
+
+A fetch() promise **does not** reject on HTTP errors (404, etc.), it only rejects when a network error is encountered.  
+Instead, a `then()` handler must check the Response.ok and/or Response.status properties.
+
+#### Parsing JSON
+
+- Using `response.json()` to return data, which returns a **promise**
+
+```
+fetch('bmo.json')
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+```
+
+#### Differences from AJAX
+
+The `fetch` specification differs from`jQuery.ajax()` in three main ways:
+
+1. The Promise returned from `fetch()` will **NOT** reject on _HTTP error status_ even if the response is an HTTP 404 or 500. Instead, it will resolve normally (with ok status set to false), and it will _only reject on network failure_ or if anything prevented the request from completing.
+2. `fetch()` will **NOT** receive cross-site cookies. You can’t establish a cross site session using `fetch()`. Set-Cookie headers from other sites are silently ignored.
+3. `fetch()` will **NOT** send cookies, unless you set the credentials init option.
+
+### Async & Await
+
+The `async function` declaration defines an asynchronous function — a function that returns an AsyncFunction object, an implicit Promise as its result.
+The `await` operator is used to wait for a Promise. It can only be used inside an async function.
+
+Using `async` and `await` can chain promises together in a clean and readable way.
+
+```
+const getBooks = async () => {
+  const response = await fetch('bmo.json');
+  const data = await response.json();
+  return data;
+};
+
+getBooks()
+  .then(data => console.log(data));
+```
+
+**Note**: `getBook()` is a promise, therefore `then()` is needed to be used once outside of the async function.
