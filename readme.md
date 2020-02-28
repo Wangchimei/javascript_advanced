@@ -1,26 +1,23 @@
 # JavaScript
 
-[See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types)
+## Table of Content
 
-| Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                       |
-| :------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [String](https://github.com/Wangchimei/javascript_advanced#string)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals) |
-| [Number](https://github.com/Wangchimei/javascript_advanced#number)               | Numerical values (1, 2, 100, 3.14)                    |                                                                                                                                                                                |
-| [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)      | Explicitly set a variable with no value               |                                                                                                                                                                                |
-| [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined) | For variables that have not yet been defined          |                                                                                                                                                                                |
-| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)             | true / false                                          |                                                                                                                                                                                |
-| Object                                                                           | Complex data structures                               | Array, Dates, Literals, Math, etc.                                                                                                                                             |
-| Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                |
+- [Data Types](https://github.com/Wangchimei/javascript_advanced#data-types)
+  ( _[See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types)_ )
 
-- [Object](https://github.com/Wangchimei/javascript_advanced#array)
-
-  - [Array](https://github.com/Wangchimei/javascript_advanced#array)
-    - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
-    - [Methods with Callback Function](https://github.com/Wangchimei/javascript_advanced#methods-with-callback-function)
-  - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
-    - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
-  - [Math](https://github.com/Wangchimei/javascript_advanced#math)
-  - [Date](https://github.com/Wangchimei/javascript_advanced#date)
+  - [String](https://github.com/Wangchimei/javascript_advanced#string)
+  - [Number](https://github.com/Wangchimei/javascript_advanced#number)
+  - [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)
+  - [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)
+  - [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)
+  - [Object](https://github.com/Wangchimei/javascript_advanced#array)
+    - [Array](https://github.com/Wangchimei/javascript_advanced#array)
+      - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
+      - [Methods with Callback Function](https://github.com/Wangchimei/javascript_advanced#methods-with-callback-function)
+    - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
+      - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
+    - [Math](https://github.com/Wangchimei/javascript_advanced#math)
+    - [Date](https://github.com/Wangchimei/javascript_advanced#date)
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
 
@@ -43,7 +40,9 @@
   - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods)
 
 - [DOM](https://github.com/Wangchimei/javascript_advanced#document-object-model-dom)
+
 - [Events](https://github.com/Wangchimei/javascript_advanced#events)
+
   - [Event Bubbling](https://github.com/Wangchimei/javascript_advanced#event-bubbling)
   - [Event Delegation](https://github.com/Wangchimei/javascript_advanced#event-delegation)
   - [Event Reference](https://github.com/Wangchimei/javascript_advanced#event-reference)
@@ -53,19 +52,34 @@
     - [Clipboard Events](https://github.com/Wangchimei/javascript_advanced#clipboard-events)
     - [Mouse Events](https://github.com/Wangchimei/javascript_advanced#mouse-events)
     - [Drag & Drop events](https://github.com/Wangchimei/javascript_advanced#drag--drop-events)
+
 - [Regular Expression](https://github.com/Wangchimei/javascript_advanced#regular-expression-regex)
+
   - [Characters Sets](https://github.com/Wangchimei/javascript_advanced#characters-sets)
   - [Quantifiers](https://github.com/Wangchimei/javascript_advanced#quantifiers)
   - [Group Parenthesis](https://github.com/Wangchimei/javascript_advanced#group-parenthesis)
   - [Other](https://github.com/Wangchimei/javascript_advanced#other)
   - [Flags](https://github.com/Wangchimei/javascript_advanced#flags)
   - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression)
-- [Asynchronous JavaScript]()
-  - [XMLHttpRequest]()
-  - [Promise]()
-  - [Fetch API]()
-  - [Async Function & Await]()
-  - [Throw & Catch ]()
+
+- [Asynchronous JavaScript](https://github.com/Wangchimei/javascript_advanced#asynchronous-javascript)
+  - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#promise)
+  - [Promise](https://github.com/Wangchimei/javascript_advanced#promise)
+  - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api)
+  - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await)
+  - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error)
+
+## Data Types
+
+| Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                                                                                                                               |
+| :------------------------------------------------------------------------------- | :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)                                                                                                         |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number)               | Numerical values (1, 2, 100, 3.14)                    |                                                                                                                                                                                                                                                                                        |
+| [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)      | Explicitly set a variable with no value               |                                                                                                                                                                                                                                                                                        |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined) | For variables that have not yet been defined          |                                                                                                                                                                                                                                                                                        |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)             | true / false                                          |                                                                                                                                                                                                                                                                                        |
+| [Object](https://github.com/Wangchimei/javascript_advanced#array)                | Complex data structures                               | [Array](https://github.com/Wangchimei/javascript_advanced#array), [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals), [Math](https://github.com/Wangchimei/javascript_advanced#math), [Date](https://github.com/Wangchimei/javascript_advanced#date) |
+| Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                                                                                                                        |
 
 ## Primitive Types vs Reference Types
 
@@ -89,9 +103,7 @@ Differences are how they are stored and used in memory.
 When storing a primitive type in a variable, it adds the value to the **stack**, and locks the variable name to it as an accessor.  
 When storing a reference type in a variable, it adds the object to the **heap**, and adds a **pointer** to the object in the stack. Therefore, when accessing the variable, the pointer will point to the object.
 
-#### Example
-
-##### Primitive Types
+### Example - Primitive Types
 
 When creating a copy of primitive types, the value will be copied and stored separately on the stack.
 
@@ -106,7 +118,7 @@ const scoreOne = 50;
 console.log(scoreOne, scoreTwo);  // 50 100
 ```
 
-##### Reference Types
+### Example - Reference Types
 
 When creating a copy of reference types, it does not create a new object on the heap.  
 Instead, it copies the pointer which points to the same object on the heap.
@@ -128,38 +140,42 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
 
 ### Methods
 
-- indexOf() - returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex
-  Returns `-1` if the value is not found.
+- `indexOf()` - returns the index of the first occurrence of the specified value, searching forwards and returning `-1` if the value is not found.
+
   ```
   email.indexOf('e');  // 4
   ```
-- lastIndexOf() - returns the index within the calling String object of the last occurrence of the specified value, searching backwards from fromIndex
-  Returns `-1` if the value is not found.
+
+- `lastIndexOf()` - returns the index of the last occurrence of the specified value, searching backwards and returning `-1` if the value is not found.
 
   ```
   email.indexOf('c');  // 13
   ```
 
-- split() - turns a String into an array of strings, by separating the string at each instance of a specified separator string
+- `split()` - turns a String into an array of strings, by separating the string at each instance of a specified separator string
+
   ```
   email.split("@")[0];  // "mei"
   ```
-- slice() - extracts a section of a string and returns it as a new string, without modifying the original string
+
+- `slice()` - extracts a section of a string and returns it as a new string, without modifying the original string
+
   ```
   email.slice(3, 6);  // "chimei"
   ```
-- substring() - returns the part of the string between the start and end indexes, or to the end of the string
+
+- `substring()` - returns the part of the string between the start and end indexes, or to the end of the string
 
   ```
   email.substring(3, 6);  // "mei"
   ```
 
-  ##### Differences between substring() and slice()
+  #### Differences between substring() and slice()
 
   The `substring()` and `slice()` are almost identical, but there are a couple of subtle differences between the two, especially **in the way negative arguments are dealt with**.
 
   The `substring()` method swaps its two arguments if `indexStart` is **greater than** `indexEnd` ( a string is still returned).  
-   The `slice()` method returns an empty string if this is the case.
+  The `slice()` method returns an empty string if this is the case.
 
   ```
     let text = 'Mario Kart'
@@ -175,25 +191,30 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
     text.slice(-5, -2); // " Ka" (from index -5 until index -2-1)
   ```
 
-- substr() - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward
+- `substr()` - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward
+
   ```
   email.substr(3, 6);  // "mei@ex"
   ```
-- replace() - returns a new string with some or all matches of a pattern replaced by a replacement
+
+- `replace()` - returns a new string with some or all matches of a pattern replaced by a replacement
+
   ```
   email.replace('i', 'o');  // "chomei@example.com"
   ```
-- includes() - determines whether one string may be found within another string, returning `true` or `false`
+
+- `includes()` - determines whether one string may be found within another string, returning `true` or `false`
+
   ```
   email.includes('i');  // true
   ```
 
 ## Template strings (Template literals)
 
-Template literals are string literals allowing embedded expressions.
+Template literals are string literals allowing embedded expressions.  
 You can use multi-line strings and string interpolation features with them.
 
-##### Define variables
+### First, defining variables
 
 ```
 const title = 'Harry Potter and the Philosopher's Stone';
@@ -201,14 +222,13 @@ const author = 'J.K. Rowling';
 let likes = 300;
 ```
 
-##### concatenation way
+### Using concatenation way
 
 ```
 let result = 'The book called ' + title + ' by ' + author + ' has ' + likes + ' likes';
-
 ```
 
-##### template strings way
+### Using template strings way
 
 ```
 let result = `The book called ${title} by ${author} has ${likes} likes`;
@@ -226,7 +246,8 @@ let html = `
 
 ## Number
 
-Order of operation:  
+Order of operation:
+
 B - Brackets `()`  
 I - Indices `**`  
 D - Division `/`  
@@ -236,23 +257,23 @@ S - Subtraction `-`
 
 ## Null vs Undefined
 
-- Undefined - For variables that have not yet been defined (automatically assigned)
+- `Undefined` - For variables that have not yet been defined (automatically assigned)
 
-```
-let age;
+  ```
+  let age;
 
-console.log(age, age + 3, `the age is ${age}`);
-// undefined NaN "the age is undefined"
-```
+  console.log(age, age + 3, `the age is ${age}`);
+  // undefined NaN "the age is undefined"
+  ```
 
-- Null - Explicitly set a variable with no value
+- `Null` - Explicitly set a variable with no value
 
-```
-let age = null;
+  ```
+  let age = null;
 
-console.log(age, age + 3, `the age is ${age}`);
-// null 3 "the age is null"
-```
+  console.log(age, age + 3, `the age is ${age}`);
+  // null 3 "the age is null"
+  ```
 
 ## Boolean
 
@@ -266,9 +287,9 @@ console.log(name > 'luigi'); // false (lowercase is greater than uppercase)
 console.log(name > 'Mario'); // false (M comes after L)
 ```
 
-#### Difference between `===` and `==`
+### Difference between `===` and `==`
 
-`===` / `!==` are also known as **strict comparison**,the value's types are considered in the comparison.
+`===` / `!==` are also known as **strict comparison**,the value's types are considered in the comparison.  
 `==` / `!=` are also known as **loose comparison**, which means different types can still be equal.
 
 ```
