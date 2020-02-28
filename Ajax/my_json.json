@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Another Adventure Day",
+    "author": "Bmo",
+    "premium": true,
+    "year": 2000
+  },
+  {
+    "title": "My days as a pet",
+    "author": "Chopper",
+    "premium": false,
+    "year": 2020
+  },
+  {
+    "title": "Honey Pot, huh",
+    "author": "Winnie",
+    "premium": true,
+    "year": 2006
+  }
+]

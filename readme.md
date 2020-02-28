@@ -60,6 +60,9 @@
   - [Other](https://github.com/Wangchimei/javascript_advanced#other)
   - [Flags](https://github.com/Wangchimei/javascript_advanced#flags)
   - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression)
+- [Asynchronous JavaScript]()
+  - [XMLHttpRequest]()
+  - [Promise]()
 
 ## Primitive Types vs Reference Types
 
@@ -1969,3 +1972,234 @@ To specify, flags can be added to the end of a regular expression literal `/cat/
 
   console.log(textA.split(regexOne))   // Output : ["Do you like ", " apples or ", "apple", "?"]
   ```
+
+## Asynchronous JavaScript
+
+### XMLHttpRequest (XHR)
+
+#### Making a request
+
+```
+const request = new XMLHttpRequest();
+
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+request.send();
+```
+
+- `open()` - initializes a newly-created request, or re-initializes an existing one
+
+  ```
+  XMLHttpRequest.open(method, url, async)
+  ```
+
+  `method` - The HTTP request method to use, such as "GET", "POST", "PUT", "DELETE", etc.
+  `url` - The URL to send the request to
+  `async` - (optional) indicates whether or not to perform the operation asynchronously (true as default)
+
+- `send()` - sends the request to the server.  
+  send() accepts an optional parameter which lets you specify the request's body, which is primarily used for requests such as `PUT`.  
+  If the request method is `GET` or `HEAD`, the body parameter is ignored and the request body is set to null.
+
+  ```
+  XMLHttpRequest.send(body)
+  ```
+
+  `body` - A body of data to be sent in the XHR request.
+
+#### Checking Request State
+
+The `XMLHttpRequest.readyState` returns the state an XMLHttpRequest client is in.  
+An XHR client exists in one of the following states:
+
+| Value | State            | Description                                                     |
+| :---- | :--------------- | :-------------------------------------------------------------- |
+| 0     | UNSENT           | Client has been created. `open()` not called yet.               |
+| 1     | OPENED           | `open()` has been called.                                       |
+| 2     | HEADERS_RECEIVED | `send()` has been called, and headers and status are available. |
+| 3     | LOADING          | Downloading; _responseText_ holds partial data.                 |
+| 4     | DONE             | The operation is complete.                                      |
+
+```
+const request = new XMLHttpRequest();
+
+request.addEventListener('readystatechange', () => {
+  console.log(request, request.readyState);
+});
+
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+request.send();
+```
+
+#### Validating the Http Request
+
+```
+request.readyState === 4 && request.status === 200
+```
+
+#### Putting request into an variable with a callback function
+
+**creating a constance with callback function takes in two parameters**
+
+```
+const getTodos = callback => {
+  const request = new XMLHttpRequest();
+
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status === 200) {
+      callback(undefined, request.responseText);
+    } else if (request.readyState === 4) {
+      callback(request.status, undefined);
+    }
+  });
+
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+  request.send();
+};
+
+getTodos((error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
+```
+
+#### Converting JSON Strings to JavaScript Objects
+
+**using `JSON.parse()`**
+
+```
+const getTodos = callback => {
+  const request = new XMLHttpRequest();
+
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status === 200) {
+      const data = JSON.parse(request.responseText);
+      callback(undefined, data);
+    } else if (request.readyState === 4) {
+      callback(request.status, undefined);
+    }
+  });
+
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+  request.send();
+};
+
+getTodos((error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
+```
+
+### Promise
+
+The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.  
+This can be used to avoid nesting callbacks (so-called callback hell).
+
+- `then()` - returns a Promise. It takes up to two optional arguments: callback functions for the success and failure cases of the Promise.
+
+  ```
+  const promise = new Promise((resolve, reject) => {
+    resolve('Success!');
+    // reject('Failed!');
+  });
+
+  promise.then(value => {
+    console.log(value);
+  }, error => {
+    console.log(error);
+  });
+  ```
+
+- `catch()` - returns a Promise and deals with rejected cases only
+
+  ```
+  const promise = new Promise((resolve, reject) => {
+    throw 'Uh-oh!';
+  });
+
+  promise.catch(error => {
+    console.log(error);
+  });
+  ```
+
+  As the `then()` and `catch()` methods return promises, they can be chained — an operation called composition.
+
+**Example**
+
+```
+const getBooks = resource => {
+  return new Promise((resolve, reject) => {
+    //making http requests
+    const request = new XMLHttpRequest();
+    request.addEventListener('readystatechange', () => {
+      if (request.readyState === 4 && request.status === 200) {
+        const data = JSON.parse(request.response);
+        resolve(data);
+      } else if (request.readyState === 4) {
+        reject('error');
+      }
+    });
+
+    request.open('GET', resource);
+    request.send();
+  });
+};
+
+getBooks('bmo.json')
+  .then(data => {
+    console.log('promise resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+```
+
+#### Making Sequence of Http requests
+
+Using callbacks for sending sequence of Http requests will result in "callback hell".
+
+_example_
+
+```
+getBooks('bmo.json', (error, data) => {
+  console.log(data);
+  getBooks('winnie.json', (error, data) => {
+    console.log(data);
+    getBooks('chopper.json', (error, data) => {
+      console.log(data);
+    });
+  });
+});
+```
+
+Using promise is better in terms of method chaining.
+
+_example_
+
+```
+getBooks('bmo.json')
+  .then(data => {
+    console.log('promise 1 resolved:', data);
+    return getBooks('winnie.json');
+  })
+  .then(data => {
+    console.log('promise 2 resolved:', data);
+    return getBooks('chopper.json');
+  })
+  .then(data => {
+    console.log('promise 3 resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+```
+
+`return getBooks('winnie.json')` will return a promise which allows to use `then` for resolved promise.  
+`.catch()` will catch every error in all http requests.
+
+### Native Fetch API
