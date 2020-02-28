@@ -65,6 +65,7 @@
   - [Promise]()
   - [Fetch API]()
   - [Async Function & Await]()
+  - [Throw & Catch ]()
 
 ## Primitive Types vs Reference Types
 
@@ -2231,7 +2232,7 @@ The `fetch` specification differs from`jQuery.ajax()` in three main ways:
 
 ### Async & Await
 
-The `async function` declaration defines an asynchronous function — a function that returns an AsyncFunction object, an implicit Promise as its result.
+The `async function` declaration defines an asynchronous function — a function that returns an AsyncFunction object, an implicit Promise as its result.  
 The `await` operator is used to wait for a Promise. It can only be used inside an async function.
 
 Using `async` and `await` can chain promises together in a clean and readable way.
@@ -2248,3 +2249,25 @@ getBooks()
 ```
 
 **Note**: `getBook()` is a promise, therefore `then()` is needed to be used once outside of the async function.
+
+### Throwing & Catching Error
+
+`.catch(error => console.log(error.message));` will catch rejected error from fetch.  
+However, since fetch does not reject HTTP errors, we use if statement to check status.
+
+```
+const getBooks = async () => {
+  const response = await fetch('bmo.json');
+
+  if (response.status !== 200) {
+    throw new Error('cannot fetch the data');
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+getBooks()
+  .then(data => console.log(data))
+  .catch(error => console.log(error.message));
+```

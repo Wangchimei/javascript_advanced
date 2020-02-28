@@ -1,14 +1,21 @@
 // async & await
 
-const getTodos = async () => {
+const getBooks = async () => {
   // stops js from assigning the variable until the promise has resolved
   const response = await fetch('bmo.json');
+
+  if (response.status !== 200) {
+    throw new Error('cannot fetch the data');
+  }
+
   const data = await response.json();
   return data;
 };
 
 // use then here for promise
-getTodos().then(data => console.log(data));
+getBooks()
+  .then(data => console.log(data))
+  .catch(error => console.log(error.message));
 
 //? return promise
 // const test = getTodos();
