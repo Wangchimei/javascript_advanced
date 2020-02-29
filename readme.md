@@ -302,7 +302,7 @@ let age = 25;
 // console.log(age === '25'); //false
 ```
 
-## Type Conversion
+### Type Conversion
 
 Using `typeof` operator to check the type of something (variables), e.g. `typeof name`
 
@@ -446,7 +446,7 @@ likes[1];   //"Psyduck"
 
   `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
 
-  ##### Converting a for loop to forEach:
+  #### Converting a for loop to forEach:
 
   ```
   const people = ["Chopper", "Luigi", "Bmo"];
@@ -477,7 +477,7 @@ likes[1];   //"Psyduck"
 
   `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
 
-  ##### Filtering out non-premium users:
+  #### Filtering out non-premium users:
 
   ```
   const users = [
@@ -506,7 +506,7 @@ likes[1];   //"Psyduck"
 
   `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
 
-  ##### Special prices only on those are over 30
+  #### Special prices only on those are over 30
 
   ```
   const products = [
@@ -558,7 +558,7 @@ likes[1];   //"Psyduck"
 
   `initialValue` - (optional) A value to be passed to the function as the initial value.
 
-  ##### Returning the sum of an array
+  #### Returning the sum of an array
 
   ```
   let number = [1, 2, 3, 4];
@@ -566,7 +566,7 @@ likes[1];   //"Psyduck"
   number.reduce((acc, cur) => acc + cur, 5); // 15
   ```
 
-  ##### Returning how many score are over 60
+  #### Returning how many score are over 60
 
   ```
   const scores = [10, 20, 60, 40, 70, 90, 30, 80];
@@ -580,7 +580,7 @@ likes[1];   //"Psyduck"
   console.log(result);    // 4
   ```
 
-  ##### Returning the sum of Bmo's score
+  #### Returning the sum of Bmo's score
 
   ```
   const students = [
@@ -601,14 +601,14 @@ likes[1];   //"Psyduck"
   console.log(bmoTotal);   // 120
   ```
 
-  ##### Returning an array
+  #### Returning an array
 
   ```
   let flattened = [[0, 1], [2, 3], [4, 5]];
   flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
   ```
 
-  ##### Counting instances of values in an object
+  #### Counting instances of values in an object
 
   ```
   let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
@@ -662,7 +662,7 @@ likes[1];   //"Psyduck"
   name.sort(); //  ["Bmo", "Chopper", "Luigi"]
   ```
 
-  ##### Sorting numbers
+  #### Sorting numbers
 
   ```
   const scores = [10, 50, 20, 5, 35, 70, 45];
@@ -671,7 +671,7 @@ likes[1];   //"Psyduck"
   scores.sort((a, b) => b - a)   // [70, 50, 45, 35, 20, 10, 5]
   ```
 
-  ##### Sorting objects
+  #### Sorting objects
 
   ```
   const students = [
@@ -682,23 +682,27 @@ likes[1];   //"Psyduck"
     {name: 'Luigi', score: 70}
   ];
 
-  // players.sort((a,b) => {
-  //   if(a.score > b.score){
-  //     return -1;  // a(bigger) should come first -> return negative
-  //   } else if (b.score > a.score){
-  //     return 1;   // b(bigger) should come first -> return positive
-  //   } else {
-  //     return 0;   // the same, no order is needed -> return zero
-  //   }
-  // });
-
   students.sort((a,b) => b.score - a.score);  // shorter version(descending order)
   console.log(players);
   ```
 
+  `students.sort((a,b) => b.score - a.score);` is the shorter version of below.
+
+  ```
+  players.sort((a,b) => {
+     if(a.score > b.score){
+       return -1;  // a(bigger) should come first -> return negative
+     } else if (b.score > a.score){
+       return 1;   // b(bigger) should come first -> return positive
+     } else {
+       return 0;   // the same, no order is needed -> return zero
+     }
+  });
+  ```
+
 ## Object literals
 
-#### Create an object literal with `key: value` pairs.
+### Create an object literal with `key: value` pairs.
 
 ```
 let user = {
@@ -709,7 +713,7 @@ let user = {
 }
 ```
 
-#### Access and update the properties - dot notation or square bracket notation
+### Access and update the properties - _dot notation_ or _square bracket notation_
 
 1. dot notation `.` (used this most of the time)
 
@@ -728,7 +732,7 @@ const works = 'blogs'
 console.log(user[works]);
 ```
 
-#### Add methods
+### Add methods
 
 ```
 let user = {
@@ -749,7 +753,7 @@ user.phrase();
 user.logBlogs();
 ```
 
-#### Objects in Arrays
+### Objects in Arrays
 
 ```
 let user = {
@@ -765,7 +769,7 @@ let user = {
 user.logBlogs();
 ```
 
-### `this` keyword
+## `this` keyword
 
 `this` keyword is an context object, and it represents the context in which the current code is executing.  
 Depending on where and how `this` is used, the value is going to be different.  
@@ -959,7 +963,7 @@ console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
 
 ### For Loop
 
-##### Syntax
+#### Syntax
 
 ```
 for ([initialization]; [condition]; [final-expression]) {
@@ -973,8 +977,8 @@ for ([initialization]; [condition]; [final-expression]) {
 
 `final-expression` - A statement that is executed at the end of each loop as long as the condition evaluates to true.
 
-**NOTE**
-Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.
+**NOTE:**  
+Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.  
 Variables declared with `let` are local to the statement.
 
 ```
@@ -986,14 +990,12 @@ for (let i = 0; i < name.length; i++) {
 
 ### While Loop
 
-##### Syntax
+#### Syntax
 
 ```
-
 while (condition) {
   statement
 }
-
 ```
 
 ```
@@ -1009,7 +1011,7 @@ while (i < name.length) {
 
 The condition is evaluated after executing the statement, resulting in the specified statement executing **at least once**.
 
-##### Syntax
+#### Syntax
 
 ```
 do {
@@ -1042,14 +1044,14 @@ if (!!list) {
 }
 ```
 
-`!list` - turn array into Boolean (ture)  
+`!list` - turn array into Boolean (true)  
 `!!list` - the opposite of true (false)
 
 ### If / Else if / Else Statement
 
 The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed.
 
-##### Syntax
+#### Syntax
 
 ```
 if (condition) {
@@ -1066,7 +1068,7 @@ if (condition) {
 Best practice is to be used in evaluating multi-possible values of a single variable.
 Note: switch statement is using **strict equality** to check values.
 
-##### Syntax
+#### Syntax
 
 ```
 switch (expression) {
@@ -1113,7 +1115,7 @@ switch(grade){
 
 ### Break and Continue
 
-`break` - terminates execution of the current loop
+`break` - terminates execution of the current loop  
 `continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
 
 ```
@@ -1156,7 +1158,7 @@ const _variable_ = function (_parameters_) {
   ...
 }
 
-cnosole.log(_variable_())
+console.log(_variable_())
 ```
 
 ### Block Scope
@@ -1226,7 +1228,7 @@ const greeting = function() {
 greeting();
 ```
 
-##### Default value in functions
+#### Default value in functions
 
 ```
 const speak = function(name = 'Luigi', time = 'night'){
@@ -1240,7 +1242,7 @@ speak('Bowser'); good night Bowser
 
 ### Arrow Functions
 
-##### Syntax
+#### Syntax
 
 ```
 (param1, param2, …, paramN) => { statements }
@@ -1255,7 +1257,7 @@ speak('Bowser'); good night Bowser
 singleParam => { statements }
 ```
 
-##### Example
+#### Example
 
 ```
 const calcArea = function(radius){
@@ -1288,7 +1290,7 @@ myFunction(value => {
 
 ```
 
-##### Example
+#### Example
 
 ```
 
@@ -1317,25 +1319,25 @@ people.forEach(logPeople);
 
 Methods are functions but they are functions that are defined on **an object** and associated with **the object**.  
 Even though they are both functions, the way to invoke a function and a method is different.  
-To invoke functions: using by calling function name and parentheses, such as `greet()`  
-To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`
+To invoke functions: using by calling function name and parentheses, such as `greet()`.  
+To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpperCase()`.
 
 ## Document Object Model (DOM)
 
 ### Query the DOM
 
-[Single Element]
+**[Single Element]**
 
 1. `document.querySelector('#name')`
 2. `document.getElementById('name')`
 
-[Multiple Elements]
+**[Multiple Elements]**
 
 1. `document.querySelectorAll('.error')` -> NodeList(3) [div.error, div.error, div.error]
 2. `document.getElementsByClassName('error')` -> HTMLCollection(3) [div.error, div.error, div.error]
 3. `document.getElementsByTagName('h2')` -> HTMLCollection(3) [h2.text-normal, h2.text-normal, h2.mb-2]
 
-**Note**:  
+**Note:**  
 `querySelectorAll('.error')` returns a `NodeList`  
 `getElementsByClassName('error')` & `getElementsByTagName('h2')` returns a `HTMLCollection`  
 To literate `HTMLCollection`, you need to convert to array type using `Array.from()`.
@@ -1381,7 +1383,7 @@ HTML :
   greeting.innerText += 'Good day!';
   ```
 
-  ##### Difference between `.textContent`
+  #### Difference between `.textContent`
 
   HTML:
 
@@ -1653,7 +1655,7 @@ ul.addEventListener('click', e => {
 - `reset`  
   The reset event fires when a `<form>` is reset.
 
-  ##### Example: logging timestamp when submit or reset
+  #### Example: logging timestamp when submit or reset
 
   HTML
 
@@ -1693,7 +1695,7 @@ ul.addEventListener('click', e => {
   - When the user commits the change explicitly (e.g., by selecting a value from a `<select>`'s dropdown with a mouse click, by selecting a date from a date picker for `<input type="date">`, by selecting a file in the file picker for `<input type="file">`, etc.);
   - When the element loses focus after its value was changed, but not commited (e.g., after editing the value of `<textarea>` or `<input type="text">`).
 
-  ##### Difference between `input` and `change`
+  #### Difference between `input` and `change`
 
   `input` - Output text changes as soon as the input value changes.  
   `change` - The change event doesn't fire until the control loses focus.
@@ -2016,8 +2018,8 @@ request.send();
   XMLHttpRequest.open(method, url, async)
   ```
 
-  `method` - The HTTP request method to use, such as "GET", "POST", "PUT", "DELETE", etc.
-  `url` - The URL to send the request to
+  `method` - The HTTP request method to use, such as "GET", "POST", "PUT", "DELETE", etc.  
+  `url` - The URL to send the request to  
   `async` - (optional) indicates whether or not to perform the operation asynchronously (true as default)
 
 - `send()` - sends the request to the server.  
@@ -2211,7 +2213,8 @@ const fetchResponsePromise = fetch(resource [, init])
 `init` - (optional) e.g. `method` (GET, POST...etc)
 
 The `fetch()` method takes one mandatory argument, the path to the resource you want to fetch.  
-It returns a _promise_ which is fulfilled once the response is available. The promise resolves to the Response object representing the response to your request.
+It returns a _promise_ which is fulfilled once the response is available.  
+The promise resolves to the Response object representing the response to your request.
 
 ```
 fetch('wrong.json')
@@ -2223,7 +2226,7 @@ fetch('wrong.json')
   });
 ```
 
-A fetch() promise **does not** reject on HTTP errors (404, etc.), it only rejects when a network error is encountered.  
+A `fetch()` promise **does not** reject on HTTP errors (404, etc.), it only rejects when a network error is encountered.  
 Instead, a `then()` handler must check the Response.ok and/or Response.status properties.
 
 #### Parsing JSON
