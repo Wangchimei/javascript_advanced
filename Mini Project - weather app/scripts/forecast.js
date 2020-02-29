@@ -23,12 +23,12 @@ const getWeather = async cityCode => {
   return data;
 };
 
-getCity('Taipei')
-  .then(data => {
-    // console.log(data);
-    return getWeather(data.Key);
-  })
-  .then(weatherData => {
-    console.log(weatherData);
-  })
-  .catch(error => console.log(error));
+//? Testing
+// getCity('Taipei')
+//   .then(data => {
+//     return getWeather(data.Key);
+//   })
+//   .then(weatherData => {
+//     console.log(weatherData);
+//   })
+//   .catch(error => console.log(error));
