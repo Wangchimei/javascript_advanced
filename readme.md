@@ -2,87 +2,87 @@
 
 ## Table of Content
 
-- [Data Types](https://github.com/Wangchimei/javascript_advanced#data-types)
-  ( _[See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types)_ )
+- [Data Types](https://github.com/Wangchimei/javascript_advanced#data-types-%CE%B4)
+  ( _[See Primitive Types vs Reference Types](https://github.com/Wangchimei/javascript_advanced#primitive-types-vs-reference-types-%CE%B4)_ )
 
-  - [String](https://github.com/Wangchimei/javascript_advanced#string)
-  - [Number](https://github.com/Wangchimei/javascript_advanced#number)
-  - [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)
-  - [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)
-  - [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)
-  - [Object](https://github.com/Wangchimei/javascript_advanced#array)
-    - [Array](https://github.com/Wangchimei/javascript_advanced#array)
-      - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-1)
-      - [Methods with Callback Function](https://github.com/Wangchimei/javascript_advanced#methods-with-callback-function)
-    - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals)
-      - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword)
-    - [Math](https://github.com/Wangchimei/javascript_advanced#math)
-    - [Date](https://github.com/Wangchimei/javascript_advanced#date)
+  - [String](https://github.com/Wangchimei/javascript_advanced#string-%CE%B4)
+  - [Number](https://github.com/Wangchimei/javascript_advanced#number-%CE%B4)
+  - [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined-%CE%B4)
+  - [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined-%CE%B4)
+  - [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean-%CE%B4)
+  - Object
+    - [Array](https://github.com/Wangchimei/javascript_advanced#array-%CE%B4)
+      - [Methods](https://github.com/Wangchimei/javascript_advanced#methods-%CE%B4)
+      - [Methods with Callback Function](https://github.com/Wangchimei/javascript_advanced#methods-with-callback-function-%CE%B4)
+    - [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals-%CE%B4)
+      - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword-%CE%B4)
+    - [Math](https://github.com/Wangchimei/javascript_advanced#math-%CE%B4)
+    - [Date](https://github.com/Wangchimei/javascript_advanced#date-%CE%B4)
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
 
-  - [For loop](https://github.com/Wangchimei/javascript_advanced#for-loop)
-  - [While Loop](https://github.com/Wangchimei/javascript_advanced#while-loop)
-  - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loop)
+  - [For loop](https://github.com/Wangchimei/javascript_advanced#for-loop-%CE%B4)
+  - [While Loop](https://github.com/Wangchimei/javascript_advanced#while-loop-%CE%B4)
+  - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loo-%CE%B4)
 
 - [Conditionals](https://github.com/Wangchimei/javascript_advanced#conditionals)
 
-  - [If / Else if / Else Statement](https://github.com/Wangchimei/javascript_advanced#if--else-if--else-statement)
-  - [Switch Statement](https://github.com/Wangchimei/javascript_advanced#switch-statement)
-  - [Break and Continue](https://github.com/Wangchimei/javascript_advanced#break-and-continue)
+  - [If / Else if / Else Statement](https://github.com/Wangchimei/javascript_advanced#if--else-if--else-statement-%CE%B4)
+  - [Switch Statement](https://github.com/Wangchimei/javascript_advanced#switch-statement-%CE%B4)
+  - [Break and Continue](https://github.com/Wangchimei/javascript_advanced#break-and-continue-%CE%B4)
 
 - [Functions](https://github.com/Wangchimei/javascript_advanced#functions)
 
-  - [Block Scope](https://github.com/Wangchimei/javascript_advanced#block-scope)
-  - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#regular-functions)
-  - [Arrow Functions](https://github.com/Wangchimei/javascript_advanced#arrow-functions)
-  - [Callback Functions](https://github.com/Wangchimei/javascript_advanced#callback-functions)
-  - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods)
+  - [Block Scope](https://github.com/Wangchimei/javascript_advanced#block-scope-%CE%B4)
+  - [Regular Functions](https://github.com/Wangchimei/javascript_advanced#regular-functions-%CE%B4)
+  - [Arrow Functions](https://github.com/Wangchimei/javascript_advanced#arrow-functions-%CE%B4)
+  - [Callback Functions](https://github.com/Wangchimei/javascript_advanced#callback-functions-%CE%B4)
+  - [Functions vs Methods](https://github.com/Wangchimei/javascript_advanced#functions-vs-methods-%CE%B4)
 
 - [DOM](https://github.com/Wangchimei/javascript_advanced#document-object-model-dom)
 
-  - [Query the DOM](https://github.com/Wangchimei/javascript_advanced#query-the-dom)
-  - [DOM Manipulation](https://github.com/Wangchimei/javascript_advanced#dom-manipulation)
+  - [Query the DOM](https://github.com/Wangchimei/javascript_advanced#query-the-dom-%CE%B4)
+  - [DOM Manipulation](https://github.com/Wangchimei/javascript_advanced#dom-manipulation-%CE%B4)
 
-- [Events](https://github.com/Wangchimei/javascript_advanced#events)
+- [Events](https://github.com/Wangchimei/javascript_advanced#events-%CE%B4)
 
-  - [Event Bubbling](https://github.com/Wangchimei/javascript_advanced#event-bubbling)
-  - [Event Delegation](https://github.com/Wangchimei/javascript_advanced#event-delegation)
-  - [Event Reference](https://github.com/Wangchimei/javascript_advanced#event-reference)
-    - [Form Event](https://github.com/Wangchimei/javascript_advanced#form-events)
-    - [View Events](https://github.com/Wangchimei/javascript_advanced#view-events)
-    - [Keyboard Events](https://github.com/Wangchimei/javascript_advanced#keyboard-events)
-    - [Clipboard Events](https://github.com/Wangchimei/javascript_advanced#clipboard-events)
-    - [Mouse Events](https://github.com/Wangchimei/javascript_advanced#mouse-events)
-    - [Drag & Drop events](https://github.com/Wangchimei/javascript_advanced#drag--drop-events)
+  - [Event Bubbling](https://github.com/Wangchimei/javascript_advanced#event-bubbling-%CE%B4)
+  - [Event Delegation](https://github.com/Wangchimei/javascript_advanced#event-delegation-%CE%B4)
+  - [Event Reference](https://github.com/Wangchimei/javascript_advanced#event-reference-%CE%B4)
+    - [Form Event](https://github.com/Wangchimei/javascript_advanced#form-events-%CE%B4)
+    - [View Events](https://github.com/Wangchimei/javascript_advanced#view-events-%CE%B4)
+    - [Keyboard Events](https://github.com/Wangchimei/javascript_advanced#keyboard-events-%CE%B4)
+    - [Clipboard Events](https://github.com/Wangchimei/javascript_advanced#clipboard-events-%CE%B4)
+    - [Mouse Events](https://github.com/Wangchimei/javascript_advanced#mouse-events-%CE%B4)
+    - [Drag & Drop events](https://github.com/Wangchimei/javascript_advanced#drag--drop-events-%CE%B4)
 
 - [Regular Expression](https://github.com/Wangchimei/javascript_advanced#regular-expression-regex)
 
-  - [Characters Sets](https://github.com/Wangchimei/javascript_advanced#characters-sets)
-  - [Quantifiers](https://github.com/Wangchimei/javascript_advanced#quantifiers)
-  - [Group Parenthesis](https://github.com/Wangchimei/javascript_advanced#group-parenthesis)
-  - [Other](https://github.com/Wangchimei/javascript_advanced#other)
-  - [Flags](https://github.com/Wangchimei/javascript_advanced#flags)
-  - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression)
+  - [Characters Sets](https://github.com/Wangchimei/javascript_advanced#characters-sets-%CE%B4)
+  - [Quantifiers](https://github.com/Wangchimei/javascript_advanced#quantifiers-%CE%B4)
+  - [Group Parenthesis](https://github.com/Wangchimei/javascript_advanced#group-parenthesis-%CE%B4)
+  - [Other](https://github.com/Wangchimei/javascript_advanced#other-%CE%B4)
+  - [Flags](https://github.com/Wangchimei/javascript_advanced#flags-%CE%B4)
+  - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression-%CE%B4)
 
 - [Asynchronous JavaScript](https://github.com/Wangchimei/javascript_advanced#asynchronous-javascript)
-  - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#promise)
-  - [Promise](https://github.com/Wangchimei/javascript_advanced#promise)
-  - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api)
-  - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await)
-  - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error)
+  - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
+  - [Promise](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
+  - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api-%CE%B4)
+  - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await-%CE%B4)
+  - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error-%CE%B4)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-| Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                                                                                                                               |
-| :------------------------------------------------------------------------------- | :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [String](https://github.com/Wangchimei/javascript_advanced#string)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals)                                                                                                         |
-| [Number](https://github.com/Wangchimei/javascript_advanced#number)               | Numerical values (1, 2, 100, 3.14)                    |                                                                                                                                                                                                                                                                                        |
-| [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined)      | Explicitly set a variable with no value               |                                                                                                                                                                                                                                                                                        |
-| [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined) | For variables that have not yet been defined          |                                                                                                                                                                                                                                                                                        |
-| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean)             | true / false                                          |                                                                                                                                                                                                                                                                                        |
-| [Object](https://github.com/Wangchimei/javascript_advanced#array)                | Complex data structures                               | [Array](https://github.com/Wangchimei/javascript_advanced#array), [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals), [Math](https://github.com/Wangchimei/javascript_advanced#math), [Date](https://github.com/Wangchimei/javascript_advanced#date) |
-| Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                                                                                                                        |
+| Types                                                                                   | Brief definition                                      | Sections                                                                                                                                                                                                                                                                                                           |
+| :-------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [String](https://github.com/Wangchimei/javascript_advanced#string-%CE%B4)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals-%CE%B4)                                                                                                                              |
+| [Number](https://github.com/Wangchimei/javascript_advanced#number-%CE%B4)               | Numerical values (1, 2, 100, 3.14)                    |                                                                                                                                                                                                                                                                                                                    |
+| [Null](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined-%CE%B4)      | Explicitly set a variable with no value               |                                                                                                                                                                                                                                                                                                                    |
+| [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined-%CE%B4) | For variables that have not yet been defined          |                                                                                                                                                                                                                                                                                                                    |
+| [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean-%CE%B4)             | true / false                                          |                                                                                                                                                                                                                                                                                                                    |
+| Object                                                                                  | Complex data structures                               | [Array](https://github.com/Wangchimei/javascript_advanced#array-%CE%B4), [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals-%CE%B4), [Math](https://github.com/Wangchimei/javascript_advanced#math-%CE%B4), [Date](https://github.com/Wangchimei/javascript_advanced#date-%CE%B4) |
+| Symbol                                                                                  | Used with objects                                     |                                                                                                                                                                                                                                                                                                                    |
 
 ## Primitive Types vs Reference Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
@@ -1649,7 +1649,7 @@ ul.addEventListener('click', e => {
 
 ### Event Reference [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-#### Form events
+#### Form events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `submit`  
   The submit event fires when a `<form>` is submitted. (enter pressing enter works)  
@@ -1725,7 +1725,7 @@ ul.addEventListener('click', e => {
   });
   ```
 
-#### View events
+#### View events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `resize`  
   The resize event fires when the document view (window) has been resized.
@@ -1757,7 +1757,7 @@ ul.addEventListener('click', e => {
   })
   ```
 
-#### Keyboard events
+#### Keyboard events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 [Key Code](https://keycode.info/)
 
@@ -1773,7 +1773,7 @@ ul.addEventListener('click', e => {
   });
   ```
 
-#### Clipboard events
+#### Clipboard events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `copy`  
   The copy event fires when the user initiates a copy action through the browser's user interface.  
@@ -1791,7 +1791,7 @@ ul.addEventListener('click', e => {
 
   Other clipboard events: `cut`, `paste`
 
-#### Mouse events
+#### Mouse events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `click`  
   The element get clicked (both pressed and released) with a mouse's primary mouse button.  
@@ -1853,7 +1853,7 @@ ul.addEventListener('click', e => {
   });
   ```
 
-#### Drag & Drop events
+#### Drag & Drop events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `drag`  
   The drag event is fired every few hundred milliseconds as an element or text selection is being dragged.
