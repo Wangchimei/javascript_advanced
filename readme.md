@@ -41,6 +41,9 @@
 
 - [DOM](https://github.com/Wangchimei/javascript_advanced#document-object-model-dom)
 
+  - [Query the DOM](https://github.com/Wangchimei/javascript_advanced#query-the-dom)
+  - [DOM Manipulation](https://github.com/Wangchimei/javascript_advanced#dom-manipulation)
+
 - [Events](https://github.com/Wangchimei/javascript_advanced#events)
 
   - [Event Bubbling](https://github.com/Wangchimei/javascript_advanced#event-bubbling)
@@ -69,7 +72,7 @@
   - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await)
   - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error)
 
-## Data Types
+## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 | Types                                                                            | Brief definition                                      | Sections                                                                                                                                                                                                                                                                               |
 | :------------------------------------------------------------------------------- | :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -81,7 +84,7 @@
 | [Object](https://github.com/Wangchimei/javascript_advanced#array)                | Complex data structures                               | [Array](https://github.com/Wangchimei/javascript_advanced#array), [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals), [Math](https://github.com/Wangchimei/javascript_advanced#math), [Date](https://github.com/Wangchimei/javascript_advanced#date) |
 | Symbol                                                                           | Used with objects                                     |                                                                                                                                                                                                                                                                                        |
 
-## Primitive Types vs Reference Types
+## Primitive Types vs Reference Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 | Primitive Types | Reference Type       |
 | :-------------- | :------------------- |
@@ -134,7 +137,7 @@ userOne.score = 50;
 console.log(userOne.score, userTwo.score);  // 50 50
 ```
 
-## String
+## String [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 A sequence of characters, e.g. `let email = "chimei@example.com"`
 
@@ -209,7 +212,7 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
   email.includes('i');  // true
   ```
 
-## Template strings (Template literals)
+## Template strings (Template literals) [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Template literals are string literals allowing embedded expressions.  
 You can use multi-line strings and string interpolation features with them.
@@ -244,7 +247,7 @@ let html = `
 `;
 ```
 
-## Number
+## Number [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Order of operation:
 
@@ -255,7 +258,7 @@ M - Multiplication `*`
 A - Addition `+`  
 S - Subtraction `-`
 
-## Null vs Undefined
+## Null vs Undefined [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `Undefined` - For variables that have not yet been defined (automatically assigned)
 
@@ -275,7 +278,7 @@ S - Subtraction `-`
   // null 3 "the age is null"
   ```
 
-## Boolean
+## Boolean [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will return Boolean.
 
@@ -316,7 +319,7 @@ Boolean('0'); // ture
 Boolean(''); // false
 ```
 
-## Array
+## Array [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 ```
 let likes = ['Bmo', 'Chopper', 'Winnie'];
@@ -326,7 +329,7 @@ likes[1] = "Psyduck";
 likes[1];   //"Psyduck"
 ```
 
-### Methods
+### Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `includes()` - determines whether an array contains a specified element, returning `true` or `false`
 
@@ -428,7 +431,7 @@ likes[1];   //"Psyduck"
   arr4.flat(); // [1, 2, 4, 5]
   ```
 
-### Methods with Callback Function
+### Methods with Callback Function [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `forEach()` - executes a provided function once for each array element
 
@@ -700,7 +703,7 @@ likes[1];   //"Psyduck"
   });
   ```
 
-## Object literals
+## Object literals [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 ### Create an object literal with `key: value` pairs.
 
@@ -769,7 +772,7 @@ let user = {
 user.logBlogs();
 ```
 
-## `this` keyword
+## `this` keyword [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 `this` keyword is an context object, and it represents the context in which the current code is executing.  
 Depending on where and how `this` is used, the value is going to be different.  
@@ -813,7 +816,7 @@ user.logAge();       // {name: "luigi", age: 30, email: "luigi@nintendo.jp", log
 user.logEmail();     // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
 ```
 
-## Math
+## Math [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Math is a built-in object that has properties and methods for mathematical constants and functions.  
 Math works with the Number type. It does **NOT** work with BigInt.
@@ -868,7 +871,7 @@ Math works with the Number type. It does **NOT** work with BigInt.
   console.log(difference(3, 5));   // 2
   ```
 
-## Date
+## Date [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 ```
 const now = new Date();
@@ -961,7 +964,7 @@ console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
 
 ## Loops
 
-### For Loop
+### For Loop [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Syntax
 
@@ -988,7 +991,7 @@ for (let i = 0; i < name.length; i++) {
 }
 ```
 
-### While Loop
+### While Loop [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Syntax
 
@@ -1007,7 +1010,7 @@ while (i < name.length) {
 }
 ```
 
-### Do While Loop
+### Do While Loop [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The condition is evaluated after executing the statement, resulting in the specified statement executing **at least once**.
 
@@ -1047,7 +1050,7 @@ if (!!list) {
 `!list` - turn array into Boolean (true)  
 `!!list` - the opposite of true (false)
 
-### If / Else if / Else Statement
+### If / Else if / Else Statement [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The if statement executes a statement if a specified condition is truthy. If the condition is falsy, another statement can be executed.
 
@@ -1063,7 +1066,7 @@ if (condition) {
 }
 ```
 
-### Switch Statement
+### Switch Statement [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Best practice is to be used in evaluating multi-possible values of a single variable.
 Note: switch statement is using **strict equality** to check values.
@@ -1113,7 +1116,7 @@ switch(grade){
 }
 ```
 
-### Break and Continue
+### Break and Continue [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 `break` - terminates execution of the current loop  
 `continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
@@ -1161,7 +1164,7 @@ const _variable_ = function (_parameters_) {
 console.log(_variable_())
 ```
 
-### Block Scope
+### Block Scope [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Variables defined with `let` are in a block scope.
 However, variables defined with `var` are at global level even if it is defined in a block level.
@@ -1194,7 +1197,7 @@ inside 2nd code block: 50 Mario happy!
 outside code block: 30 happy!
 ```
 
-### Regular Functions
+### Regular Functions [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Function declarations
 
@@ -1240,7 +1243,7 @@ speak(); // good night Luigi
 speak('Bowser'); good night Bowser
 ```
 
-### Arrow Functions
+### Arrow Functions [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Syntax
 
@@ -1271,7 +1274,7 @@ const calcArea = function(radius){
 const calcArea = radius => 3.14 \* radius\*\*2;
 ```
 
-### Callback Functions
+### Callback Functions [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### General premise:
 
@@ -1315,7 +1318,7 @@ people.forEach(logPeople);
 
 ```
 
-### Functions vs Methods
+### Functions vs Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Methods are functions but they are functions that are defined on **an object** and associated with **the object**.  
 Even though they are both functions, the way to invoke a function and a method is different.  
@@ -1324,7 +1327,7 @@ To invoke methods: using `.` (dot notation) on value itself, such as `name.toUpp
 
 ## Document Object Model (DOM)
 
-### Query the DOM
+### Query the DOM [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 **[Single Element]**
 
@@ -1350,7 +1353,7 @@ To literate `HTMLCollection`, you need to convert to array type using `Array.fro
 | .keys()          |                        |
 | .value()         |                        |
 
-### DOM Manipulation
+### DOM Manipulation [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Adding and Changing Page Content
 
@@ -1524,7 +1527,7 @@ console.log(title.previousElementSibling);
 console.log(title.nextElementSibling.parentElement.children);
 ```
 
-## Events
+## Events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 `EventTarget.addEventListener()` sets up a function that will be called whenever the specified event is delivered to the target.
 
@@ -1603,7 +1606,7 @@ btn.addEventListener('click', () => {
 });
 ```
 
-### Event Bubbling
+### Event Bubbling [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Event Bubbling is the event starts from the target element to its parents, then all its ancestors which are on the way to bottom to top.  
 Event will first be triggered at the target element level, if its parents has the same event, it will be triggered as well.
@@ -1631,7 +1634,7 @@ items.forEach(item => {
 });
 ```
 
-### Event Delegation
+### Event Delegation [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Because of Event Bubbling, one of most powerful event handling patterns called Event Delegation can be implemented.  
 The idea is that if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
@@ -1644,7 +1647,7 @@ ul.addEventListener('click', e => {
 });
 ```
 
-### Event Reference
+### Event Reference [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Form events
 
@@ -1873,14 +1876,14 @@ ul.addEventListener('click', e => {
 
 ## Regular expression (RegEx)
 
-#### Define a regular expression
+### Define a regular expression [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Two ways of defining a regular expression in JavaScript
 
 - `const pattern = / regex goes here /` **(common way)**
 - `const pattern = new RegExp(' regex goes here ')`
 
-#### Characters Sets
+### Characters Sets [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The following sequences can be used to match a specific set of characters.
 
@@ -1895,7 +1898,7 @@ The following sequences can be used to match a specific set of characters.
 - `[ABC]` — Matches a character in the given set. For example, [AMT] will only match A, M, and T.
 - `[^abc]` — Matches all the characters not present in the given set. For example, [^a-e] will match all other characters except A, B, C, D, and E.
 
-#### Quantifiers
+### Quantifiers [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 All the expressions above will match a single character at a time.  
 Quantifiers can be used to specify how many characters should be included in the match at once.
@@ -1908,7 +1911,7 @@ Quantifiers can be used to specify how many characters should be included in the
 - `{m,}` - Match **at least m** occurrences with no upper limit to the match.
 - `|` — Matches the expression either before or after the pipe character. For example, `/se(a|e)/` matches both see and sea.
 
-#### Group Parenthesis
+### Group Parenthesis [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `(ABC)` — This will group multiple tokens together and remember the substring matched by them for later use. This is called a capturing group.  
   For example, using `(?:city)` to test "kaohsiung city" will capture "city".
@@ -1927,12 +1930,12 @@ Quantifiers can be used to specify how many characters should be included in the
   The part FN will be included in the match.  
   For example, using `\w+(?!city)` to test "kaohsiung city" will capture "kaohsiung", "city".
 
-#### Other
+### Other [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `^` — Look for the regular expression at the **beginning** of the string (or the beginning of a line if the multiline flag is enabled).
 - `$` — Look for the regular expression at the **end** of the string (or the end of a line if the multiline flag is enabled).
 
-#### Flags
+### Flags [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Flags can be used to control how a regular expression should be interpreted.  
 To specify, flags can be added to the end of a regular expression literal `/cat/i` or to the RegExp constructor `RegExp("cat", 'i')`.
@@ -1942,7 +1945,7 @@ To specify, flags can be added to the end of a regular expression literal `/cat/
 - `m` — Multiline. This flag will make sure that the ^ and \$ tokens look for a match at the beginning or end of each line instead of the whole string.
 - `u` — Unicode. This flag will enable you to use Unicode code point escapes in your regular expression.
 
-#### Test a regular expression
+### Test a regular expression [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `test()`  
   It returns `true` on successful match and `false` otherwise.
@@ -2001,7 +2004,7 @@ To specify, flags can be added to the end of a regular expression literal `/cat/
 
 ## Asynchronous JavaScript
 
-### XMLHttpRequest (XHR)
+### XMLHttpRequest (XHR) [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 #### Making a request
 
@@ -2093,7 +2096,7 @@ getTodos((error, data) => {
 });
 ```
 
-### Promise
+### Promise [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.  
 This can be used to avoid nesting callbacks (so-called callback hell).
@@ -2200,7 +2203,7 @@ getBooks('bmo.json')
 `return getBooks('winnie.json')` will return a promise which allows to use `then` for resolved promise.  
 `.catch()` will catch every error in all http requests.
 
-### Fetch API
+### Fetch API [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The Fetch API provides an interface for fetching resources (including across the network).  
 It will seem familiar to anyone who has used XMLHttpRequest, but the new API provides a more powerful and flexible feature set.
@@ -2254,7 +2257,7 @@ The `fetch` specification differs from`jQuery.ajax()` in three main ways:
 2. `fetch()` will **NOT** receive cross-site cookies. You can’t establish a cross site session using `fetch()`. Set-Cookie headers from other sites are silently ignored.
 3. `fetch()` will **NOT** send cookies, unless you set the credentials init option.
 
-### Async & Await
+### Async & Await [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The `async function` declaration defines an asynchronous function — a function that returns an AsyncFunction object, an implicit Promise as its result.  
 The `await` operator is used to wait for a Promise. It can only be used inside an async function.
@@ -2274,7 +2277,7 @@ getBooks()
 
 **Note**: `getBook()` is a promise, therefore `then()` is needed to be used once outside of the async function.
 
-### Throwing & Catching Error
+### Throwing & Catching Error [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 `.catch(error => console.log(error.message));` will catch rejected error from fetch.  
 However, since fetch does not reject HTTP errors, we use if statement to check status.
