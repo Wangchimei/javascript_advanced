@@ -66,11 +66,17 @@
   - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression-%CE%B4)
 
 - [Asynchronous JavaScript](https://github.com/Wangchimei/javascript_advanced#asynchronous-javascript)
+
   - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#xmlhttprequest-xhr-%CE%B4)
   - [Promise](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
   - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api-%CE%B4)
   - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await-%CE%B4)
   - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error-%CE%B4)
+
+- [Local Storage](https://github.com/Wangchimei/javascript_advanced#local-storage-%CE%B4)
+
+  - [Single Data]()
+  - [Object Data]()
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
@@ -2297,4 +2303,87 @@ const getBooks = async () => {
 getBooks()
   .then(data => console.log(data))
   .catch(error => console.log(error.message));
+```
+
+## Local Storage [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+LocalStorage property allows you to access a Storage object for the Document's origin.  
+The stored data is saved across browser sessions.
+
+### Store and Update Data
+
+`setItem()` method stores a key name and value in local storage, and will add that key & value, or update value if it already exists. `sto
+
+```
+// store
+localStorage.setItem(keyName, keyValue);
+
+// update
+localStorage.setItem(keyName, newValue);
+localStorage.keyName = newValue
+```
+
+### Retrieve Data
+
+Using `getItem()` method passing a key name will return a key's value.
+
+```
+localStorage.getItem(keyName);
+```
+
+### Remove Data
+
+**Remove single item**
+
+Using `removeItem()` method passing a key name will remove that key from the given Storage object if it exists.
+
+```
+localStorage.removeItem(keyName);
+```
+
+**Remove all items**
+
+`clear()` method clears all keys stored in a given Storage object.
+
+```
+localStorage.clear();
+```
+
+### Store Object Data
+
+Local storage can only store string.  
+Using `JSON.stringify()` to convert the object to strings.
+
+```
+const books = [
+  {
+    title: 'Another Adventure Day',
+    author: 'Bmo',
+    year: 2000,
+  },
+  {
+    title: 'My days as a pet',
+    author: 'Chopper',
+    year: 2020,
+  },
+  {
+    title: 'Honey Pot, huh',
+    author: 'Winnie',
+    year: 2006,
+  },
+];
+
+localStorage.setItem('books', JSON.stringify(books));
+
+```
+
+### Retrieve Object Data
+
+Retrieved data will be strings.  
+Using `JSON.parse()` to convert back to the original object.
+
+```
+const storedData = localStorage.getItem('books');
+
+console.log(JSON.parse(storedData));
 ```
