@@ -20,7 +20,7 @@ const getWeather = async cityCode => {
   const response = await fetch(baseUrl + query);
   const data = await response.json();
 
-  return data;
+  return data[0];
 };
 
 //? Testing
