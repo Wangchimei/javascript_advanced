@@ -23,7 +23,7 @@
 
   - [For loop](https://github.com/Wangchimei/javascript_advanced#for-loop-%CE%B4)
   - [While Loop](https://github.com/Wangchimei/javascript_advanced#while-loop-%CE%B4)
-  - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loo-%CE%B4)
+  - [Do While Loop](https://github.com/Wangchimei/javascript_advanced#do-while-loop-%CE%B4)
 
 - [Conditionals](https://github.com/Wangchimei/javascript_advanced#conditionals)
 
@@ -66,7 +66,7 @@
   - [Test a regular expression](https://github.com/Wangchimei/javascript_advanced#test-a-regular-expression-%CE%B4)
 
 - [Asynchronous JavaScript](https://github.com/Wangchimei/javascript_advanced#asynchronous-javascript)
-  - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
+  - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#xmlhttprequest-xhr-%CE%B4)
   - [Promise](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
   - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api-%CE%B4)
   - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await-%CE%B4)
