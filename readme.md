@@ -75,8 +75,8 @@
 
 - [Local Storage](https://github.com/Wangchimei/javascript_advanced#local-storage-%CE%B4)
 
-  - [Single Data]()
-  - [Object Data]()
+  - [Single Data](https://github.com/Wangchimei/javascript_advanced#store-and-update-data)
+  - [Object Data](https://github.com/Wangchimei/javascript_advanced#store-object-data)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
