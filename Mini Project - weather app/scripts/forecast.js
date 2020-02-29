@@ -1,4 +1,4 @@
-const key = 'iqFUhJCufsCyfykVD2rnukYrLzOVsYAn';
+const key = '';
 
 // First, using Locations API (City Search) to get city code
 const getCity = async city => {
