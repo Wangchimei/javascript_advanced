@@ -2261,27 +2261,35 @@ $.get('bmo.json')
 
 #### Using Generator
 
+[q library](https://github.com/kriskowal/q)
+
 ```
-getBooks(function*() {
+getBooks(function* generator() {
   let bmoBooks = yield $.get('bmo.json');
   console.log(bmoBooks);
+
   let winnieBooks = yield $.get('winnie.json');
   console.log(winnieBooks);
+
   let chopperBooks = yield $.get('chopper.json');
   console.log(chopperBooks);
 });
 
 function getBooks(generator) {
-  let gen = generator();
+  // set up generator / iterator
+  let books = generator();
 
+  // create function to handle yielded value
   function handle(yielded) {
     if (!yielded.done) {
       yielded.value.then(data => {
-        return handle(gen.next(data));
+        return handle(books.next(data));
       });
     }
   }
-  return handle(gen.next());
+
+  // return handle function, passing
+  return handle(books.next());
 }
 ```
 

@@ -51,114 +51,119 @@
 
 // ! Using Promise
 
-const getBooks = resource => {
-  return new Promise((resolve, reject) => {
-    //making http requests
-    const request = new XMLHttpRequest();
-    request.addEventListener('readystatechange', () => {
-      if (request.readyState === 4 && request.status === 200) {
-        const data = JSON.parse(request.response);
-        resolve(data);
-      } else if (request.readyState === 4) {
-        reject('error');
-      }
-    });
+// const getBooks = resource => {
+//   return new Promise((resolve, reject) => {
+//     //making http requests
+//     const request = new XMLHttpRequest();
+//     request.addEventListener('readystatechange', () => {
+//       if (request.readyState === 4 && request.status === 200) {
+//         const data = JSON.parse(request.response);
+//         resolve(data);
+//       } else if (request.readyState === 4) {
+//         reject('error');
+//       }
+//     });
 
-    request.open('GET', resource);
-    request.send();
-  });
-};
+//     request.open('GET', resource);
+//     request.send();
+//   });
+// };
 
-getBooks('bmo.json')
-  .then(data => {
-    console.log('promise 1 resolved:', data);
-    return getBooks('winnie.json');
-  })
-  .then(data => {
-    console.log('promise 2 resolved:', data);
-    return getBooks('chopper.json');
-  })
-  .then(data => {
-    console.log('promise 3 resolved:', data);
-  })
-  .catch(error => {
-    console.log('promise rejected:', error);
-  });
+// getBooks('bmo.json')
+//   .then(data => {
+//     console.log('promise 1 resolved:', data);
+//     return getBooks('winnie.json');
+//   })
+//   .then(data => {
+//     console.log('promise 2 resolved:', data);
+//     return getBooks('chopper.json');
+//   })
+//   .then(data => {
+//     console.log('promise 3 resolved:', data);
+//   })
+//   .catch(error => {
+//     console.log('promise rejected:', error);
+//   });
 
-//! Using Promise (different writing)
-const getBooks = resource => {
-  return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
-    request.open('GET', resource);
-    request.onload = () => {
-      if (request.status === 200) {
-        resolve(JSON.parse(request.response));
-      } else {
-        reject(request.statusText);
-      }
-    };
-    request.onerror = () => {
-      reject(request.statusText);
-    };
-    request.send();
-  });
-};
+// //! Using Promise (different writing)
+// const getBooks = resource => {
+//   return new Promise((resolve, reject) => {
+//     const request = new XMLHttpRequest();
+//     request.open('GET', resource);
+//     request.onload = () => {
+//       if (request.status === 200) {
+//         resolve(JSON.parse(request.response));
+//       } else {
+//         reject(request.statusText);
+//       }
+//     };
+//     request.onerror = () => {
+//       reject(request.statusText);
+//     };
+//     request.send();
+//   });
+// };
 
-let promise = getBooks('bmo.json');
-promise
-  .then(data => {
-    console.log('promise 1 resolved:', data);
-    return getBooks('winnie.json');
-  })
-  .then(data => {
-    console.log('promise 2 resolved:', data);
-    return getBooks('chopper.json');
-  })
-  .then(data => {
-    console.log('promise 3 resolved:', data);
-  })
-  .catch(error => {
-    console.log('promise rejected:', error);
-  });
+// let promise = getBooks('bmo.json');
+// promise
+//   .then(data => {
+//     console.log('promise 1 resolved:', data);
+//     return getBooks('winnie.json');
+//   })
+//   .then(data => {
+//     console.log('promise 2 resolved:', data);
+//     return getBooks('chopper.json');
+//   })
+//   .then(data => {
+//     console.log('promise 3 resolved:', data);
+//   })
+//   .catch(error => {
+//     console.log('promise rejected:', error);
+//   });
 
-//! jquery
-$.get('bmo.json')
-  .then(data => {
-    console.log('promise 1 resolved:', data);
-    return $.get('winnie.json');
-  })
-  .then(data => {
-    console.log('promise 2 resolved:', data);
-    return $.get('chopper.json');
-  })
-  .then(data => {
-    console.log('promise 3 resolved:', data);
-  })
-  .catch(error => {
-    console.log('promise rejected:', error);
-  });
+// //! jquery
+// $.get('bmo.json')
+//   .then(data => {
+//     console.log('promise 1 resolved:', data);
+//     return $.get('winnie.json');
+//   })
+//   .then(data => {
+//     console.log('promise 2 resolved:', data);
+//     return $.get('chopper.json');
+//   })
+//   .then(data => {
+//     console.log('promise 3 resolved:', data);
+//   })
+//   .catch(error => {
+//     console.log('promise rejected:', error);
+//   });
 
 //! Generator
-window.onload = function() {
-  genwrap(function*() {
-    var bmoBooks = yield $.get('bmo.json');
-    console.log(bmoBooks);
-    var winnieBooks = yield $.get('winnie.json');
-    console.log(winnieBooks);
-    var chopperBooks = yield $.get('chopper.json');
-    console.log(chopperBooks);
-  });
 
-  function genwrap(generator) {
-    var gen = generator();
+getBooks(function* generator() {
+  let bmoBooks = yield $.get('bmo.json');
+  console.log(bmoBooks);
 
-    function handle(yielded) {
-      if (!yielded.done) {
-        yielded.value.then(data => {
-          return handle(gen.next(data));
-        });
-      }
+  let winnieBooks = yield $.get('winnie.json');
+  console.log(winnieBooks);
+
+  let chopperBooks = yield $.get('chopper.json');
+  console.log(chopperBooks);
+});
+
+function getBooks(generator) {
+  // set up generator / iterator
+  let books = generator();
+
+  // create function to handle yielded value
+  function handle(yielded) {
+    if (!yielded.done) {
+      yielded.value.then(data => {
+        return handle(books.next(data));
+      });
     }
-    return handle(gen.next());
   }
-};
+
+  // return handle function, passing
+  return handle(books.next());
+}
