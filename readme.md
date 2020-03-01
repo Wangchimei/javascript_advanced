@@ -79,6 +79,13 @@
   - [Single Data](https://github.com/Wangchimei/javascript_advanced#store-and-update-data)
   - [Object Data](https://github.com/Wangchimei/javascript_advanced#store-object-data)
 
+- [Object Oriented JavaScript](https://github.com/Wangchimei/javascript_advanced#object-oriented-javascript)
+
+  - [Class Declarations](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Class Methods and Method Chaining](https://github.com/Wangchimei/javascript_advanced#class-methods-and-method-chaining-%CE%B4)
+  - [Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
+  - [Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
+
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 | Types                                                                                   | Brief definition                                      | Sections                                                                                                                                                                                                                                                                                                           |
@@ -2475,11 +2482,12 @@ console.log(JSON.parse(storedData));
 
 ## Object Oriented JavaScript
 
-### Class Declarations
+### Class Declarations [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 To declare a class, you use the class keyword with the name of the class.
 
-**Note:** An important difference between _function declarations_ and _class declarations_ is that function declarations are **hoisted** and class declarations are not.  
+**Note:**  
+An important difference between _function declarations_ and _class declarations_ is that function declarations are **hoisted** and class declarations are not.  
 In other words, _class declarations_ need to be done first and then access it, otherwise it will throw a `ReferenceError`.
 
 ```
@@ -2502,7 +2510,7 @@ Whenever we use a `new` keyword to create a new object, it does...
 2. it binds the value of `this` keyword to the new empty object
 3. it calls the constrictor function to `build` the object
 
-### Class Methods and Method Chaining
+### Class Methods and Method Chaining [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 Outside of the constructor, prototype methods can be created.
 
@@ -2522,8 +2530,7 @@ const userOne = new User('Bmo', 'bmo@example.com');
 userOne.login();
 ```
 
-In order to do method chaining, the object instance needs to be return, otherwise it will show `Uncaught TypeError: Cannot read property of undefined`.  
-For example, `logout()` does not return any object instance, method chaining cannot be done after `logout()` method is used.
+In order to do method chaining, the object instance needs to be return, otherwise it will show `Uncaught TypeError: Cannot read property of undefined`.
 
 ```
 class User {
@@ -2557,10 +2564,11 @@ userOne
   .purchase();
 ```
 
-### Class Inheritance (Subclasses)
+`logout()` does not return any object instance, method chaining cannot be done after `logout()` method is used.
 
-A subclass is a class which inherit functionality form another class, but also have their own additional properties and methods as well.  
-A subclass _extends_ another class.
+### Class Inheritance (Subclasses) [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+A subclass is a class which inherit functionality form another class, but also have their own additional properties and methods as well. (A subclass _extends_ another class.)
 
 ```
 class Admin extends User {
@@ -2586,13 +2594,13 @@ userAdmin
 
 Using `userOne.deleteUser(userTwo)` will show `Uncaught TypeError: Cannot read property of undefined`.
 
-### Super Keyword
+### Super Keyword [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The constructor on a parent object only runs when there is no constructor on the subclass.  
 Therefore, if a subclass has additional properties other than properties of its parent object.  
 `super` keyword can be used to achieve this.
 
-When used in a constructor, the `super` keyword appears alone and must be used _before the this keyword is used_.  
+When used in a constructor, the `super` keyword appears alone and must be used **before the `this` keyword is used**.  
 The `super` keyword can also be used to call functions on a parent object.
 
 Scenario: Admin subclass would like to have an additional property, but also have its parent's properties.
