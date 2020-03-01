@@ -79,6 +79,13 @@
   - [Single Data](https://github.com/Wangchimei/javascript_advanced#store-and-update-data)
   - [Object Data](https://github.com/Wangchimei/javascript_advanced#store-object-data)
 
+- [Object Oriented JavaScript](https://github.com/Wangchimei/javascript_advanced#object-oriented-javascript)
+
+  - [Class Declarations](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Class Methods and Method Chaining](https://github.com/Wangchimei/javascript_advanced#class-methods-and-method-chaining-%CE%B4)
+  - [Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
+  - [Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
+
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 | Types                                                                                   | Brief definition                                      | Sections                                                                                                                                                                                                                                                                                                           |
@@ -2471,4 +2478,148 @@ Using `JSON.parse()` to convert back to the original object.
 const storedData = localStorage.getItem('books');
 
 console.log(JSON.parse(storedData));
+```
+
+## Object Oriented JavaScript
+
+### Class Declarations [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+To declare a class, you use the class keyword with the name of the class.
+
+**Note:**  
+An important difference between _function declarations_ and _class declarations_ is that function declarations are **hoisted** and class declarations are not.  
+In other words, _class declarations_ need to be done first and then access it, otherwise it will throw a `ReferenceError`.
+
+```
+class User {
+  constructor(username, email) {
+    this.username = username;
+    this.email = email;
+  }
+}
+
+const userOne = new User('Bmo', 'bmo@example.com');
+console.log(userOne.username);
+```
+
+#### `new` keyword
+
+Whenever we use a `new` keyword to create a new object, it does...
+
+1. it creates a new empty object {}.
+2. it binds the value of `this` keyword to the new empty object
+3. it calls the constrictor function to `build` the object
+
+### Class Methods and Method Chaining [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+Outside of the constructor, prototype methods can be created.
+
+```
+class User {
+  constructor(username, email){
+    this.username = username;
+    this.email = email;
+    this.points = 0;
+  }
+  login(){
+    console.log(`${this.username} just logged in`);
+  }
+}
+
+const userOne = new User('Bmo', 'bmo@example.com');
+userOne.login();
+```
+
+In order to do method chaining, the object instance needs to be return, otherwise it will show `Uncaught TypeError: Cannot read property of undefined`.
+
+```
+class User {
+  constructor(username, email) {
+    this.username = username;
+    this.email = email;
+    this.points = 0;
+  }
+
+  login() {
+    console.log(`${this.username} just logged in`);
+    return this;
+  }
+
+  logout() {
+    console.log(`${this.username} just logged out`);
+  }
+
+  purchase() {
+    this.points += 10;
+    console.log(`current points: ${this.points}`);
+    return this;
+  }
+}
+
+const userOne = new User('Bmo', 'bmo@example.com');
+
+userOne
+  .login()
+  .purchase()
+  .purchase();
+```
+
+`logout()` does not return any object instance, method chaining cannot be done after `logout()` method is used.
+
+### Class Inheritance (Subclasses) [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+A subclass is a class which inherit functionality form another class, but also have their own additional properties and methods as well. (A subclass _extends_ another class.)
+
+```
+class Admin extends User {
+  deleteUser(targetUser) {
+    users = users.filter(user => user.email !== targetUser.email);
+    return this;
+  }
+  logUsers() {
+    console.log(users);
+  }
+}
+
+const userOne = new User('Bmo', 'bmo@example.com');
+const userTwo = new User('Test', 'test@example.com');
+const userAdmin = new Admin('Admin', 'admin@example.com');
+
+let users = [userOne, userTwo, userAdmin];
+
+userAdmin
+  .deleteUser(userTwo)
+  .logUsers();
+```
+
+Using `userOne.deleteUser(userTwo)` will show `Uncaught TypeError: Cannot read property of undefined`.
+
+### Super Keyword [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+The constructor on a parent object only runs when there is no constructor on the subclass.  
+Therefore, if a subclass has additional properties other than properties of its parent object.  
+`super` keyword can be used to achieve this.
+
+When used in a constructor, the `super` keyword appears alone and must be used **before the `this` keyword is used**.  
+The `super` keyword can also be used to call functions on a parent object.
+
+Scenario: Admin subclass would like to have an additional property, but also have its parent's properties.
+
+```
+class Admin extends User {
+  constructor(username, email, account) {
+    super(username, email);
+    this.account = account;
+  }
+
+  deleteUser(targetUser) {
+    users = users.filter(user => user.email !== targetUser.email);
+    return this;
+  }
+  logUsers() {
+    console.log(users);
+  }
+}
+
+const userAdmin = new Admin('Admin', 'admin@example.com', 'AS-0122');
 ```
