@@ -49,7 +49,7 @@
 //   console.log('promise rejected:', err);
 // });
 
-//! Using Promise
+// ! Using Promise
 
 const getBooks = resource => {
   return new Promise((resolve, reject) => {
@@ -69,14 +69,6 @@ const getBooks = resource => {
   });
 };
 
-// getBooks('bmo.json')
-//   .then(data => {
-//     console.log('promise resolved:', data);
-//   })
-//   .catch(error => {
-//     console.log('promise rejected:', error);
-//   });
-
 getBooks('bmo.json')
   .then(data => {
     console.log('promise 1 resolved:', data);
@@ -92,3 +84,81 @@ getBooks('bmo.json')
   .catch(error => {
     console.log('promise rejected:', error);
   });
+
+//! Using Promise (different writing)
+const getBooks = resource => {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('GET', resource);
+    request.onload = () => {
+      if (request.status === 200) {
+        resolve(JSON.parse(request.response));
+      } else {
+        reject(request.statusText);
+      }
+    };
+    request.onerror = () => {
+      reject(request.statusText);
+    };
+    request.send();
+  });
+};
+
+let promise = getBooks('bmo.json');
+promise
+  .then(data => {
+    console.log('promise 1 resolved:', data);
+    return getBooks('winnie.json');
+  })
+  .then(data => {
+    console.log('promise 2 resolved:', data);
+    return getBooks('chopper.json');
+  })
+  .then(data => {
+    console.log('promise 3 resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+
+//! jquery
+$.get('bmo.json')
+  .then(data => {
+    console.log('promise 1 resolved:', data);
+    return $.get('winnie.json');
+  })
+  .then(data => {
+    console.log('promise 2 resolved:', data);
+    return $.get('chopper.json');
+  })
+  .then(data => {
+    console.log('promise 3 resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+
+//! Generator
+window.onload = function() {
+  genwrap(function*() {
+    var bmoBooks = yield $.get('bmo.json');
+    console.log(bmoBooks);
+    var winnieBooks = yield $.get('winnie.json');
+    console.log(winnieBooks);
+    var chopperBooks = yield $.get('chopper.json');
+    console.log(chopperBooks);
+  });
+
+  function genwrap(generator) {
+    var gen = generator();
+
+    function handle(yielded) {
+      if (!yielded.done) {
+        yielded.value.then(data => {
+          return handle(gen.next(data));
+        });
+      }
+    }
+    return handle(gen.next());
+  }
+};

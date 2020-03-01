@@ -2102,6 +2102,27 @@ getTodos((error, data) => {
 });
 ```
 
+#### jQuery
+
+```
+$.get('https://jsonplaceholder.typicode.com/todos', function(data) {
+  console.log(data);
+});
+```
+
+```
+$.ajax({
+  type: 'GET',
+  url: 'https://jsonplaceholder.typicode.com/todos',
+  success: function(data) {
+    console.log(data);
+  },
+  error: function(jqXHR, textStatus, error) {
+    console.log(error);
+  },
+});
+```
+
 ### Promise [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.  
@@ -2141,7 +2162,6 @@ This can be used to avoid nesting callbacks (so-called callback hell).
 ```
 const getBooks = resource => {
   return new Promise((resolve, reject) => {
-    //making http requests
     const request = new XMLHttpRequest();
     request.addEventListener('readystatechange', () => {
       if (request.readyState === 4 && request.status === 200) {
@@ -2166,27 +2186,37 @@ getBooks('bmo.json')
   });
 ```
 
+```
+const getBooks = resource => {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('GET', resource);
+    request.onload = () => {
+      if (request.status === 200) {
+        resolve(JSON.parse(request.response));
+      } else {
+        reject(request.statusText);
+      }
+    };
+    request.onerror = () => {
+      reject(request.statusText);
+    };
+    request.send();
+  });
+};
+
+getBooks('bmo.json')
+  .then(data => {
+    console.log('promise resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+```
+
 #### Making Sequence of Http requests
 
-Using callbacks for sending sequence of Http requests will result in "callback hell".
-
-_example_
-
-```
-getBooks('bmo.json', (error, data) => {
-  console.log(data);
-  getBooks('winnie.json', (error, data) => {
-    console.log(data);
-    getBooks('chopper.json', (error, data) => {
-      console.log(data);
-    });
-  });
-});
-```
-
-Using promise is better in terms of method chaining.
-
-_example_
+Using callbacks for sending sequence of Http requests will result in "callback hell", which is hard to maintain the code. Using **promise** can do method chaining, which is cleaner and easier to maintain.
 
 ```
 getBooks('bmo.json')
@@ -2208,6 +2238,52 @@ getBooks('bmo.json')
 
 `return getBooks('winnie.json')` will return a promise which allows to use `then` for resolved promise.  
 `.catch()` will catch every error in all http requests.
+
+#### Using jQuery
+
+```
+$.get('bmo.json')
+  .then(data => {
+    console.log('promise 1 resolved:', data);
+    return $.get('winnie.json');
+  })
+  .then(data => {
+    console.log('promise 2 resolved:', data);
+    return $.get('chopper.json');
+  })
+  .then(data => {
+    console.log('promise 3 resolved:', data);
+  })
+  .catch(error => {
+    console.log('promise rejected:', error);
+  });
+```
+
+#### Using Generator
+
+```
+getBooks(function*() {
+  let bmoBooks = yield $.get('bmo.json');
+  console.log(bmoBooks);
+  let winnieBooks = yield $.get('winnie.json');
+  console.log(winnieBooks);
+  let chopperBooks = yield $.get('chopper.json');
+  console.log(chopperBooks);
+});
+
+function getBooks(generator) {
+  let gen = generator();
+
+  function handle(yielded) {
+    if (!yielded.done) {
+      yielded.value.then(data => {
+        return handle(gen.next(data));
+      });
+    }
+  }
+  return handle(gen.next());
+}
+```
 
 ### Fetch API [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
