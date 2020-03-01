@@ -69,6 +69,7 @@
 
   - [XMLHttpRequest](https://github.com/Wangchimei/javascript_advanced#xmlhttprequest-xhr-%CE%B4)
   - [Promise](https://github.com/Wangchimei/javascript_advanced#promise-%CE%B4)
+    - [A Sequence of Http Requests (XHR, jQuery, Generator)](https://github.com/Wangchimei/javascript_advanced#making-a-sequence-of-http-requests)
   - [Fetch API](https://github.com/Wangchimei/javascript_advanced#fetch-api-%CE%B4)
   - [Async Function & Await](https://github.com/Wangchimei/javascript_advanced#async--await-%CE%B4)
   - [Throw & Catch Error](https://github.com/Wangchimei/javascript_advanced#throwing--catching-error-%CE%B4)
@@ -2214,7 +2215,7 @@ getBooks('bmo.json')
   });
 ```
 
-#### Making Sequence of Http requests
+#### Making A Sequence of Http Requests
 
 Using callbacks for sending sequence of Http requests will result in "callback hell", which is hard to maintain the code. Using **promise** can do method chaining, which is cleaner and easier to maintain.
 
