@@ -82,12 +82,12 @@
 - [Object Oriented JavaScript](https://github.com/Wangchimei/javascript_advanced#object-oriented-javascript)
   - [Class Declarations](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
   - [Class Methods and Method Chaining](https://github.com/Wangchimei/javascript_advanced#class-methods-and-method-chaining-%CE%B4)
-  - [Class Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
-  - [CLass Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
-  - [Prototype Constructor](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
-  - [Prototype Methods](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
-  - [Prototype-based Methods Inheritance](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
-  - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
+  - [Class Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
+  - [Prototype Constructor](https://github.com/Wangchimei/javascript_advanced#prototype-constructor-%CE%B4)
+  - [Prototype Methods](https://github.com/Wangchimei/javascript_advanced#prototype-methods-%CE%B4)
+  - [Prototype-based Methods Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-methods-inheritance-%CE%B4)
+  - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-constructor-inheritance-%CE%B4)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
