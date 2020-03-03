@@ -1,3 +1,4 @@
+// class constructor and methods
 class User {
   constructor(username, email) {
     this.username = username;
@@ -21,6 +22,7 @@ class User {
   }
 }
 
+//class inheritance (super keyword)
 class Admin extends User {
   constructor(username, email, account) {
     super(username, email);

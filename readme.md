@@ -80,11 +80,14 @@
   - [Object Data](https://github.com/Wangchimei/javascript_advanced#store-object-data)
 
 - [Object Oriented JavaScript](https://github.com/Wangchimei/javascript_advanced#object-oriented-javascript)
-
   - [Class Declarations](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
   - [Class Methods and Method Chaining](https://github.com/Wangchimei/javascript_advanced#class-methods-and-method-chaining-%CE%B4)
-  - [Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
-  - [Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
+  - [Class Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
+  - [CLass Super Keyword](https://github.com/Wangchimei/javascript_advanced#super-keyword-%CE%B4)
+  - [Prototype Constructor](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Prototype Methods](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Prototype-based Methods Inheritance](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
+  - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
@@ -2482,9 +2485,13 @@ console.log(JSON.parse(storedData));
 
 ## Object Oriented JavaScript
 
+### Class
+
+JavaScript classes, introduced in ES6, are primarily **syntactical sugar** over JavaScript's existing prototype-based inheritance.
+
 ### Class Declarations [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-To declare a class, you use the class keyword with the name of the class.
+To declare a class, use the `class` keyword with the name of the class
 
 **Note:**  
 An important difference between _function declarations_ and _class declarations_ is that function declarations are **hoisted** and class declarations are not.  
@@ -2623,3 +2630,51 @@ class Admin extends User {
 
 const userAdmin = new Admin('Admin', 'admin@example.com', 'AS-0122');
 ```
+
+### Prototype
+
+Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+
+### Prototype Constructor [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+```
+function User(username, email) {
+  this.username = username;
+  this.email = email;
+}
+```
+
+### Prototype Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+```
+User.prototype.login = function() {
+  console.log(`${this.username} just logged in`);
+  return this;
+};
+
+User.prototype.logout = function() {
+  console.log(`${this.username} just logged out`);
+};
+```
+
+### Prototype-based Methods Inheritance [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+Using `call()` to be able to access the constructor which is inherit from its parent.( this is what's under the hood of `super()`)  
+The first parameter of `call()` is what `this` keyword should refer to, which is the current object, therefore, passing `this`.
+
+```
+function Admin(username, email, title) {
+  User.call(this, username, email);
+  this.title = title;
+}
+```
+
+### Prototype-based Constructor Inheritance [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+The `Object.create()` method creates a new object, using an existing object as the prototype of the newly created object.
+
+```
+Admin.prototype = Object.create(User.prototype);
+```
+
+This is the same as what `class Admin extends User` does.
