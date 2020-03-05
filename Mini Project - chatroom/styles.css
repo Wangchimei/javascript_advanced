@@ -77,4 +77,11 @@ li {
 
 .chat-window {
   overflow-y: scroll;
+  /* don't allow the children of the scrollable element to be selected as an anchor node */
+  overflow-anchor: none;
+}
+
+.update-msg {
+  background-color: #f5dba3;
+  padding: 0.5em 1.3em;
 }

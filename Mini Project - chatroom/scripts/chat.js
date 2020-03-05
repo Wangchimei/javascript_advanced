@@ -50,7 +50,6 @@ class Chatroom {
     if (this.unsub) {
       this.unsub;
     }
-    return this;
   }
 }
 
