@@ -85,3 +85,23 @@ li {
   background-color: #f5dba3;
   padding: 0.5em 1.3em;
 }
+
+li {
+  position: relative;
+}
+
+.deleteBtn {
+  padding: 0.2em 0.6rem;
+  color: #999;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+  background-color: #ebe8e8;
+  color: #131313;
+}

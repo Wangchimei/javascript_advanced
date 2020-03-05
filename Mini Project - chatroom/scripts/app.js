@@ -17,6 +17,15 @@ newChatForm.addEventListener('submit', e => {
     .catch(err => console.log(err));
 });
 
+// delete chat
+chatList.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') {
+    const id = e.target.parentElement.getAttribute('data-id');
+    chatroom.deleteChat(id);
+    chatUI.deleteList(id);
+  }
+});
+
 // update username
 nameForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -40,7 +49,7 @@ rooms.addEventListener('click', e => {
     id = e.target.id;
     chatroom.updateRoom(id);
     chatUI.clear();
-    chatroom.getChat(data => chatUI.render(data));
+    chatroom.getChat((data, id) => chatUI.render(data, id));
   }
 });
 
@@ -52,4 +61,4 @@ const chatUI = new ChatUI(chatList);
 const chatroom = new Chatroom('general', username);
 
 // get the chats and render
-chatroom.getChat(data => chatUI.render(data));
+chatroom.getChat((data, id) => chatUI.render(data, id));
