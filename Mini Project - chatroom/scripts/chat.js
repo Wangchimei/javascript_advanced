@@ -47,7 +47,6 @@ class Chatroom {
   updateRoom(room) {
     // change the current room and unsub to changes
     this.room = room;
-    console.log(`room updated to ${room}`);
     if (this.unsub) {
       this.unsub;
     }

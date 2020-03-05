@@ -70,3 +70,11 @@ body {
   font-size: 0.7em;
   color: #999;
 }
+
+li {
+  margin: 0.5em;
+}
+
+.chat-window {
+  overflow-y: scroll;
+}
