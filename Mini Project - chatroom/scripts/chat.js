@@ -55,12 +55,6 @@ class Chatroom {
   }
 }
 
-const chatroom = new Chatroom('general', 'Kimmy');
-
-chatroom.getChat(data => {
-  console.log(data);
-});
-
 // Simulate
 // setTimeout(() => {
 //   chatroom.updateRoom('gaming').getChat(data => {
