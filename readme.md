@@ -18,6 +18,7 @@
       - [this keyword](https://github.com/Wangchimei/javascript_advanced#this-keyword-%CE%B4)
     - [Math](https://github.com/Wangchimei/javascript_advanced#math-%CE%B4)
     - [Date](https://github.com/Wangchimei/javascript_advanced#date-%CE%B4)
+  - [Symbol](https://github.com/Wangchimei/javascript_advanced#symbol-%CE%B4)
 
 - [Loops](https://github.com/Wangchimei/javascript_advanced#loops)
 
@@ -80,6 +81,7 @@
   - [Object Data](https://github.com/Wangchimei/javascript_advanced#store-object-data)
 
 - [Object Oriented JavaScript](https://github.com/Wangchimei/javascript_advanced#object-oriented-javascript)
+
   - [Class Declarations](https://github.com/Wangchimei/javascript_advanced#class-declarations-%CE%B4)
   - [Class Methods and Method Chaining](https://github.com/Wangchimei/javascript_advanced#class-methods-and-method-chaining-%CE%B4)
   - [Class Inheritance (Subclasses)](https://github.com/Wangchimei/javascript_advanced#class-inheritance-subclasses-%CE%B4)
@@ -88,6 +90,11 @@
   - [Prototype Methods](https://github.com/Wangchimei/javascript_advanced#prototype-methods-%CE%B4)
   - [Prototype-based Methods Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-methods-inheritance-%CE%B4)
   - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-constructor-inheritance-%CE%B4)
+
+- [Other ES6 ES7 Features]()
+  - [Rest Parameter](https://github.com/Wangchimei/javascript_advanced#rest-parameter-%CE%B4)
+  - [Spread Syntax](https://github.com/Wangchimei/javascript_advanced#spread-syntax-%CE%B4)
+  - [Sets](https://github.com/Wangchimei/javascript_advanced#sets-%CE%B4)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
@@ -977,6 +984,21 @@ console.log(dateFns.format(now, 'dddd, Do MMMM, YYYY'));
 const before = new Date('February 1 2019 12:00:00');
 
 console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
+```
+
+## Symbol [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+Symbol is a primitive value and can be created by `Symbol(identifier)`. which dynamically produces a unique value.  
+The main feature of Symbol is that it is completely unique (i.e. no two symbols can be equal to each other).
+
+A symbol may be used as a key or property name in objects an object property.  
+Using symbols as object keys means all the keys in the object are all unique.
+
+```
+let Symbol1 = Symbol("Sym")
+let Symbol2 = Symbol("Sym")
+
+console.log(Symbol1 === Symbol2)   // false
 ```
 
 ## Loops
@@ -2678,3 +2700,84 @@ Admin.prototype = Object.create(User.prototype);
 ```
 
 This is the same as what `class Admin extends User` does.
+
+## Other ES6 ES7 Features
+
+### Rest Parameter [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+The rest parameter syntax `...<parameter>` allows us to represent an indefinite number of arguments as an array.  
+It is useful when you don't know how many arguments are going to be passed in.
+
+```
+const doublePoints = (...nums) => {
+  return nums.map(num => num * 2);
+};
+
+let result = doublePoints(200, 100, 400, 200);
+console.log(result);   // [400, 200, 800, 400]
+```
+
+### Spread Syntax [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+Spread syntax `... is put in front of an iterable object such as an array.  
+It will take the object and and spread into individual components.
+
+#### Join two array
+
+```
+players = ['Joker', 'Butter'];
+newPlayers = ['Bmo', 'Winnie', 'Toad'];
+
+newList = [...players, ...newPlayers];   //["Joker", "Butter", "Bmo", "Winnie", "Toad"]
+```
+
+#### Use array in a function
+
+```
+savings = [20, 10, 30];
+
+function total(a, b, c) {
+  console.log(a + b + c);
+}
+
+total(savings);      //20,10,30undefinedundefined
+total(...savings);   // 60
+```
+
+#### Clone an object
+
+```
+const person = { name: 'Bmo', age: 5 };
+
+const personClone = person            // this will only create a pointer, not copy the value
+const personClone = { ...person };    // spread the object out and create a new project
+const personClone = { ...person, location: "Japan" };    // can also add on new key value pair
+```
+
+### Sets [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+Set objects are collections of values.  
+You can iterate through the elements (such as `forEach()`) of a set in insertion order.  
+A value in the Set may only occur once; it is **unique** in the Set's collection.
+
+#### Methods
+
+- `size`  
+  Returns the number of values in the Set object (cannot use `length`)
+- `has(value)`  
+  Returns a boolean asserting whether an element is present with the given value in the Set object or not
+- `add(value)`  
+  Appends value to the Set object. Returns the Set object (this method can be chained)
+- `clear()`  
+  Removes all elements from the Set object.
+- `delete(value)`
+  Removes the element associated to the value and returns a boolean asserting whether an element is present
+
+#### Eliminate duplicate value in an array
+
+```
+let players = ['Bmo', 'Butter', 'Bmo', 'Winnie'];
+
+let refinePlayers = new Set(players);    // {"Bmo", "Butter", "Winnie"}
+players = [...refinePlayers];            // ["Bmo", "Butter", "Winnie"]
+```
