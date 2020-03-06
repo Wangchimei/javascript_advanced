@@ -91,7 +91,7 @@
   - [Prototype-based Methods Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-methods-inheritance-%CE%B4)
   - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-constructor-inheritance-%CE%B4)
 
-- [Other ES6 ES7 Features]()
+- Other ES6/ES7 Features
   - [Rest Parameter](https://github.com/Wangchimei/javascript_advanced#rest-parameter-%CE%B4)
   - [Spread Syntax](https://github.com/Wangchimei/javascript_advanced#spread-syntax-%CE%B4)
   - [Sets](https://github.com/Wangchimei/javascript_advanced#sets-%CE%B4)
@@ -106,7 +106,7 @@
 | [Undefined](https://github.com/Wangchimei/javascript_advanced#null-vs-undefined-%CE%B4) | For variables that have not yet been defined          |                                                                                                                                                                                                                                                                                                                    |
 | [Boolean](https://github.com/Wangchimei/javascript_advanced#boolean-%CE%B4)             | true / false                                          |                                                                                                                                                                                                                                                                                                                    |
 | Object                                                                                  | Complex data structures                               | [Array](https://github.com/Wangchimei/javascript_advanced#array-%CE%B4), [Object literals](https://github.com/Wangchimei/javascript_advanced#object-literals-%CE%B4), [Math](https://github.com/Wangchimei/javascript_advanced#math-%CE%B4), [Date](https://github.com/Wangchimei/javascript_advanced#date-%CE%B4) |
-| Symbol                                                                                  | Used with objects                                     |                                                                                                                                                                                                                                                                                                                    |
+| [Symbol](https://github.com/Wangchimei/javascript_advanced#symbol-%CE%B4)               | Used with objects                                     |                                                                                                                                                                                                                                                                                                                    |
 
 ## Primitive Types vs Reference Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
