@@ -92,9 +92,14 @@
   - [Prototype-based Constructor Inheritance](https://github.com/Wangchimei/javascript_advanced#prototype-based-constructor-inheritance-%CE%B4)
 
 - Other ES6/ES7 Features
+
   - [Rest Parameter](https://github.com/Wangchimei/javascript_advanced#rest-parameter-%CE%B4)
   - [Spread Syntax](https://github.com/Wangchimei/javascript_advanced#spread-syntax-%CE%B4)
   - [Sets](https://github.com/Wangchimei/javascript_advanced#sets-%CE%B4)
+
+- Modern Workflow
+  - [Babel (JS Compiler)](https://github.com/Wangchimei/javascript_advanced#babel-%CE%B4)
+  - [Webpack (Module Bundler)](https://github.com/Wangchimei/javascript_advanced#webpack-%CE%B4)
 
 ## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
@@ -2781,3 +2786,106 @@ let players = ['Bmo', 'Butter', 'Bmo', 'Winnie'];
 let refinePlayers = new Set(players);    // {"Bmo", "Butter", "Winnie"}
 players = [...refinePlayers];            // ["Bmo", "Butter", "Winnie"]
 ```
+
+## Babel [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+[Babel](https://babeljs.io/)
+
+### Set Up Environment
+
+Steps:
+
+1. Install [Node.js & NPM](https://nodejs.org/en/) globally to run js locally
+2. Use `npm init` to create a **package.json** file in the project directory, which keeps track on all the packages we installed to the project.
+3. Use `npm install --save-dev @babel/core` to install babel core and CLI
+4. Use `npm install @babel/preset-env --save-dev` to install babel preset dev, which enables transforms for ES2015+
+5. Create **.babelrc** configuration file
+6. Enable the preset by defining the followings in **.babelrc**
+   ```
+   {
+   "presets": ["@babel/preset-env"]
+   }
+   ```
+
+### Babel CLI to convert
+
+**In the project directory**
+
+```
+node_modules/.bin/babel src/index.js -o dist/assets/bundle.js
+```
+
+- `node_modules/.bin/babel` - where the babel's binary is located
+- `src/index.js` - the source file you want to convert
+- `-o` - output
+- `dist/assets/bundle.js` - where you want to put the converted code
+
+**Note:** Do not upload node_module, using `npm install` to download all the dependencies at once
+
+**Note:** Modern work flow is to create...
+
+- `src` folder - (source) for all the source code (js or scss)
+- `dist` folder - (distribution) for all the converted code (end code)
+
+##### Set up a script for easy conversion
+
+**package.json**
+
+```
+  **omitted**
+
+  "scripts": {
+    "babel": "node_modules/.bin/babel src/index.js -o dist/assets/bundle.js"
+  },
+
+  **omitted**
+```
+
+To run the script using  
+`npm run babel`
+
+##### Convert automatically after saving
+
+To achieve this, a watch flag `-w` needs to be specified in the scripts, and it will continuously watching the source file after the first run.
+
+**package.json**
+
+```
+  **omitted**
+
+  "scripts": {
+    "babel": "node_modules/.bin/babel src/index.js -w -o dist/assets/bundle.js"
+  },
+
+  **omitted**
+```
+
+## Webpack [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
+### Set up
+
+1. Create **webpack.config.js** file
+2. Configuration
+
+   ```
+   const path = require('path')
+
+   module.exports = {
+     entry: './src/index.js',
+     output: {
+       path: path.resolve(__dirname, dist/assets),
+       filename: 'bundle.js'
+     }
+   }
+   ```
+
+   - `entry` - the file to be converted (relative path)
+   - `output` takes in an object:
+     - `path` - where the directory is located (absolute path)
+       - use `__dirname` feature in node property to get the path until the root of the directory where webpack file is sitting
+       - `dist/assets` is until the folder of the output js folder
+       - `filename` - outputted file name
+
+3. User `npm install webpack webpack-cli --save-dev` to install webpack and its CLI (also update package.json)
+
+### Webpack CLI
