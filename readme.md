@@ -2787,16 +2787,14 @@ let refinePlayers = new Set(players);    // {"Bmo", "Butter", "Winnie"}
 players = [...refinePlayers];            // ["Bmo", "Butter", "Winnie"]
 ```
 
-## Babel [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+## Babel + Webpack
 
-[Babel](https://babeljs.io/)
+### Babel [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-### Set Up Environment
-
-Steps:
+#### Set Up Environment
 
 1. Install [Node.js & NPM](https://nodejs.org/en/) globally to run js locally
-2. Use `npm init` to create a **package.json** file in the project directory, which keeps track on all the packages we installed to the project.
+2. Use `npm init` to create a **package.json** file **in the project directory**, which keeps track on all the packages we installed to the project.
 3. Use `npm install --save-dev @babel/core` to install babel core and CLI
 4. Use `npm install @babel/preset-env --save-dev` to install babel preset dev, which enables transforms for ES2015+
 5. Create **.babelrc** configuration file
@@ -2807,7 +2805,7 @@ Steps:
    }
    ```
 
-### Babel CLI to convert
+#### Use Babel CLI to convert
 
 **In the project directory**
 
@@ -2827,7 +2825,7 @@ node_modules/.bin/babel src/index.js -o dist/assets/bundle.js
 - `src` folder - (source) for all the source code (js or scss)
 - `dist` folder - (distribution) for all the converted code (end code)
 
-##### Set up a script for easy conversion
+#### Set Up a NPM Script (easy conversion)
 
 **package.json**
 
@@ -2841,12 +2839,13 @@ node_modules/.bin/babel src/index.js -o dist/assets/bundle.js
   **omitted**
 ```
 
-To run the script using  
-`npm run babel`
+**In the project directory**  
+Use `npm run babel` to run the script
 
-##### Convert automatically after saving
+#### Watch flag (automatically convert after saving)
 
-To achieve this, a watch flag `-w` needs to be specified in the scripts, and it will continuously watching the source file after the first run.
+To achieve this, a watch flag `-w` needs to be specified in the scripts, and it will continuously watching the source file for any changes after the first run.  
+`ctrl + c` to terminate the job
 
 **package.json**
 
@@ -2860,9 +2859,9 @@ To achieve this, a watch flag `-w` needs to be specified in the scripts, and it 
   **omitted**
 ```
 
-## Webpack [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+### Webpack [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-### Set up
+#### Set Up Environment
 
 1. Create **webpack.config.js** file
 2. Configuration
@@ -2888,4 +2887,171 @@ To achieve this, a watch flag `-w` needs to be specified in the scripts, and it 
 
 3. User `npm install webpack webpack-cli --save-dev` to install webpack and its CLI (also update package.json)
 
-### Webpack CLI
+#### Use Webpack CLI to convert
+
+**In the project directory**
+
+```
+node_modules/.bin/webpack
+```
+
+#### Set Up a NPM Script (easy conversion)
+
+**package.json**
+
+```
+  **omitted**
+
+  "scripts": {
+    "babel": "node_modules/.bin/babel src/index.js -w -o dist/assets/bundle.js",
+    "webpack": "node_modules/.bin/webpack"
+  },
+
+  **omitted**
+```
+
+**In the project directory**  
+Use `npm run webpack` to run the script
+
+#### Watch flag (automatically convert after saving)
+
+To achieve this, a watch flag `-w` needs to be specified in the scripts, and it will continuously watching the source file for any changes after the first run.  
+`ctrl + c` to terminate the job
+
+**package.json**
+
+```
+  **omitted**
+
+  "scripts": {
+    "babel": "node_modules/.bin/babel src/index.js -w -o dist/assets/bundle.js",
+    "webpack": "node_modules/.bin/webpack -w"
+  },
+
+  **omitted**
+```
+
+#### Import From Other JS Files
+
+##### Import Modules (no access to variables or functions)
+
+**In the main.js file**
+
+```
+import './ui';
+```
+
+**Note:** Using this way in the main js file, you **cannot** access the functions you declared in other js files.
+
+##### Import Modules (with access to variables or functions)
+
+**In the ui.js file (define export at the bottom)**
+
+```
+const body = document.querySelector('body');
+
+const styleBody = () => {
+  body.style.background = 'lightblue';
+};
+
+const outputTitle = text => {
+  const title = document.createElement('h1');
+  title.textContent = text;
+  body.appendChild(title);
+};
+
+const mainContact = {
+  name: 'Bmo',
+  location: 'Japan',
+};
+
+export { styleBody, outputTitle, mainContact };
+```
+
+**In the main.js file (import on the top)**
+
+```
+import { styleBody, outputTitle, mainContact } from './dom';
+```
+
+##### Default Export
+
+**Note:** Only one default export per file
+
+**In the data.js file (define export at the bottom)**
+
+```
+const users = [
+  { name: 'Bmo', premium: true },
+  { name: 'Winnie', premium: false },
+  { name: 'Joker', premium: true },
+  { name: 'Chopper', premium: true },
+  { name: 'Butter', premium: false }
+];
+
+const getPremUsers = (users) => {
+  return users.filter(user => user.premium);
+};
+
+// export default users;
+export { getPremUsers, users as default };
+```
+
+**In the main.js file (import on the top)**  
+**Note:** No `{}` for default import
+
+```
+import users, { getPremUsers } from './data';
+
+console.log(users);
+console.log(getPremUsers(users));
+```
+
+### Webpack Dev Server
+
+[Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
+
+Using webpack with a development server provides live reloading (automatically watching), which provides fast in-memory access to the webpack assets.  
+It serves the assets as virtual files, but it does not rebuild/convert the files physically in local environment.  
+Therefore, this should be used for **development only**.
+
+1. Install `npm install webpack-dev-server --save-dev`
+2. Configuration
+
+   **webpack.config.js**
+
+   ```
+   const path = require('path')
+
+   module.exports = {
+    entry: './src/index.js',
+    output: {
+      path: path.resolve(__dirname, dist/assets),
+      filename: 'bundle.js'
+    },
+    devServer: {
+      contentBase: path.resolve(__dirname, 'dist'),
+      publicPath: '/assets/'
+    }
+   }
+   ```
+
+   `contentBase` - the folder you want to serve on the browser (absolute path)  
+   `publicPath` - where the actual assets are being served from
+
+3. Set up a NPM script
+
+   **Note:** taking out `-w` from webpack, because we only need to run it once for production
+
+   ```
+   **omitted**
+
+   "scripts": {
+     "build": "node_modules/.bin/webpack --mode production",
+     "serve": "webpack-dev-server --mode development"
+   },
+
+   **omitted**
+   ```
+
+   Then, `npm run serve` to start the server at localhost:8080, and `npm run build` to convert the code and build in local environment
