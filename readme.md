@@ -105,6 +105,10 @@
 
   [![NPM](https://nodei.co/npm/webpack_scss_babel_boilerplate.png?mini=true)](https://nodei.co/npm/webpack_scss_babel_boilerplate/)
 
+<hr>
+
+## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+
 | Types                                                                                   | Brief definition                                      | Sections                                                                                                                                                                                                                                                                                                           |
 | :-------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [String](https://github.com/Wangchimei/javascript_advanced#string-%CE%B4)               | A constructor for strings or a sequence of characters | [Mathods](https://github.com/Wangchimei/javascript_advanced#methods), [Template Strings](https://github.com/Wangchimei/javascript_advanced#template-strings-template-literals-%CE%B4)                                                                                                                              |
@@ -3009,7 +3013,7 @@ console.log(users);
 console.log(getPremUsers(users));
 ```
 
-### Webpack Dev Server
+### Webpack Dev Server [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
 
