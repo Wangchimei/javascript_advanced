@@ -98,10 +98,12 @@
   - [Sets](https://github.com/Wangchimei/javascript_advanced#sets-%CE%B4)
 
 - Modern Workflow
+
   - [Babel (JS Compiler)](https://github.com/Wangchimei/javascript_advanced#babel-%CE%B4)
   - [Webpack (Module Bundler)](https://github.com/Wangchimei/javascript_advanced#webpack-%CE%B4)
+  - [Webpack Dev Server](https://github.com/Wangchimei/javascript_advanced#webpack-dev-server-%CE%B4)
 
-## Data Types [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
+  [![NPM](https://nodei.co/npm/webpack_scss_babel_boilerplate.png?mini=true)](https://nodei.co/npm/webpack_scss_babel_boilerplate/)
 
 | Types                                                                                   | Brief definition                                      | Sections                                                                                                                                                                                                                                                                                                           |
 | :-------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3043,6 +3045,8 @@ Therefore, this should be used for **development only**.
 
    **Note:** taking out `-w` from webpack, because we only need to run it once for production
 
+   **package.json**
+
    ```
    **omitted**
 
@@ -3054,4 +3058,51 @@ Therefore, this should be used for **development only**.
    **omitted**
    ```
 
-   Then, `npm run serve` to start the server at localhost:8080, and `npm run build` to convert the code and build in local environment
+   Then...  
+   `npm run serve` to start the server at localhost:8080  
+   `npm run build` to convert the code and build in local environment
+
+4. To use Babel together, install `npm install babel-loader --save-dev`
+5. Config the Babel loader in Webpack
+
+   **webpack.config.js**
+
+   ```
+   const path = require('path')
+
+   module.exports = {
+     entry: './src/index.js',
+     output: {
+       path: path.resolve(__dirname, dist/assets),
+       filename: 'bundle.js'
+     },
+     devServer: {
+       contentBase: path.resolve(__dirname, 'dist'),
+       publicPath: '/assets/'
+       }
+     },
+     module: {
+       rules: [
+         {
+           test: /\.js$/,
+           exclude: /node_modules/,
+           use: {
+             loader: 'babel-loader',
+             options: {
+              presets: ['@babel/preset-env'],
+              },
+            },
+          },
+        ],
+      },
+    };
+   ```
+
+   - `module` sets up how the module system works in Webpack
+     - `rules` takes in an array of object, and each object is a single rule
+     - `test` - (regex) testing file name, what files you want to run through the loader
+     - `exclude` - (regex) what files you do not want to run through the loader
+     - `use` - specify what loader to be used
+     - `options` - which preset to be used (previous set up in .babelrc file)
+
+6. Now, when use `npm run build`, it will run through babel loader and Webpack.
