@@ -145,15 +145,15 @@ When storing a reference type in a variable, it adds the object to the **heap**,
 
 When creating a copy of primitive types, the value will be copied and stored separately on the stack.
 
-```
+```js
 const scoreOne = 100;
 const scoreTwo = scoreOne;
 // create a copy of the number and store the number separately on the stack
-console.log(scoreOne, scoreTwo);  // 100 100
+console.log(scoreOne, scoreTwo); // 100 100
 
 const scoreOne = 50;
 // only changed scoreOne, scoreTwo stays the same
-console.log(scoreOne, scoreTwo);  // 50 100
+console.log(scoreOne, scoreTwo); // 50 100
 ```
 
 ### Example - Reference Types
@@ -161,15 +161,15 @@ console.log(scoreOne, scoreTwo);  // 50 100
 When creating a copy of reference types, it does not create a new object on the heap.  
 Instead, it copies the pointer which points to the same object on the heap.
 
-```
-const userOne = {name: 'John', score: 100};
+```js
+const userOne = { name: 'John', score: 100 };
 const userTwo = userOne;
 // create a copy of the pointer which is associated with the same object
-console.log(userOne.score, userTwo.score);  // 100 100
+console.log(userOne.score, userTwo.score); // 100 100
 
 userOne.score = 50;
 // the change reflects to the object
-console.log(userOne.score, userTwo.score);  // 50 50
+console.log(userOne.score, userTwo.score); // 50 50
 ```
 
 ## String [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -180,32 +180,32 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
 
 - `indexOf()` - returns the index of the first occurrence of the specified value, searching forwards and returning `-1` if the value is not found.
 
-  ```
-  email.indexOf('e');  // 4
+  ```js
+  email.indexOf('e'); // 4
   ```
 
 - `lastIndexOf()` - returns the index of the last occurrence of the specified value, searching backwards and returning `-1` if the value is not found.
 
-  ```
-  email.indexOf('c');  // 13
+  ```js
+  email.indexOf('c'); // 13
   ```
 
 - `split()` - turns a String into an array of strings, by separating the string at each instance of a specified separator string
 
-  ```
-  email.split("@")[0];  // "mei"
+  ```js
+  email.split('@')[0]; // "mei"
   ```
 
 - `slice()` - extracts a section of a string and returns it as a new string, without modifying the original string
 
-  ```
-  email.slice(3, 6);  // "chimei"
+  ```js
+  email.slice(3, 6); // "chimei"
   ```
 
 - `substring()` - returns the part of the string between the start and end indexes, or to the end of the string
 
-  ```
-  email.substring(3, 6);  // "mei"
+  ```js
+  email.substring(3, 6); // "mei"
   ```
 
   #### Differences between substring() and slice()
@@ -215,36 +215,36 @@ A sequence of characters, e.g. `let email = "chimei@example.com"`
   The `substring()` method swaps its two arguments if `indexStart` is **greater than** `indexEnd` ( a string is still returned).  
   The `slice()` method returns an empty string if this is the case.
 
-  ```
-    let text = 'Mario Kart'
-    text.substring(5, 2); // "rio" (from index 2 to index 5-1)
-    text.slice(5, 2); // ""
+  ```js
+  let text = 'Mario Kart';
+  text.substring(5, 2); // "rio" (from index 2 to index 5-1)
+  text.slice(5, 2); // ""
 
-    //-- treat negative as 0 --
-    text.substring(-5, 2); // "Ma" (from index 0 until index 2-1)
-    text.substring(-5, -2); // ""
+  //-- treat negative as 0 --
+  text.substring(-5, 2); // "Ma" (from index 0 until index 2-1)
+  text.substring(-5, -2); // ""
 
-    //-- arguments cannot mix positive and negative--
-    text.slice(-5, 2); // ""
-    text.slice(-5, -2); // " Ka" (from index -5 until index -2-1)
+  //-- arguments cannot mix positive and negative--
+  text.slice(-5, 2); // ""
+  text.slice(-5, -2); // " Ka" (from index -5 until index -2-1)
   ```
 
 - `substr()` - returns a portion of the string, starting at the specified index and extending for a given number of characters afterward
 
-  ```
-  email.substr(3, 6);  // "mei@ex"
+  ```js
+  email.substr(3, 6); // "mei@ex"
   ```
 
 - `replace()` - returns a new string with some or all matches of a pattern replaced by a replacement
 
-  ```
-  email.replace('i', 'o');  // "chomei@example.com"
+  ```js
+  email.replace('i', 'o'); // "chomei@example.com"
   ```
 
 - `includes()` - determines whether one string may be found within another string, returning `true` or `false`
 
-  ```
-  email.includes('i');  // true
+  ```js
+  email.includes('i'); // true
   ```
 
 ## Template strings (Template literals) [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -254,7 +254,7 @@ You can use multi-line strings and string interpolation features with them.
 
 ### First, defining variables
 
-```
+```js
 const title = 'Harry Potter and the Philosopher's Stone';
 const author = 'J.K. Rowling';
 let likes = 300;
@@ -262,19 +262,20 @@ let likes = 300;
 
 ### Using concatenation way
 
-```
-let result = 'The book called ' + title + ' by ' + author + ' has ' + likes + ' likes';
+```js
+let result =
+  'The book called ' + title + ' by ' + author + ' has ' + likes + ' likes';
 ```
 
 ### Using template strings way
 
-```
+```js
 let result = `The book called ${title} by ${author} has ${likes} likes`;
 ```
 
 Template strings are often used for outputting contents into html.
 
-```
+```js
 let html = `
   <h2>${title}</h2>
   <p>By ${author}</p>
@@ -297,7 +298,7 @@ S - Subtraction `-`
 
 - `Undefined` - For variables that have not yet been defined (automatically assigned)
 
-  ```
+  ```js
   let age;
 
   console.log(age, age + 3, `the age is ${age}`);
@@ -306,7 +307,7 @@ S - Subtraction `-`
 
 - `Null` - Explicitly set a variable with no value
 
-  ```
+  ```js
   let age = null;
 
   console.log(age, age + 3, `the age is ${age}`);
@@ -317,7 +318,7 @@ S - Subtraction `-`
 
 Using comparison operators(`==`, `!=`, `>`, `>=`, `<`, `<=`, `===`) will return Boolean.
 
-```
+```js
 let name = 'Luigi';
 
 console.log(name == 'luigi'); // false
@@ -330,7 +331,7 @@ console.log(name > 'Mario'); // false (M comes after L)
 `===` / `!==` are also known as **strict comparison**,the value's types are considered in the comparison.  
 `==` / `!=` are also known as **loose comparison**, which means different types can still be equal.
 
-```
+```js
 let age = 25;
 
 // console.log(age == 25); // true
@@ -344,7 +345,7 @@ let age = 25;
 
 Using `typeof` operator to check the type of something (variables), e.g. `typeof name`
 
-```
+```js
 Number('hello'); // NaN
 String(50); // "50"
 
@@ -356,56 +357,56 @@ Boolean(''); // false
 
 ## Array [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-```
+```js
 let likes = ['Bmo', 'Chopper', 'Winnie'];
-likes[1];   //"Chopper"
+likes[1]; //"Chopper"
 
-likes[1] = "Psyduck";
-likes[1];   //"Psyduck"
+likes[1] = 'Psyduck';
+likes[1]; //"Psyduck"
 ```
 
 ### Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
 - `includes()` - determines whether an array contains a specified element, returning `true` or `false`
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.includes('bmo'); // false
   ```
 
 - `join()` - creates and returns the array as a string, separated by commas or a specified separator string
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
-  likes.join(', ');  // "Bmo, Chopper, Winnie"
+  likes.join(', '); // "Bmo, Chopper, Winnie"
   ```
 
 - `indexOf()` - returns the first index at which a given element can be found in the array, or `-1` if it is not present
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
-  likes.indexOf('Bmo');  // 0
+  likes.indexOf('Bmo'); // 0
   ```
 
 - `concat()` - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.concat(['Luigi', 'Butter']);
-     // ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"]
+  // ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"]
   ```
 
 - `unshift()` - Destructive method. It adds one or more elements to the **beginning** of an array and returns the new length of the array.
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
-  likes.unshift('Luigi', "Butter"); // 5
+  likes.unshift('Luigi', 'Butter'); // 5
   console.log(likes); // ["Luigi","Butter", "Bmo", "Chopper", "Winnie"]
   ```
 
 - `push()` - Destructive method. It adds one or more elements to the **end** of an array and returns the new length of the array.
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.push('Luigi'); // 4
   console.log(likes); // ["Bmo", "Chopper", "Winnie", "Luigi"]
@@ -413,7 +414,7 @@ likes[1];   //"Psyduck"
 
 - `shift()` - Destructive method. It removes the **first** element from an array and returns that removed element.
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.shift(); // "Bmo"
   console.log(likes); // ["Chopper", "Winnie"]
@@ -421,7 +422,7 @@ likes[1];   //"Psyduck"
 
 - `pop()` - Destructive method. It removes the **last** element from an array and returns that removed element.
 
-  ```
+  ```js
   let likes = ['Bmo', 'Chopper', 'Winnie'];
   likes.pop(); // "Winnie"
   console.log(likes); // ["Bmo", "Chopper"]
@@ -429,19 +430,19 @@ likes[1];   //"Psyduck"
 
 - `slice()` - returns the selected elements in an array, as a new array object. Elements are selected from start index to end index (end index is not included).
 
-  ```
-  let likes = ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"];
+  ```js
+  let likes = ['Bmo', 'Chopper', 'Winnie', 'Luigi', 'Butter'];
   likes.slice(2, 4); // ["Winnie", "Luigi"]   // select elements on index 2 and index 3
   ```
 
 - `splice()` - changes the original array. It adds/removes items to/from an array, and returns the removed item(s).
 
-  ```
-  let likes = ["Bmo", "Chopper", "Winnie"];
-  likes.splice(1, 0, 'Luigi') // [] (nothing's taken out)
+  ```js
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.splice(1, 0, 'Luigi'); // [] (nothing's taken out)
   console.log(likes); // ["Bmo", "Luigi", "Chopper", "Winnie"]
 
-  let likes = ["Bmo", "Chopper", "Winnie", "Luigi", "Butter"];
+  let likes = ['Bmo', 'Chopper', 'Winnie', 'Luigi', 'Butter'];
   likes.splice(3, 2, 'Toad'); // ["Luigi", "Butter"]
   console.log(likes); //  ["Bmo", "Chopper", "Winnie", "Toad"]
   ```
@@ -451,15 +452,15 @@ likes[1];   //"Psyduck"
 
 - `flat()` - creates a new array with all sub-array elements concatenated into it recursively up to the specified depth
 
-  ```
+  ```js
   var arr1 = [1, 2, [3, 4]];
-  arr1.flat();    // [1, 2, 3, 4]
+  arr1.flat(); // [1, 2, 3, 4]
 
   var arr2 = [1, 2, [3, 4, [5, 6]]];
-  arr2.flat();    // [1, 2, 3, 4, [5, 6]]
+  arr2.flat(); // [1, 2, 3, 4, [5, 6]]
 
   var arr3 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-  arr3.flat(Infinity);    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  arr3.flat(Infinity); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   // Flattening and array holes
   var arr4 = [1, 2, , 4, 5];
@@ -486,17 +487,17 @@ likes[1];   //"Psyduck"
 
   #### Converting a for loop to forEach:
 
-  ```
-  const people = ["Chopper", "Luigi", "Bmo"];
-  const copy = []
+  ```js
+  const people = ['Chopper', 'Luigi', 'Bmo'];
+  const copy = [];
 
   // for loop
   for (let i = 0; i < people.length; i++) {
-    copy.push(people[i])
+    copy.push(people[i]);
   }
 
   // forEach loop
-  people.forEach(item => copy.push(item))
+  people.forEach(item => copy.push(item));
   ```
 
 - `filter()` - creates a new array with elements that pass the conditions in the function
@@ -517,14 +518,14 @@ likes[1];   //"Psyduck"
 
   #### Filtering out non-premium users:
 
-  ```
+  ```js
   const users = [
-    {name: 'Bmo', premium: true},
-    {name: 'Chopper', premium: false},
-    {name: 'Winnie', premium: false},
-    {name: 'Luigi', premium: true}
+    { name: 'Bmo', premium: true },
+    { name: 'Chopper', premium: false },
+    { name: 'Winnie', premium: false },
+    { name: 'Luigi', premium: true },
   ];
-  const premiumUsers = users.filter(user => user.premium);   //only "true" will be kept
+  const premiumUsers = users.filter(user => user.premium); //only "true" will be kept
   console.log(premiumUsers);
   ```
 
@@ -546,18 +547,18 @@ likes[1];   //"Psyduck"
 
   #### Special prices only on those are over 30
 
-  ```
+  ```js
   const products = [
-    {name: 'product A', price: 20},
-    {name: 'product B', price: 40},
-    {name: 'product C', price: 30},
-    {name: 'product D', price: 10},
-    {name: 'product E', price: 50}
+    { name: 'product A', price: 20 },
+    { name: 'product B', price: 40 },
+    { name: 'product C', price: 30 },
+    { name: 'product D', price: 10 },
+    { name: 'product E', price: 50 },
   ];
 
   const saleProducts = products.map(product => {
-    if(product.price > 30){
-      return {name: product.name, price: product.price / 2};    //returning a new object
+    if (product.price > 30) {
+      return { name: product.name, price: product.price / 2 }; //returning a new object
     } else {
       return product;
     }
@@ -568,10 +569,10 @@ likes[1];   //"Psyduck"
 
   **Note**: the following will result in destructing the original array, because `product` that is iterating is an element from the original array.
 
-  ```
+  ```js
   const saleProducts = products.map(product => {
-    if(product.price > 30){
-      product.price = product.price /2;
+    if (product.price > 30) {
+      product.price = product.price / 2;
       return product;
     } else {
       return product;
@@ -598,7 +599,7 @@ likes[1];   //"Psyduck"
 
   #### Returning the sum of an array
 
-  ```
+  ```js
   let number = [1, 2, 3, 4];
   number.reduce((acc, cur) => acc + cur); // 10
   number.reduce((acc, cur) => acc + cur, 5); // 15
@@ -606,49 +607,53 @@ likes[1];   //"Psyduck"
 
   #### Returning how many score are over 60
 
-  ```
+  ```js
   const scores = [10, 20, 60, 40, 70, 90, 30, 80];
   const result = scores.reduce((acc, cur) => {
-    if(cur > 50){
+    if (cur > 50) {
       acc++;
     }
     return acc;
   }, 0);
 
-  console.log(result);    // 4
+  console.log(result); // 4
   ```
 
   #### Returning the sum of Bmo's score
 
-  ```
+  ```js
   const students = [
-    {name: 'Bmo', score: 50},
-    {name: 'Chopper', score: 30},
-    {name: 'Bmo', score: 70},
-    {name: 'Winnie', score: 60},
-    {name: 'Luigi', score: 60}
+    { name: 'Bmo', score: 50 },
+    { name: 'Chopper', score: 30 },
+    { name: 'Bmo', score: 70 },
+    { name: 'Winnie', score: 60 },
+    { name: 'Luigi', score: 60 },
   ];
 
   const bmoTotal = students.reduce((acc, cur) => {
-    if(cur.name === 'Bmo'){
+    if (cur.name === 'Bmo') {
       acc += cur.score;
     }
     return acc;
   }, 0);
 
-  console.log(bmoTotal);   // 120
+  console.log(bmoTotal); // 120
   ```
 
   #### Returning an array
 
-  ```
-  let flattened = [[0, 1], [2, 3], [4, 5]];
+  ```js
+  let flattened = [
+    [0, 1],
+    [2, 3],
+    [4, 5],
+  ];
   flattened.reduce((acc, cur) => acc.concat(cur)); // [0, 1, 2, 3, 4, 5]
   ```
 
   #### Counting instances of values in an object
 
-  ```
+  ```js
   let list = ['Alice', 'Bob', 'John', 'Bruce', 'Alice'];
   let nameCount = list.reduce((nameArr, name) => {
     if (name in nameArr) {
@@ -659,7 +664,7 @@ likes[1];   //"Psyduck"
     return nameArr;
   }, {});
 
-  console.log(nameCount);  // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
+  console.log(nameCount); // {Alice: 2, Bob: 1, John: 1, Bruce: 1}
   ```
 
 - `find()` - returns the value of the first element in an array that pass the condition
@@ -678,7 +683,7 @@ likes[1];   //"Psyduck"
 
   `thisValue` - (optional) A value to be passed to the function to be used as its "this" value.
 
-  ```
+  ```js
   const scores = [10, 5, 0, 40, 60, 10, 20, 70];
 
   const firstHighScore = scores.find(score => score > 50);
@@ -695,46 +700,46 @@ likes[1];   //"Psyduck"
 
   `compareFunction` - (optional) A function that defines an alternative sort order. The function should return a negative, zero, or positive value, depending on the arguments.
 
-  ```
-  const name = ["Chopper", "Luigi", "Bmo"];
+  ```js
+  const name = ['Chopper', 'Luigi', 'Bmo'];
   name.sort(); //  ["Bmo", "Chopper", "Luigi"]
   ```
 
   #### Sorting numbers
 
-  ```
+  ```js
   const scores = [10, 50, 20, 5, 35, 70, 45];
 
-  scores.sort((a, b) => a - b)   // [5, 10, 20, 35, 45, 50, 70]
-  scores.sort((a, b) => b - a)   // [70, 50, 45, 35, 20, 10, 5]
+  scores.sort((a, b) => a - b); // [5, 10, 20, 35, 45, 50, 70]
+  scores.sort((a, b) => b - a); // [70, 50, 45, 35, 20, 10, 5]
   ```
 
   #### Sorting objects
 
-  ```
+  ```js
   const students = [
-    {name: 'Bmo', score: 20},
-    {name: 'Chopper', score: 10},
-    {name: 'Bmo', score: 50},
-    {name: 'Winnie', score: 30},
-    {name: 'Luigi', score: 70}
+    { name: 'Bmo', score: 20 },
+    { name: 'Chopper', score: 10 },
+    { name: 'Bmo', score: 50 },
+    { name: 'Winnie', score: 30 },
+    { name: 'Luigi', score: 70 },
   ];
 
-  students.sort((a,b) => b.score - a.score);  // shorter version(descending order)
+  students.sort((a, b) => b.score - a.score); // shorter version(descending order)
   console.log(players);
   ```
 
   `students.sort((a,b) => b.score - a.score);` is the shorter version of below.
 
-  ```
-  players.sort((a,b) => {
-     if(a.score > b.score){
-       return -1;  // a(bigger) should come first -> return negative
-     } else if (b.score > a.score){
-       return 1;   // b(bigger) should come first -> return positive
-     } else {
-       return 0;   // the same, no order is needed -> return zero
-     }
+  ```js
+  players.sort((a, b) => {
+    if (a.score > b.score) {
+      return -1; // a(bigger) should come first -> return negative
+    } else if (b.score > a.score) {
+      return 1; // b(bigger) should come first -> return positive
+    } else {
+      return 0; // the same, no order is needed -> return zero
+    }
   });
   ```
 
@@ -742,37 +747,37 @@ likes[1];   //"Psyduck"
 
 ### Create an object literal with `key: value` pairs.
 
-```
+```js
 let user = {
   name: 'luigi',
   age: 30,
   email: 'luigi@nintendo.jp',
-  blogs: ['The Haunted Mansion', 'Friendship with Boos']
-}
+  blogs: ['The Haunted Mansion', 'Friendship with Boos'],
+};
 ```
 
 ### Access and update the properties - _dot notation_ or _square bracket notation_
 
 1. dot notation `.` (used this most of the time)
 
-```
+```js
 console.log(user.name):
 user.age = 35;
 ```
 
 2. square bracket notation `['']` (useful when the property is a variable)
 
-```
+```js
 console.log(user['name']);
 user['age'] = 35;
 
-const works = 'blogs'
+const works = 'blogs';
 console.log(user[works]);
 ```
 
 ### Add methods
 
-```
+```js
 let user = {
   name: 'luigi',
   age: 30,
@@ -793,7 +798,7 @@ user.logBlogs();
 
 ### Objects in Arrays
 
-```
+```js
 let user = {
   blogs: [
     { title: 'The Haunted Mansion', likes: 30 },
@@ -817,7 +822,7 @@ When calling a method, JavaScript will set the value of `this` keyword to be the
 When creating a method using arrow functions, `this` will **NOT** be the object that the method is used on.  
 The value of `this` will be the point in the code the arrow function is invoked.
 
-```
+```js
 let user = {
   name: 'luigi',
   age: 30,
@@ -839,16 +844,16 @@ let user = {
   },
 };
 
-console.log(this);   // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
+console.log(this); // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
 
 // regular functions - this keyword value will be the user object
-user.logName();      // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
+user.logName(); // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
 
 // shorthand regular functions - this keyword value will be the user object
-user.logAge();       // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
+user.logAge(); // {name: "luigi", age: 30, email: "luigi@nintendo.jp", logName: ƒ}
 
 // arrow function - when the method is invoked, this keyword is at global window object
-user.logEmail();     // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
+user.logEmail(); // Window {parent: Window, opener: null, top: Window, length: 4, frames: Window, …}
 ```
 
 ## Math [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -860,66 +865,66 @@ Math works with the Number type. It does **NOT** work with BigInt.
 
 - `round()` - returns the value of a number rounded to the nearest integer
 
-  ```
-  console.log(Math.round(7.7));  // 8
-  console.log(Math.round(7.4));  // 7
+  ```js
+  console.log(Math.round(7.7)); // 8
+  console.log(Math.round(7.4)); // 7
   ```
 
 - `floor()` - returns the largest integer less than or equal to a given number
 
-  ```
+  ```js
   const area = 7.7;
-  console.log(Math.round(area));  // 7
+  console.log(Math.round(area)); // 7
   ```
 
 - `ceil()` - always rounds a number up to the next largest whole number or integer
 
-  ```
+  ```js
   const area = 7.1;
-  console.log(Math.round(area));  // 8
+  console.log(Math.round(area)); // 8
   ```
 
 - `trunc()` - returns the integer part of a number by removing any fractional digits
 
-  ```
-  console.log(Math.round(7.7));  // 7
-  console.log(Math.round(7.4));  // 7
+  ```js
+  console.log(Math.round(7.7)); // 7
+  console.log(Math.round(7.4)); // 7
   ```
 
 - `random()` - returns a float random number in the range 0 to less than 1 (inclusive of 0, but not 1)
 
-  ```
+  ```js
   const random = Math.random();
 
-  console.log(random);  // 0 <= n < 1
-  console.log(Math.round(random ));  // 0 or 1
-  console.log(Math.round(random * 100));  // 0 ~ 100
+  console.log(random); // 0 <= n < 1
+  console.log(Math.round(random)); // 0 or 1
+  console.log(Math.round(random * 100)); // 0 ~ 100
   ```
 
 - `abs()` - returns the absolute value of a number
 
-  ```
+  ```js
   function difference(a, b) {
     return Math.abs(a - b);
   }
 
-  console.log(difference(3, 5));   // 2
+  console.log(difference(3, 5)); // 2
   ```
 
 ## Date [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-```
+```js
 const now = new Date();
 
-console.log(now);  //
-console.log(typeof now);  //object
+console.log(now); //
+console.log(typeof now); //object
 ```
 
 ### Common methods
 
 #### years, months, days, times
 
-```
+```js
 const now = new Date();
 
 console.log('now.getFullYear());
@@ -942,23 +947,23 @@ console.log(now.getSeconds());
 
 #### Date strings
 
-```
-console.log(now.toDateString());    // Mon Feb 24 2020
-console.log(now.toTimeString());    // 22:02:33 GMT+0900 (Japan Standard Time)
-console.log(now.toLocaleString());  // 2/24/2020, 10:02:33 PM
+```js
+console.log(now.toDateString()); // Mon Feb 24 2020
+console.log(now.toTimeString()); // 22:02:33 GMT+0900 (Japan Standard Time)
+console.log(now.toLocaleString()); // 2/24/2020, 10:02:33 PM
 ```
 
 ### Timestamps
 
 A number representing the milliseconds from 1 January 1970 00:00:00 UTC to the given date.
 
-```
-console.log(now.getTime());   // 1582550446028
+```js
+console.log(now.getTime()); // 1582550446028
 ```
 
 ##### Using for comparison
 
-```
+```js
 const before = new Date('02/01/2019 7:30:59');
 const now = new Date();
 const diff = now.getTime() - before.getTime();
@@ -970,7 +975,7 @@ const days = Math.round(hours / 24);
 
 ##### Converting timestamps to date object
 
-```
+```js
 const timestamp = 1675938474990;
 console.log(new Date(timestamp));
 ```
@@ -979,7 +984,7 @@ console.log(new Date(timestamp));
 
 [Date-fns](https://date-fns.org/)
 
-```
+```js
 const now = new Date();
 
 console.log(dateFns.isToday(now));
@@ -994,7 +999,7 @@ console.log(dateFns.format(now, 'dddd, Do MMMM, YYYY'));
 // comparing dates
 const before = new Date('February 1 2019 12:00:00');
 
-console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
+console.log(dateFns.distanceInWords(now, before, { addSuffix: true }));
 ```
 
 ## Symbol [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -1005,11 +1010,11 @@ The main feature of Symbol is that it is completely unique (i.e. no two symbols 
 A symbol may be used as a key or property name in objects an object property.  
 Using symbols as object keys means all the keys in the object are all unique.
 
-```
-let Symbol1 = Symbol("Sym")
-let Symbol2 = Symbol("Sym")
+```js
+let Symbol1 = Symbol('Sym');
+let Symbol2 = Symbol('Sym');
 
-console.log(Symbol1 === Symbol2)   // false
+console.log(Symbol1 === Symbol2); // false
 ```
 
 ## Loops
@@ -1034,7 +1039,7 @@ for ([initialization]; [condition]; [final-expression]) {
 Variables declared with `var` are **not** local to the loop, i.e. they are in the same scope the for loop is in.  
 Variables declared with `let` are local to the statement.
 
-```
+```js
 const name = ['Bmo', 'Luigi', 'Chopper', 'Butter'];
 for (let i = 0; i < name.length; i++) {
   console.log(name[i]);
@@ -1051,7 +1056,7 @@ while (condition) {
 }
 ```
 
-```
+```js
 const name = ['Bmo', 'Luigi', 'Chopper', 'Butter'];
 let i = 0;
 while (i < name.length) {
@@ -1072,7 +1077,7 @@ do {
 } while (condition);
 ```
 
-```
+```js
 let i = 5;
 do {
   console.log(i);
@@ -1090,7 +1095,7 @@ output: 5 (run at least once)
 `||` - OR  
 `!` - NOT (turn value into Boolean)
 
-```
+```js
 let list = ['Milk'];
 if (!!list) {
   console.log('out of milk');
@@ -1142,10 +1147,10 @@ If `break` is not added, when expression matches value1, it will run all the cas
 `expression` - An expression whose result is matched against each case clause.
 `default` - (optional) A default clause (executed none of value matches the expression)
 
-```
+```js
 const grade = 'D';
 
-switch(grade){
+switch (grade) {
   case 'A':
     console.log('you got an A!');
     break;
@@ -1171,24 +1176,22 @@ switch(grade){
 `break` - terminates execution of the current loop  
 `continue` - terminates execution of the current iteration of the loop, and continues execution of the loop with the next iteration
 
-```
+```js
 const scores = [50, 25, 0, 30, 100, 20, 10];
 
-for(let i = 0; i < scores.length; i++){
-
-  if(scores[i] === 0){
+for (let i = 0; i < scores.length; i++) {
+  if (scores[i] === 0) {
     continue;
     // skip the following statements and continue the next iteration
   }
 
   console.log('your score:', scores[i]);
 
-  if(scores[i] === 100){
+  if (scores[i] === 100) {
     console.log('congrats, you got the top score!');
     break;
     // terminate the loop
   }
-
 }
 ```
 
@@ -1221,7 +1224,7 @@ However, variables defined with `var` are at global level even if it is defined 
 
 #### Example
 
-```
+```js
 let age = 30;
 
 if (true) {
@@ -1230,9 +1233,9 @@ if (true) {
   console.log('inside 1st code block:', age, name);
 
   if (true) {
-  age = 50;
-  var mood = 'happy!';
-  console.log('inside 2nd code block:', age, name, mood);
+    age = 50;
+    var mood = 'happy!';
+    console.log('inside 2nd code block:', age, name, mood);
   }
 }
 
@@ -1253,7 +1256,7 @@ outside code block: 30 happy!
 
 Because of JavaScript's default behavior, _Hoisting_, it moves all declarations to the top of the current scope, which means you can call a function first and declare the function after.
 
-```
+```js
 function greet() {
   console.log('Hello!");
 }
@@ -1261,7 +1264,7 @@ function greet() {
 greet();
 ```
 
-```
+```js
 greet();
 
 function greet() {
@@ -1273,7 +1276,7 @@ function greet() {
 
 Variables and constants declared with `let` or `const` are not hoisted!
 
-```
+```js
 const greeting = function() {
   console.log('Good day!");
 }
@@ -1283,7 +1286,7 @@ greeting();
 
 #### Default value in functions
 
-```
+```js
 const speak = function(name = 'Luigi', time = 'night'){
   console.log(`good ${time}, ${name}!`);
 };
@@ -1312,7 +1315,7 @@ singleParam => { statements }
 
 #### Example
 
-```
+```js
 const calcArea = function(radius){
   return 3.14 \* radius\*\*2;
 }
@@ -1320,7 +1323,7 @@ const calcArea = function(radius){
 
 **since there is only one parameters, `function`, `()`, `return`, `{}` can all be omitted.**
 
-```
+```js
 const calcArea = radius => 3.14 \* radius\*\*2;
 ```
 
@@ -1328,25 +1331,22 @@ const calcArea = radius => 3.14 \* radius\*\*2;
 
 #### General premise:
 
-```
-
-const myFunction = (callbackFunction) => {
+```js
+const myFunction = callbackFunction => {
   // do something
   let value = 50;
   callbackFunction(value);
-}
+};
 
 myFunction(value => {
   //do something
   console.log(value); //50
-})
-
+});
 ```
 
 #### Example
 
-```
-
+```js
 let people = ['Luigi', 'Butter', 'Bmo', 'Chopper', 'Winnie'];
 
 // v1 - regular function
@@ -1365,7 +1365,6 @@ const logPeople = (person, index) => {
 };
 
 people.forEach(logPeople);
-
 ```
 
 ### Functions vs Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -1409,16 +1408,15 @@ To literate `HTMLCollection`, you need to convert to array type using `Array.fro
 
 HTML :
 
-```
+```html
 <div>
   <h1>Hello</h1>
   <p class="error">Error!</p>
   <a href="https://www.google.com">Google</a>
+</div>
 
- </div>
-
- <div class="content">
-   <p>Users:</p>
+<div class="content">
+  <p>Users:</p>
 </div>
 ```
 
@@ -1426,7 +1424,7 @@ HTML :
 
   The innerText property sets or returns the text content of the specified node, and all its descendants.
 
-  ```
+  ```js
   greeting = document.querySelector('h1');
 
   // replace text -> <h1>Good day!</h1>
@@ -1440,7 +1438,7 @@ HTML :
 
   HTML:
 
-  ```
+  ```html
   <p>lorem <span style="display:none;">error</span> ipsum</p>
   ```
 
@@ -1451,7 +1449,7 @@ HTML :
 
   The innerHTML property sets or returns the HTML content (inner HTML) of an element.
 
-  ```
+  ```js
   greeting = document.querySelector('h1');
 
   // replace -> <h1>Good day!</h1>
@@ -1466,8 +1464,8 @@ HTML :
 
   **Loop through data and outputting to HTML**
 
-  ```
-  const people = ["Chopper", "Luigi", "Bmo"];
+  ```js
+  const people = ['Chopper', 'Luigi', 'Bmo'];
 
   people.forEach(person => {
     content.innerHTML += `<p>${person}</p>`;
@@ -1481,18 +1479,18 @@ HTML :
   The setAttribute() method adds the specified attribute to an element, and gives it the specified value.  
   If the specified attribute already exists, only the value is set/changed.
 
-  ```
+  ```js
   const message = document.querySelector('p');
   // console.log(message.getAttribute('class'));
-  message.setAttribute('class', 'success');  //existing attribute
-  message.setAttribute('style', 'color: green');  //non-existing attribute
+  message.setAttribute('class', 'success'); //existing attribute
+  message.setAttribute('style', 'color: green'); //non-existing attribute
   ```
 
 - `element.removeAttribute(attribute_name)`
 
   The removeAttribute() method removes the specified attribute from an element.
 
-  ```
+  ```js
   const link = document.querySelector('a');
   link.removeAttribute('href');
   ```
@@ -1502,33 +1500,33 @@ HTML :
 - `element.style.property = "value"`
   **Note**: Using `message.setAttribute('style', 'color: green')` will overwrite all of other styles.
 
-  ```
+  ```js
   const title = document.querySelector('h1');
   title.style.margin = '15px';
-  title.style.color = '#bef';     // add an extra style
-  title.style.fontSize = '1rem';  //cannot use hyphen, only use camel case
-  title.style.margin = '';        // remove margin
-  title.setAttribute('style', 'background: #fafafa');   //overwrite other styles
+  title.style.color = '#bef'; // add an extra style
+  title.style.fontSize = '1rem'; //cannot use hyphen, only use camel case
+  title.style.margin = ''; // remove margin
+  title.setAttribute('style', 'background: #fafafa'); //overwrite other styles
   ```
 
 #### Adding and Removing Classes
 
 - `element.classList.add(class_name)`
 
-  ```
+  ```js
   const message = document.querySelector('p');
   message.classList.add('error');
   ```
 
 - `element.classList.remove(class_name)`
 
-  ```
+  ```js
   message.classList.remove('error');
   ```
 
 - `element.classList.toggle(class_name)`
 
-  ```
+  ```js
   message.classList.toggle('show');
   ```
 
@@ -1536,7 +1534,7 @@ HTML :
 
 HTML:
 
-```
+```html
 <body>
   <h1>The DOM</h1>
   <article>
@@ -1550,14 +1548,13 @@ HTML:
 </body>
 ```
 
-```
+```js
 const article = document.querySelector('article');
 
 // HTMLCollection cannot use forEach(), so use Array.from() to convert into an array
 Array.from(article.children).forEach(child => {
   child.classList.add('article-children');
 });
-
 
 const title = document.querySelector('h2');
 
@@ -1589,7 +1586,7 @@ target.addEventListener(event_type, callback_function);
 
 #### Example
 
-```
+```js
 // single element
 const btn = document.querySelector('button');
 btn.addEventListener('click', e => {
@@ -1614,7 +1611,7 @@ items.forEach(item => {
 
 Using `target.remove()` to remove from the DOM
 
-```
+```js
 const items = document.querySelectorAll('li');
 items.forEach(item => {
   item.addEventListener('click', e => {
@@ -1627,13 +1624,12 @@ items.forEach(item => {
 
 ##### Using `textContent` to append
 
-```
+```js
 const btn = document.querySelector('button');
 let ul = document.querySelector('ul');
 btn.addEventListener('click', () => {
   ul.textContent += '<li>something new</li>';
 });
-
 ```
 
 ##### Using `append()` & `prepend()`
@@ -1642,7 +1638,7 @@ btn.addEventListener('click', () => {
 
 - `ParentNode.prepend()` - inserts at the top of its parent
 
-```
+```js
 const btn = document.querySelector('button');
 let ul = document.querySelector('ul');
 
@@ -1661,24 +1657,25 @@ btn.addEventListener('click', () => {
 Event Bubbling is the event starts from the target element to its parents, then all its ancestors which are on the way to bottom to top.  
 Event will first be triggered at the target element level, if its parents has the same event, it will be triggered as well.
 
-```
+```js
 let ul = document.querySelector('ul');
-btn.addEventListener('click', () => {        //when being clicked, it bubbled up to its parent
+btn.addEventListener('click', () => {
+  //when being clicked, it bubbled up to its parent
   const li = document.createElement('li');
-    e.target.remove();
+  e.target.remove();
 });
 ul.addEventListener('click', e => {
-  alert('event bubbling');                   // event is triggered automatically
+  alert('event bubbling'); // event is triggered automatically
 });
 ```
 
 **Use `event.stopPropagation()` to stop event bubbling.**
 
-```
+```js
 const items = document.querySelectorAll('li');
 items.forEach(item => {
   item.addEventListener('click', e => {
-    e.stopPropagation()
+    e.stopPropagation();
     e.target.remove();
   });
 });
@@ -1689,7 +1686,7 @@ items.forEach(item => {
 Because of Event Bubbling, one of most powerful event handling patterns called Event Delegation can be implemented.  
 The idea is that if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
 
-```
+```js
 ul.addEventListener('click', e => {
   if (e.target.tagName === 'LI') {
     e.target.remove();
@@ -1712,9 +1709,9 @@ ul.addEventListener('click', e => {
 
   HTML
 
-  ```
+  ```html
   <form id="form">
-    <label>Test field: <input type="text"></label>
+    <label>Test field: <input type="text"/></label>
     <button type="submit">Submit form</button>
     <button type="reset">Reset form</button>
   </form>
@@ -1723,13 +1720,13 @@ ul.addEventListener('click', e => {
 
   JS
 
-  ```
+  ```js
   const form = document.getElementById('form');
   const log = document.getElementById('log');
 
   form.addEventListener('submit', e => {
     log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
-    event.preventDefault();    //preventing refreshing page
+    event.preventDefault(); //preventing refreshing page
   });
 
   form.addEventListener('reset', e => {
@@ -1755,14 +1752,14 @@ ul.addEventListener('click', e => {
 
   HTML
 
-  ```
-  <input placeholder="Enter some text" name="name"/>
+  ```html
+  <input placeholder="Enter some text" name="name" />
   <p id="log"></p>
   ```
 
   JS
 
-  ```
+  ```js
   const input = document.querySelector('input');
   const log = document.querySelector('#log');
 
@@ -1780,7 +1777,7 @@ ul.addEventListener('click', e => {
 - `resize`  
   The resize event fires when the document view (window) has been resized.
 
-  ```
+  ```js
   window.addEventListener('resize', () => {
     console.log(this.innerHeight);
     console.log(this.innerWidth);
@@ -1792,19 +1789,19 @@ ul.addEventListener('click', e => {
 
   ##### Change nav background to white when scrolling down
 
-  ```
-  const navbar = document.querySelector('#nav')
+  ```js
+  const navbar = document.querySelector('#nav');
 
   window.addEventListener('scroll', function(e) {
-    const lastPosition = window.scrollY
-    if (lastPosition > 50 ) {
-      navbar.classList.add('white-bg')
+    const lastPosition = window.scrollY;
+    if (lastPosition > 50) {
+      navbar.classList.add('white-bg');
     } else if (navbar.classList.contains('white-bg')) {
-      navbar.classList.remove('white-bg')
+      navbar.classList.remove('white-bg');
     } else {
-      navbar.classList.remove('white-bg')
+      navbar.classList.remove('white-bg');
     }
-  })
+  });
   ```
 
 #### Keyboard events [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -1817,7 +1814,7 @@ ul.addEventListener('click', e => {
 - `keyup`  
   The event is fired when **ANY** key is released.
 
-  ```
+  ```js
   document.addEventListener('keydown', e => {
     console.log(e.code);
   });
@@ -1829,12 +1826,15 @@ ul.addEventListener('click', e => {
   The copy event fires when the user initiates a copy action through the browser's user interface.  
   The clipboard contents can be modified by calling `event.clipboardData.setData(format, data)`, and cancelling the event's default action using `event.preventDefault()`.
 
-  ```
+  ```js
   const source = document.querySelector('div.source');
 
-  source.addEventListener('copy', (event) => {
+  source.addEventListener('copy', event => {
     const selection = document.getSelection();
-    event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
+    event.clipboardData.setData(
+      'text/plain',
+      selection.toString().toUpperCase(),
+    );
     event.preventDefault();
   });
   ```
@@ -1852,7 +1852,7 @@ ul.addEventListener('click', e => {
 
   ##### Cannot right-click on p tag
 
-  ```
+  ```js
   context = document.getElementById('p');
 
   context.addEventListener('contextmenu', e => {
@@ -1886,19 +1886,19 @@ ul.addEventListener('click', e => {
 
   HTML
 
-  ```
+  ```html
   <div style="width: 100px; height: 100px; background: blue;"></div>
   ```
 
   JS
 
-  ```
+  ```js
   let scale = 1;
   const box = document.querySelector('div');
   box.addEventListener('wheel', e => {
     e.preventDefault();
     scale += event.deltaY * -0.01;
-    scale = Math.min(Math.max(0.125, scale), 4);   // Restrict scale
+    scale = Math.min(Math.max(0.125, scale), 4); // Restrict scale
     box.style.transform = `scale(${scale})`;
   });
   ```
@@ -2000,56 +2000,56 @@ To specify, flags can be added to the end of a regular expression literal `/cat/
 - `test()`  
   It returns `true` on successful match and `false` otherwise.
 
-  ```
-  regexOne.test(textA)   // Output example: true or false
+  ```js
+  regexOne.test(textA); // Output example: true or false
   ```
 
 - `search()`  
   It returns the _index_ of the match on success and `-1` otherwise.
 
-  ```
-  textA.search(regexOne)   // Output example: index or -1
+  ```js
+  textA.search(regexOne); // Output example: index or -1
   ```
 
 - `match()`  
   If the g flag is enabled, multiple matches will be returned as an array.
 
-  ```
+  ```js
   var textA = 'All I see here are apples, APPles and apPleS';
   var regexOne = /apples/gi;
 
-  console.log(textA.match(regexOne));   // Output example : [ "apples", "APPles", "apPleS" ]
+  console.log(textA.match(regexOne)); // Output example : [ "apples", "APPles", "apPleS" ]
   ```
 
 - `exec()`  
   The returned array will contain information about the match and capturing groups.
 
-  ```
+  ```js
   var textA = 'Do you like apples?';
   var regexOne = /apples/;
 
-  console.log(regexOne.exec(textA)[0]);      // Output : apples
-  console.log(regexOne.exec(textA).input);   // Output : Do you like apples?
+  console.log(regexOne.exec(textA)[0]); // Output : apples
+  console.log(regexOne.exec(textA).input); // Output : Do you like apples?
   ```
 
 - `replace()`  
   Search for a substring matching the given pattern and replace it with the provided replacement string.
 
-  ```
+  ```js
   var textA = 'Do you like aPPles?';
-  var regexOne = /apples/i
+  var regexOne = /apples/i;
 
-  console.log(textA.replace(regexOne, 'mangoes'));   // Output : Do you like mangoes?
+  console.log(textA.replace(regexOne, 'mangoes')); // Output : Do you like mangoes?
   ```
 
 - `split()`  
   This method will allow you to split the main string into substrings based on the separator specified as a regular expression.
 
-  ```
+  ```js
   var textA = 'Do you like 3 apples or 3apple3?';
-  var regexOne = /\d+/g
+  var regexOne = /\d+/g;
 
-  console.log(textA.split(regexOne))   // Output : ["Do you like ", " apples or ", "apple", "?"]
+  console.log(textA.split(regexOne)); // Output : ["Do you like ", " apples or ", "apple", "?"]
   ```
 
 ## Asynchronous JavaScript
@@ -2058,7 +2058,7 @@ To specify, flags can be added to the end of a regular expression literal `/cat/
 
 #### Making a request
 
-```
+```js
 const request = new XMLHttpRequest();
 
 request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
@@ -2098,7 +2098,7 @@ An XHR client exists in one of the following states:
 | 3     | LOADING          | Downloading; _responseText_ holds partial data.                 |
 | 4     | DONE             | The operation is complete.                                      |
 
-```
+```js
 const request = new XMLHttpRequest();
 
 request.addEventListener('readystatechange', () => {
@@ -2111,8 +2111,8 @@ request.send();
 
 #### Validating the Http Request
 
-```
-request.readyState === 4 && request.status === 200
+```js
+request.readyState === 4 && request.status === 200;
 ```
 
 #### Parsing JSON & Refactoring
@@ -2120,7 +2120,7 @@ request.readyState === 4 && request.status === 200
 - Creating a constance with callback function takes in two parameters
 - Using `JSON.parse()` to convert JSON strings to JavaScript objects
 
-```
+```js
 const getTodos = callback => {
   const request = new XMLHttpRequest();
 
@@ -2148,13 +2148,13 @@ getTodos((error, data) => {
 
 #### jQuery
 
-```
+```js
 $.get('https://jsonplaceholder.typicode.com/todos', function(data) {
   console.log(data);
 });
 ```
 
-```
+```js
 $.ajax({
   type: 'GET',
   url: 'https://jsonplaceholder.typicode.com/todos',
@@ -2174,22 +2174,25 @@ This can be used to avoid nesting callbacks (so-called callback hell).
 
 - `then()` - returns a Promise. It takes up to two optional arguments: callback functions for the success and failure cases of the Promise.
 
-  ```
+  ```js
   const promise = new Promise((resolve, reject) => {
     resolve('Success!');
     // reject('Failed!');
   });
 
-  promise.then(value => {
-    console.log(value);
-  }, error => {
-    console.log(error);
-  });
+  promise.then(
+    value => {
+      console.log(value);
+    },
+    error => {
+      console.log(error);
+    },
+  );
   ```
 
 - `catch()` - returns a Promise and deals with rejected cases only
 
-  ```
+  ```js
   const promise = new Promise((resolve, reject) => {
     throw 'Uh-oh!';
   });
@@ -2203,7 +2206,7 @@ This can be used to avoid nesting callbacks (so-called callback hell).
 
 **Example using XHR and Promise**
 
-```
+```js
 const getBooks = resource => {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -2230,7 +2233,7 @@ getBooks('bmo.json')
   });
 ```
 
-```
+```js
 const getBooks = resource => {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -2262,7 +2265,7 @@ getBooks('bmo.json')
 
 Using callbacks for sending sequence of Http requests will result in "callback hell", which is hard to maintain the code. Using **promise** can do method chaining, which is cleaner and easier to maintain.
 
-```
+```js
 getBooks('bmo.json')
   .then(data => {
     console.log('promise 1 resolved:', data);
@@ -2285,7 +2288,7 @@ getBooks('bmo.json')
 
 #### Using jQuery
 
-```
+```js
 $.get('bmo.json')
   .then(data => {
     console.log('promise 1 resolved:', data);
@@ -2307,7 +2310,7 @@ $.get('bmo.json')
 
 [q library](https://github.com/kriskowal/q)
 
-```
+```js
 getBooks(function* generator() {
   let bmoBooks = yield $.get('bmo.json');
   console.log(bmoBooks);
@@ -2353,10 +2356,10 @@ The `fetch()` method takes one mandatory argument, the path to the resource you 
 It returns a _promise_ which is fulfilled once the response is available.  
 The promise resolves to the Response object representing the response to your request.
 
-```
+```js
 fetch('wrong.json')
   .then(response => {
-    console.log(response);   // resolved, but it is error 404
+    console.log(response); // resolved, but it is error 404
   })
   .catch(error => {
     console.log(error);
@@ -2370,7 +2373,7 @@ Instead, a `then()` handler must check the Response.ok and/or Response.status pr
 
 - Using `response.json()` to return data, which returns a **promise**
 
-```
+```js
 fetch('bmo.json')
   .then(response => {
     return response.json();
@@ -2398,15 +2401,14 @@ The `await` operator is used to wait for a Promise. It can only be used inside a
 
 Using `async` and `await` can chain promises together in a clean and readable way.
 
-```
+```js
 const getBooks = async () => {
   const response = await fetch('bmo.json');
   const data = await response.json();
   return data;
 };
 
-getBooks()
-  .then(data => console.log(data));
+getBooks().then(data => console.log(data));
 ```
 
 **Note**: `getBook()` is a promise, therefore `then()` is needed to be used once outside of the async function.
@@ -2416,7 +2418,7 @@ getBooks()
 `.catch(error => console.log(error.message));` will catch rejected error from fetch.  
 However, since fetch does not reject HTTP errors, we use if statement to check status.
 
-```
+```js
 const getBooks = async () => {
   const response = await fetch('bmo.json');
 
@@ -2442,13 +2444,13 @@ The stored data is saved across browser sessions.
 
 `setItem()` method stores a key name and value in local storage, and will add that key & value, or update value if it already exists. `sto
 
-```
+```js
 // store
 localStorage.setItem(keyName, keyValue);
 
 // update
 localStorage.setItem(keyName, newValue);
-localStorage.keyName = newValue
+localStorage.keyName = newValue;
 ```
 
 ### Retrieve Data
@@ -2482,7 +2484,7 @@ localStorage.clear();
 Local storage can only store string.  
 Using `JSON.stringify()` to convert the object to strings.
 
-```
+```js
 const books = [
   {
     title: 'Another Adventure Day',
@@ -2502,7 +2504,6 @@ const books = [
 ];
 
 localStorage.setItem('books', JSON.stringify(books));
-
 ```
 
 ### Retrieve Object Data
@@ -2510,7 +2511,7 @@ localStorage.setItem('books', JSON.stringify(books));
 Retrieved data will be strings.  
 Using `JSON.parse()` to convert back to the original object.
 
-```
+```js
 const storedData = localStorage.getItem('books');
 
 console.log(JSON.parse(storedData));
@@ -2530,7 +2531,7 @@ To declare a class, use the `class` keyword with the name of the class
 An important difference between _function declarations_ and _class declarations_ is that function declarations are **hoisted** and class declarations are not.  
 In other words, _class declarations_ need to be done first and then access it, otherwise it will throw a `ReferenceError`.
 
-```
+```js
 class User {
   constructor(username, email) {
     this.username = username;
@@ -2554,14 +2555,14 @@ Whenever we use a `new` keyword to create a new object, it does...
 
 Outside of the constructor, prototype methods can be created.
 
-```
+```js
 class User {
-  constructor(username, email){
+  constructor(username, email) {
     this.username = username;
     this.email = email;
     this.points = 0;
   }
-  login(){
+  login() {
     console.log(`${this.username} just logged in`);
   }
 }
@@ -2572,7 +2573,7 @@ userOne.login();
 
 In order to do method chaining, the object instance needs to be return, otherwise it will show `Uncaught TypeError: Cannot read property of undefined`.
 
-```
+```js
 class User {
   constructor(username, email) {
     this.username = username;
@@ -2610,7 +2611,7 @@ userOne
 
 A subclass is a class which inherit functionality form another class, but also have their own additional properties and methods as well. (A subclass _extends_ another class.)
 
-```
+```js
 class Admin extends User {
   deleteUser(targetUser) {
     users = users.filter(user => user.email !== targetUser.email);
@@ -2627,9 +2628,7 @@ const userAdmin = new Admin('Admin', 'admin@example.com');
 
 let users = [userOne, userTwo, userAdmin];
 
-userAdmin
-  .deleteUser(userTwo)
-  .logUsers();
+userAdmin.deleteUser(userTwo).logUsers();
 ```
 
 Using `userOne.deleteUser(userTwo)` will show `Uncaught TypeError: Cannot read property of undefined`.
@@ -2645,7 +2644,7 @@ The `super` keyword can also be used to call functions on a parent object.
 
 Scenario: Admin subclass would like to have an additional property, but also have its parent's properties.
 
-```
+```js
 class Admin extends User {
   constructor(username, email, account) {
     super(username, email);
@@ -2670,7 +2669,7 @@ Prototypes are the mechanism by which JavaScript objects inherit features from o
 
 ### Prototype Constructor [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-```
+```js
 function User(username, email) {
   this.username = username;
   this.email = email;
@@ -2679,7 +2678,7 @@ function User(username, email) {
 
 ### Prototype Methods [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
 
-```
+```js
 User.prototype.login = function() {
   console.log(`${this.username} just logged in`);
   return this;
@@ -2695,7 +2694,7 @@ User.prototype.logout = function() {
 Using `call()` to be able to access the constructor which is inherit from its parent.( this is what's under the hood of `super()`)  
 The first parameter of `call()` is what `this` keyword should refer to, which is the current object, therefore, passing `this`.
 
-```
+```js
 function Admin(username, email, title) {
   User.call(this, username, email);
   this.title = title;
@@ -2706,7 +2705,7 @@ function Admin(username, email, title) {
 
 The `Object.create()` method creates a new object, using an existing object as the prototype of the newly created object.
 
-```
+```js
 Admin.prototype = Object.create(User.prototype);
 ```
 
@@ -2719,13 +2718,13 @@ This is the same as what `class Admin extends User` does.
 The rest parameter syntax `...<parameter>` allows us to represent an indefinite number of arguments as an array.  
 It is useful when you don't know how many arguments are going to be passed in.
 
-```
+```js
 const doublePoints = (...nums) => {
   return nums.map(num => num * 2);
 };
 
 let result = doublePoints(200, 100, 400, 200);
-console.log(result);   // [400, 200, 800, 400]
+console.log(result); // [400, 200, 800, 400]
 ```
 
 ### Spread Syntax [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -2735,34 +2734,34 @@ It will take the object and and spread into individual components.
 
 #### Join two array
 
-```
+```js
 players = ['Joker', 'Butter'];
 newPlayers = ['Bmo', 'Winnie', 'Toad'];
 
-newList = [...players, ...newPlayers];   //["Joker", "Butter", "Bmo", "Winnie", "Toad"]
+newList = [...players, ...newPlayers]; //["Joker", "Butter", "Bmo", "Winnie", "Toad"]
 ```
 
 #### Use array in a function
 
-```
+```js
 savings = [20, 10, 30];
 
 function total(a, b, c) {
   console.log(a + b + c);
 }
 
-total(savings);      //20,10,30undefinedundefined
-total(...savings);   // 60
+total(savings); //20,10,30undefinedundefined
+total(...savings); // 60
 ```
 
 #### Clone an object
 
-```
+```js
 const person = { name: 'Bmo', age: 5 };
 
-const personClone = person            // this will only create a pointer, not copy the value
-const personClone = { ...person };    // spread the object out and create a new project
-const personClone = { ...person, location: "Japan" };    // can also add on new key value pair
+const personClone = person; // this will only create a pointer, not copy the value
+const personClone = { ...person }; // spread the object out and create a new project
+const personClone = { ...person, location: 'Japan' }; // can also add on new key value pair
 ```
 
 ### Sets [&#916;](https://github.com/Wangchimei/javascript_advanced#table-of-content)
@@ -2786,11 +2785,11 @@ A value in the Set may only occur once; it is **unique** in the Set's collection
 
 #### Eliminate duplicate value in an array
 
-```
+```js
 let players = ['Bmo', 'Butter', 'Bmo', 'Winnie'];
 
-let refinePlayers = new Set(players);    // {"Bmo", "Butter", "Winnie"}
-players = [...refinePlayers];            // ["Bmo", "Butter", "Winnie"]
+let refinePlayers = new Set(players); // {"Bmo", "Butter", "Winnie"}
+players = [...refinePlayers]; // ["Bmo", "Butter", "Winnie"]
 ```
 
 ## Babel + Webpack
@@ -2943,7 +2942,7 @@ To achieve this, a watch flag `-w` needs to be specified in the scripts, and it 
 
 **In the main.js file**
 
-```
+```js
 import './ui';
 ```
 
@@ -2953,7 +2952,7 @@ import './ui';
 
 **In the ui.js file (define export at the bottom)**
 
-```
+```js
 const body = document.querySelector('body');
 
 const styleBody = () => {
@@ -2976,7 +2975,7 @@ export { styleBody, outputTitle, mainContact };
 
 **In the main.js file (import on the top)**
 
-```
+```js
 import { styleBody, outputTitle, mainContact } from './dom';
 ```
 
@@ -2986,16 +2985,16 @@ import { styleBody, outputTitle, mainContact } from './dom';
 
 **In the data.js file (define export at the bottom)**
 
-```
+```js
 const users = [
   { name: 'Bmo', premium: true },
   { name: 'Winnie', premium: false },
   { name: 'Joker', premium: true },
   { name: 'Chopper', premium: true },
-  { name: 'Butter', premium: false }
+  { name: 'Butter', premium: false },
 ];
 
-const getPremUsers = (users) => {
+const getPremUsers = users => {
   return users.filter(user => user.premium);
 };
 
@@ -3006,7 +3005,7 @@ export { getPremUsers, users as default };
 **In the main.js file (import on the top)**  
 **Note:** No `{}` for default import
 
-```
+```js
 import users, { getPremUsers } from './data';
 
 console.log(users);
@@ -3026,20 +3025,20 @@ Therefore, this should be used for **development only**.
 
    **webpack.config.js**
 
-   ```
-   const path = require('path')
+   ```js
+   const path = require('path');
 
    module.exports = {
-    entry: './src/index.js',
-    output: {
-      path: path.resolve(__dirname, dist/assets),
-      filename: 'bundle.js'
-    },
-    devServer: {
-      contentBase: path.resolve(__dirname, 'dist'),
-      publicPath: '/assets/'
-    }
-   }
+     entry: './src/index.js',
+     output: {
+       path: path.resolve(__dirname, dist / assets),
+       filename: 'bundle.js',
+     },
+     devServer: {
+       contentBase: path.resolve(__dirname, 'dist'),
+       publicPath: '/assets/',
+     },
+   };
    ```
 
    `contentBase` - the folder you want to serve on the browser (absolute path)  
@@ -3071,7 +3070,7 @@ Therefore, this should be used for **development only**.
 
    **webpack.config.js**
 
-   ```
+   ```js
    const path = require('path')
 
    module.exports = {
