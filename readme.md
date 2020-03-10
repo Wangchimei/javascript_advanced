@@ -388,6 +388,13 @@ likes[1]; //"Psyduck"
   likes.indexOf('Bmo'); // 0
   ```
 
+- `findIndex()` - returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1.
+
+  ```js
+  let likes = ['Bmo', 'Chopper', 'Winnie'];
+  likes.findIndex(name => name === 'Winnie'); // 2
+  ```
+
 - `concat()` - merges two or more arrays. This method does not change the existing arrays, but instead returns a new array
 
   ```js
@@ -2759,8 +2766,8 @@ total(...savings); // 60
 ```js
 const person = { name: 'Bmo', age: 5 };
 
-const personClone = person; // this will only create a pointer, not copy the value
-const personClone = { ...person }; // spread the object out and create a new project
+// const personClone = person; // this will only create a pointer, not copy the value
+const personClone = { ...person }; // spread the object out and create a new object
 const personClone = { ...person, location: 'Japan' }; // can also add on new key value pair
 ```
 
